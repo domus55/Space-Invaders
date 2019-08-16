@@ -1,4 +1,4 @@
 class Background
 {
-
+	Background();
 };
