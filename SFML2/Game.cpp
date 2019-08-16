@@ -5,7 +5,7 @@
 Game::Game()
 {
 	isRunning = true;
-	Window::window.create(sf::VideoMode(800, 600, 32), "Space Invaders");
+	Window::window.create(sf::VideoMode(1600, 900, 32), "Space Invaders");
 }
 
 void Game::exit()
