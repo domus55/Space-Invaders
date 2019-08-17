@@ -23,6 +23,7 @@ void Game::exit()
 void Game::update()
 {
 	LevelManager::update();
+	Shoot::updateAll();
 	BasicEnemy::updateAll();
 }
 
@@ -31,6 +32,7 @@ void Game::output()
 	Window::window.clear();
 	Background::render();
 	BasicEnemy::renderAll();
+	Shoot::renderAll();
 	Window::window.display();
 }
 

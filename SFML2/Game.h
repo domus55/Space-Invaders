@@ -8,6 +8,7 @@
 #include "Background.h"
 #include "GameInfo.h"
 #include "LevelManager.h"
+#include "Shoot.h"
 #include "BasicEnemy.h"
 #include "EnemyEasy.h"
 

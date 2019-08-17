@@ -9,8 +9,8 @@ EnemyEasy::EnemyEasy(float x, float y)
 	shootSpeed = 1;
 	shootDelay = 1;
 
-	sprite.setScale(1, 1);						//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
-	texture.loadFromFile("Images/dot.png");		//³aduje teksture
+	sprite.setScale(0.35, 0.35);						//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
+	texture.loadFromFile("Images/EnemyEasy.png");		//³aduje teksture
 	sprite.setTexture(texture);					//ustawia teksture sprajtu
 	
 	sf::Vector2u size = texture.getSize();
@@ -23,7 +23,7 @@ EnemyEasy::EnemyEasy(float x, float y)
 
 void EnemyEasy::update()
 {
-	//sprite.setPosition(sprite.getPosition().x + 1 * GameInfo::getDeltaTime(), sprite.getPosition().y);
+
 }
 
 void EnemyEasy::render()
