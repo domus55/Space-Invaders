@@ -29,12 +29,8 @@ void Game::update()
 void Game::output()
 {
 	Window::window.clear();
-<<<<<<< HEAD
 	Background::render();
-=======
 	BasicEnemy::renderAll();
-
->>>>>>> BasicEnemy
 	Window::window.display();
 }
 

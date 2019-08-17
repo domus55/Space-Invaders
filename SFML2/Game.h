@@ -5,14 +5,11 @@
 #include <windows.h>
 #include <iostream>
 #include "Window.h"
-<<<<<<< HEAD
 #include "Background.h"
-=======
 #include "GameInfo.h"
 #include "LevelManager.h"
 #include "BasicEnemy.h"
 #include "EnemyEasy.h"
->>>>>>> BasicEnemy
 
 class Game
 {

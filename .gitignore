@@ -3,6 +3,7 @@
 
 dla mnie.txt
 *.vcxproj
+*.vcxproj.filters
 
 # User-specific files
 *.suo
