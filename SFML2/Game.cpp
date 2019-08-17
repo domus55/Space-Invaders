@@ -1,7 +1,5 @@
 #include "Game.h"
 
-
-
 Game::Game()
 {
 	isRunning = true;
@@ -24,13 +22,19 @@ void Game::exit()
 
 void Game::update()
 {
-
+	LevelManager::update();
+	BasicEnemy::updateAll();
 }
 
 void Game::output()
 {
 	Window::window.clear();
+<<<<<<< HEAD
 	Background::render();
+=======
+	BasicEnemy::renderAll();
+
+>>>>>>> BasicEnemy
 	Window::window.display();
 }
 
@@ -57,7 +61,7 @@ void Game::wait()
 		FPS = 0;
 		zegar = clock();
 	}
-
+	GameInfo::setDeltaTime(clock() - start);
 	start = clock();
 }
 
