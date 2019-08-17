@@ -6,6 +6,7 @@ Game::Game()
 {
 	isRunning = true;
 	Window::window.create(sf::VideoMode(1600, 900, 32), "Space Invaders");
+	Background::create();
 }
 
 void Game::exit()
@@ -29,13 +30,7 @@ void Game::update()
 void Game::output()
 {
 	Window::window.clear();
-
-	sf::Texture image;
-	image.loadFromFile("Images/background.png");
-	sf::Sprite background;
-	background.setTexture(image);
-	Window::window.draw(background);
-
+	Background::render();
 	Window::window.display();
 }
 

@@ -5,8 +5,9 @@
 
 class Background
 {
-	sf::Texture image;
-	sf::Sprite background;
-	Background();
-	void render();
+	static sf::Texture image;
+	static sf::Sprite background;
+public:
+	static void render();
+	static void create();
 };

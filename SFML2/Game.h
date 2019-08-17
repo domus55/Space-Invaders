@@ -5,6 +5,7 @@
 #include <windows.h>
 #include <iostream>
 #include "Window.h"
+#include "Background.h"
 
 class Game
 {
