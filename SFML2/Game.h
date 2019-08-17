@@ -5,13 +5,15 @@
 #include <windows.h>
 #include <iostream>
 #include "Window.h"
+#include "GameInfo.h"
+#include "BasicEnemy.h"
+#include "EnemyEasy.h"
 
 class Game
 {
 public:
-	//sf::RenderWindow window;
 	bool isRunning;
-	int maxFPS = 3000;
+	int maxFPS = 300;
 
 	Game();
 	void exit();

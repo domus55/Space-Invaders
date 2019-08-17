@@ -1,11 +1,11 @@
 #include "Game.h"
 
-
-
 Game::Game()
 {
 	isRunning = true;
 	Window::window.create(sf::VideoMode(1600, 900, 32), "Space Invaders");
+
+	EnemyEasy::create(10, 10);
 }
 
 void Game::exit()
@@ -23,12 +23,14 @@ void Game::exit()
 
 void Game::update()
 {
-
+	BasicEnemy::updateAll();
 }
 
 void Game::output()
 {
 	Window::window.clear();
+	BasicEnemy::renderAll();
+
 	Window::window.display();
 }
 
@@ -55,7 +57,7 @@ void Game::wait()
 		FPS = 0;
 		zegar = clock();
 	}
-
+	GameInfo::setDeltaTime(clock() - start);
 	start = clock();
 }
 
