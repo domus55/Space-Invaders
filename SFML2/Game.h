@@ -11,6 +11,7 @@
 #include "Shoot.h"
 #include "BasicEnemy.h"
 #include "EnemyEasy.h"
+#include "Player.h"
 
 class Game
 {

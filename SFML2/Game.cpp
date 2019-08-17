@@ -5,6 +5,7 @@ Game::Game()
 	isRunning = true;
 	Window::window.create(sf::VideoMode(1600, 900, 32), "Space Invaders");
 	Background::create();
+	Player::create();
 }
 
 void Game::exit()
@@ -25,6 +26,7 @@ void Game::update()
 	LevelManager::update();
 	Shoot::updateAll();
 	BasicEnemy::updateAll();
+	Player::update();
 }
 
 void Game::output()
@@ -33,6 +35,7 @@ void Game::output()
 	Background::render();
 	BasicEnemy::renderAll();
 	Shoot::renderAll();
+	Player::render();
 	Window::window.display();
 }
 
