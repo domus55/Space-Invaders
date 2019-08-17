@@ -4,8 +4,6 @@ Game::Game()
 {
 	isRunning = true;
 	Window::window.create(sf::VideoMode(1600, 900, 32), "Space Invaders");
-
-	EnemyEasy::create(10, 10);
 }
 
 void Game::exit()
@@ -23,6 +21,7 @@ void Game::exit()
 
 void Game::update()
 {
+	LevelManager::update();
 	BasicEnemy::updateAll();
 }
 

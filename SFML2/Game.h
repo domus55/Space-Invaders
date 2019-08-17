@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Window.h"
 #include "GameInfo.h"
+#include "LevelManager.h"
 #include "BasicEnemy.h"
 #include "EnemyEasy.h"
 
