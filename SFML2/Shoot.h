@@ -27,6 +27,7 @@ public:
 	static void renderAll();						//renderuje wszystkie pociski										
 
 private:
-	void update();
+	void update(int shootNumber);
 	void render();
+	void shootDestroy(int shootNumber);
 };

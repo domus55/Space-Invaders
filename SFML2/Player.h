@@ -1,17 +1,23 @@
 #include <SFML/Graphics.hpp>
 #include "Window.h"
 #include "GameInfo.h"
+#include "Shoot.h"
 
 class Player
 {
-	float speed;
-public:
-	static Player player;
+	float shootDmg; // obrazenia, jakie zadaje strzal
+	float shootSpeed; // predkosc strzalu
+	float shootDuration; // czestotliwosc wystrzalu
+	float speed; // predkosc playera
 	sf::Texture playerModel;
 	sf::Sprite drawPlayerModel;
 
-	static void render();
-	static void create();
-	static void update();
-	void playerMove();
+public:
+	static Player player; // obiekt player
+	Player();
+	static void render(); // render player'a
+	static void create(); // tworzy gracza
+	static void update(); // zmiana pozycji, sprawdzenie czy strzela
+	void playerMove(); // ruch gracza
+	void playerShoot(); // strzal gracza
 };

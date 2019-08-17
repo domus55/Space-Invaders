@@ -56,7 +56,7 @@ void Shoot::updateAll()
 {
 	for (int i = Shoot::shoot.size() - 1; i >= 0; i--)
 	{
-		Shoot::shoot[i]->update();
+		Shoot::shoot[i]->update(i);
 	}
 }
 
@@ -68,16 +68,28 @@ void Shoot::renderAll()
 	}
 }
 
-void Shoot::update()
+void Shoot::update(int shootNumber)
 {
 	sf::Vector2f newPos = sprite.getPosition();
 	newPos.x += speed.x * GameInfo::getDeltaTime() * 0.1;
 	newPos.y += speed.y * GameInfo::getDeltaTime() * 0.1;
 
 	sprite.setPosition(newPos);
+	
+	shootDestroy(shootNumber);
 }
 
 void Shoot::render()
 {
 	Window::window.draw(sprite);
+}
+
+void Shoot::shootDestroy(int shootNumber)
+{
+	sf::Vector2f pos;
+	pos = sprite.getPosition();
+	if (pos.y < 0 || pos.y > 900 || pos.x < 0 || pos.x > 1600)
+	{
+		shoot.erase(shoot.begin() + shootNumber);
+	}
 }
