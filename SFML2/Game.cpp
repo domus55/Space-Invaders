@@ -29,6 +29,13 @@ void Game::update()
 void Game::output()
 {
 	Window::window.clear();
+
+	sf::Texture image;
+	image.loadFromFile("Images/background.png");
+	sf::Sprite background;
+	background.setTexture(image);
+	Window::window.draw(background);
+
 	Window::window.display();
 }
 
