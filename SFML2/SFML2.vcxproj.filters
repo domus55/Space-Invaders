@@ -56,10 +56,10 @@
     <ClInclude Include="EnemyEasy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameInfo.h">
+    <ClInclude Include="LevelManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LevelManager.h">
+    <ClInclude Include="GameInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
