@@ -1,16 +1,44 @@
 #include "EnemyEasy.h"
 
-EnemyEasy::EnemyEasy(float x, float y, int id)
+EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 	: BasicEnemy(id)
 {
-	hp = 3;
-	speed = 0.1;
-	shootDmg = 1;
-	shootSpeed = 1;
-	shootDelay = 3000;
-	randShootDelay = 1000;
+	if (level == 1)
+	{
+		hp = 1;
+		speed = 0.1;
+		shootDmg = 1;
+		shootSpeed = 1;
+		shootDelay = 3000;
+		randShootDelay = 2000;
 
-	sprite.setScale(0.35, 0.35);						//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
+		sprite.setScale(0.3, 0.3);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
+	}
+
+	if (level == 2)
+	{
+		hp = 1;
+		speed = 0.12;
+		shootDmg = 1;
+		shootSpeed = 1.2;
+		shootDelay = 3000;
+		randShootDelay = 600;
+
+		sprite.setScale(0.35, 0.35);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
+	}
+
+	if (level == 3)
+	{
+		hp = 1;
+		speed = 0.15;
+		shootDmg = 1;
+		shootSpeed = 1.5;
+		shootDelay = 3000;
+		randShootDelay = 0;
+
+		sprite.setScale(0.4, 0.4);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
+	}
+							
 	texture.loadFromFile("Images/EnemyEasy.png");		//³aduje teksture
 	sprite.setTexture(texture);							//ustawia teksture sprajtu
 	
@@ -33,8 +61,8 @@ void EnemyEasy::render()
 	Window::window.draw(sprite);
 }
 
-void EnemyEasy::create(float posX, float posY, int id)
+void EnemyEasy::create(float posX, float posY, int level, int id)
 {
-	BasicEnemy::enemy.push_back(std::make_shared <EnemyEasy>(posX, posY, id));
+	BasicEnemy::enemy.push_back(std::make_shared <EnemyEasy>(posX, posY, level, id));
 }
 

@@ -60,12 +60,10 @@ void Background::animatedBackgroundVertical()
 	if (backgroundPosition.y > 2700)
 	{
 		background.setPosition(background.getPosition().x, background2.getPosition().y - 1800);
-		std::cout << "bg1";
 	}
 
 	if (background2Position.y > 2700)
 	{
 		background2.setPosition(background2.getPosition().x, background.getPosition().y - 1800);
-		std::cout << "bg2";
 	}
 }
