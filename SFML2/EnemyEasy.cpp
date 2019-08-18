@@ -1,17 +1,18 @@
 #include "EnemyEasy.h"
 
-EnemyEasy::EnemyEasy(float x, float y)
-	: BasicEnemy()
+EnemyEasy::EnemyEasy(float x, float y, int id)
+	: BasicEnemy(id)
 {
 	hp = 3;
-	speed = 1;
+	speed = 0.1;
 	shootDmg = 1;
 	shootSpeed = 1;
-	shootDelay = 1;
+	shootDelay = 3000;
+	randShootDelay = 1000;
 
 	sprite.setScale(0.35, 0.35);						//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
 	texture.loadFromFile("Images/EnemyEasy.png");		//³aduje teksture
-	sprite.setTexture(texture);					//ustawia teksture sprajtu
+	sprite.setTexture(texture);							//ustawia teksture sprajtu
 	
 	sf::Vector2u size = texture.getSize();
 
@@ -23,6 +24,7 @@ EnemyEasy::EnemyEasy(float x, float y)
 
 void EnemyEasy::update(int enemyNumber)
 {
+	shoot();
 	checkCollision(enemyNumber);	//musi byc na koncu metody, bo moze usunac obiekt
 }
 
@@ -31,8 +33,8 @@ void EnemyEasy::render()
 	Window::window.draw(sprite);
 }
 
-void EnemyEasy::create(float posX, float posY)
+void EnemyEasy::create(float posX, float posY, int id)
 {
-	BasicEnemy::enemy.push_back(std::make_shared <EnemyEasy>(posX, posY));
+	BasicEnemy::enemy.push_back(std::make_shared <EnemyEasy>(posX, posY, id));
 }
 

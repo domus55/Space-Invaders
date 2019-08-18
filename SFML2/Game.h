@@ -9,9 +9,11 @@
 #include "GameInfo.h"
 #include "LevelManager.h"
 #include "Shoot.h"
+#include "Player.h"
+#include "LevelEvent.h"
 #include "BasicEnemy.h"
 #include "EnemyEasy.h"
-#include "Player.h"
+
 
 class Game
 {

@@ -64,17 +64,16 @@ void Player::playerShoot()
 	{
 		sf::Vector2f pos;
 		pos = drawPlayerModel.getPosition();
-		Shoot::create(pos.x, pos.y, 0, -shootSpeed, shootDmg);
+		Shoot::create(pos.x, pos.y, 0, -shootSpeed, shootDmg, true);
 		myDeltaTime = 0;
 	}
-
 }
 
 void Player::checkCollision()
 {
 	for (int i = Shoot::shoot.size() - 1; i >= 0; i--)
 	{
-		if (Collider::checkCollision(drawPlayerModel, Shoot::shoot[i]->sprite))
+		if (Shoot::shoot[i]->playerShoot == false && Collider::checkCollision(drawPlayerModel, Shoot::shoot[i]->sprite))
 		{
 			hp -= Shoot::shoot[i]->getDmg();
 			Shoot::shoot.erase(Shoot::shoot.begin() + i);

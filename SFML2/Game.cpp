@@ -25,6 +25,7 @@ void Game::update()
 	LevelManager::update();
 	Shoot::updateAll();
 	BasicEnemy::updateAll();
+	LevelEvent::update();
 	Player::update();
 }
 
@@ -33,8 +34,8 @@ void Game::output()
 	Window::window.clear();
 	Background::render();
 	Background::animatedBackground();
-	BasicEnemy::renderAll();
 	Shoot::renderAll();
+	BasicEnemy::renderAll();
 	Player::render();
 	Window::window.display();
 }
