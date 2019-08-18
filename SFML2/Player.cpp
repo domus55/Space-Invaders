@@ -10,11 +10,12 @@ Player::Player()
 	speed = 0.5;
 	hp = 3;
 
-	playerModel.loadFromFile("Images/dot.png");
+	playerModel.loadFromFile("Images/spaceship.png");
 	drawPlayerModel.setTexture(playerModel);
 	drawPlayerModel.setPosition(1600 / 2, 800);
 	sf::Vector2u size = playerModel.getSize();
 	drawPlayerModel.setOrigin(size.x / 2, size.y / 2);
+	drawPlayerModel.setScale(0.2, 0.2);
 }
 
 void Player::render()
@@ -34,26 +35,15 @@ void Player::playerMove()
 	sf::Vector2f pos;
 	pos = drawPlayerModel.getPosition();
 
-	if (pos.x <= 1590 && pos.x >= 0)
-	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) pos.x += GameInfo::getDeltaTime() * speed;
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) pos.x -= GameInfo::getDeltaTime() * speed;
-	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) pos.x -= GameInfo::getDeltaTime() * speed;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) pos.x += GameInfo::getDeltaTime() * speed;
 
-	else if (pos.x <= 0)
-	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) pos.x += GameInfo::getDeltaTime() * speed;
-	}
-
-	else if (pos.x <= 1600)
-	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) pos.x -= GameInfo::getDeltaTime() * speed;
-	}
+	if (pos.x < 80) pos.x = 80;
+	if (pos.x > 1520) pos.x = 1520;
 
 	drawPlayerModel.setPosition(pos);
 }
 
-// Shoot(float positionX, float positionY, float speedX, float speedY, float dmg);
 
 void Player::playerShoot()
 {

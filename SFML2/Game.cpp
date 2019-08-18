@@ -32,7 +32,6 @@ void Game::output()
 {
 	Window::window.clear();
 	Background::render();
-	Background::animatedBackground();
 	BasicEnemy::renderAll();
 	Shoot::renderAll();
 	Player::render();
