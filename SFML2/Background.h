@@ -6,6 +6,8 @@
 
 class Background
 {
+	static float dynamicBackgroundSpeed; // Prêdkoœæ poruszania siê t³a góra-dó³
+
 	static sf::Texture image;
 	static sf::Sprite background;
 	static sf::Texture image2;
