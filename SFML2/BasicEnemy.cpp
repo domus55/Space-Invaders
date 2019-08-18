@@ -27,7 +27,6 @@ void BasicEnemy::renderAll()
 	}
 }
 
-
 void BasicEnemy::checkCollision(int enemyNumber)
 {
 	for (int i = Shoot::shoot.size() - 1; i >= 0; i--)

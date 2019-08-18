@@ -8,6 +8,7 @@ Player::Player()
 	shootDmg = 1;
 	shootDuration = 1000;
 	speed = 0.5;
+	hp = 3;
 
 	playerModel.loadFromFile("Images/dot.png");
 	drawPlayerModel.setTexture(playerModel);
@@ -25,6 +26,7 @@ void Player::update()
 {
 	Player::player.playerMove();
 	Player::player.playerShoot();
+	Player::player.checkCollision();
 }
 
 void Player::playerMove()
@@ -66,4 +68,16 @@ void Player::playerShoot()
 		myDeltaTime = 0;
 	}
 
+}
+
+void Player::checkCollision()
+{
+	for (int i = Shoot::shoot.size() - 1; i >= 0; i--)
+	{
+		if (Collider::checkCollision(drawPlayerModel, Shoot::shoot[i]->sprite))
+		{
+			hp -= Shoot::shoot[i]->getDmg();
+			Shoot::shoot.erase(Shoot::shoot.begin() + i);
+		}
+	}
 }
