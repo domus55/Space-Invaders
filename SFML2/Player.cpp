@@ -21,11 +21,6 @@ void Player::render()
 	Window::window.draw(Player::player.drawPlayerModel);
 }
 
-void Player::create()
-{
-
-}
-
 void Player::update()
 {
 	Player::player.playerMove();

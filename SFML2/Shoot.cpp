@@ -68,6 +68,11 @@ void Shoot::renderAll()
 	}
 }
 
+float Shoot::getDmg()
+{
+	return dmg;
+}
+
 void Shoot::update(int shootNumber)
 {
 	sf::Vector2f newPos = sprite.getPosition();
@@ -76,7 +81,7 @@ void Shoot::update(int shootNumber)
 
 	sprite.setPosition(newPos);
 	
-	shootDestroy(shootNumber);
+	shootDestroy(shootNumber);	//musi byc na koñcu motedy, bo mo¿e usun¹æ obiekt
 }
 
 void Shoot::render()

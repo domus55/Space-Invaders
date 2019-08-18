@@ -15,7 +15,7 @@ void BasicEnemy::updateAll()
 {
 	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
 	{
-		BasicEnemy::enemy[i]->update();
+		BasicEnemy::enemy[i]->update(i);
 	}
 }
 
@@ -27,7 +27,17 @@ void BasicEnemy::renderAll()
 	}
 }
 
-void BasicEnemy::create(std::string name, float x, float y)
-{
 
+void BasicEnemy::checkCollision(int enemyNumber)
+{
+	for (int i = Shoot::shoot.size() - 1; i >= 0; i--)
+	{
+		if (Collider::checkCollision(sprite, Shoot::shoot[i]->sprite))
+		{
+			hp -= Shoot::shoot[i]->getDmg();
+			Shoot::shoot.erase(Shoot::shoot.begin() + i);
+		}
+	}
+
+	if (hp <= 0) enemy.erase(enemy.begin() + enemyNumber);
 }

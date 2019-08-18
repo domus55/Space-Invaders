@@ -5,6 +5,8 @@
 #include <string>
 #include "Window.h"
 #include "GameInfo.h"
+#include "Collider.h"
+#include "Shoot.h"
 
 class BasicEnemy{
 
@@ -26,10 +28,10 @@ public:
 	BasicEnemy();
 	static void updateAll();
 	static void renderAll();
-	static void create(std::string name, float posX, float posY);
 
 protected:
 	virtual void render() = 0;
-	virtual void update() = 0;
+	virtual void update(int enemyNumber) = 0;
 
+	void checkCollision(int enemyNumber);
 };

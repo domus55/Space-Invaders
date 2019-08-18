@@ -4,6 +4,7 @@
 dla mnie.txt
 *.vcxproj
 *.vcxproj.filters
+desktop.ini
 
 # User-specific files
 *.suo

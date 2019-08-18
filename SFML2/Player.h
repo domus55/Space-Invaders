@@ -16,7 +16,6 @@ public:
 	static Player player; // obiekt player
 	Player();
 	static void render(); // render player'a
-	static void create(); // tworzy gracza
 	static void update(); // zmiana pozycji, sprawdzenie czy strzela
 	void playerMove(); // ruch gracza
 	void playerShoot(); // strzal gracza
