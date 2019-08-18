@@ -12,16 +12,24 @@ class Player
 	float shootSpeed; // predkosc strzalu
 	float shootDuration; // czestotliwosc wystrzalu
 	float speed; // predkosc playera
-	float hp; // zycie gracza
+	int hp; // zycie gracza
 	sf::Texture playerModel;
+	sf::Texture heart;
+	sf::Texture halfHeart;
+	sf::Texture emptyHeart;
 
 public:
 	sf::Sprite drawPlayerModel;
+	sf::Sprite drawHeartModel1;
+	sf::Sprite drawHeartModel2;
+	sf::Sprite drawHeartModel3;
+
 	static Player player; // obiekt player
 	Player();
 	static void render(); // render player'a
 	static void update(); // zmiana pozycji, sprawdzenie czy strzela
 	void playerMove(); // ruch gracza
 	void playerShoot(); // strzal gracza
-	void checkCollision();
+	void checkCollision(); // kolizja
+	void playerHp(); // ¿ycie gracza
 };

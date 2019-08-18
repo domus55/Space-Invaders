@@ -8,7 +8,7 @@ Player::Player()
 	shootDmg = 1;
 	shootDuration = 1000;
 	speed = 0.5;
-	hp = 3;
+	hp = 6;
 
 	playerModel.loadFromFile("Images/spaceship.png");
 	drawPlayerModel.setTexture(playerModel);
@@ -16,11 +16,24 @@ Player::Player()
 	sf::Vector2u size = playerModel.getSize();
 	drawPlayerModel.setOrigin(size.x / 2, size.y / 2);
 	drawPlayerModel.setScale(0.2, 0.2);
+
+	heart.loadFromFile("Images/heart.png");
+	halfHeart.loadFromFile("Images/halfheart.png");
+	emptyHeart.loadFromFile("Images/emptyheart.png");
+
+	drawHeartModel1.setTexture(heart);
+	drawHeartModel2.setTexture(heart);
+	drawHeartModel3.setTexture(heart);
+
+	Player::player.playerHp();
 }
 
 void Player::render()
 {
 	Window::window.draw(Player::player.drawPlayerModel);
+	Window::window.draw(Player::player.drawHeartModel1);
+	Window::window.draw(Player::player.drawHeartModel2);
+	Window::window.draw(Player::player.drawHeartModel3);
 }
 
 void Player::update()
@@ -44,7 +57,6 @@ void Player::playerMove()
 	drawPlayerModel.setPosition(pos);
 }
 
-
 void Player::playerShoot()
 {
 	static int myDeltaTime = 0;
@@ -67,6 +79,24 @@ void Player::checkCollision()
 		{
 			hp -= Shoot::shoot[i]->getDmg();
 			Shoot::shoot.erase(Shoot::shoot.begin() + i);
+
+			switch (hp)
+			{
+			case 6: drawHeartModel3.setTexture(heart); break;
+			case 5:	drawHeartModel3.setTexture(halfHeart); break;
+			case 4:	drawHeartModel3.setTexture(emptyHeart); break;
+			case 3:	drawHeartModel2.setTexture(halfHeart); break;
+			case 2:	drawHeartModel2.setTexture(emptyHeart); break;
+			case 1:	drawHeartModel1.setTexture(halfHeart); break;
+			case 0:	drawHeartModel1.setTexture(emptyHeart); break;
+			}
 		}
 	}
+}
+
+void Player::playerHp()
+{
+	drawHeartModel1.setPosition(20, 10);
+	drawHeartModel2.setPosition(100, 10);
+	drawHeartModel3.setPosition(180, 10);
 }
