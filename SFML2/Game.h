@@ -8,9 +8,10 @@
 #include "Background.h"
 #include "GameInfo.h"
 #include "LevelManager.h"
+#include "LevelEvent.h"
 #include "Shoot.h"
 #include "Player.h"
-#include "LevelEvent.h"
+#include "Explosion.h"
 #include "BasicEnemy.h"
 #include "EnemyEasy.h"
 

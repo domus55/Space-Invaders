@@ -6,6 +6,7 @@ Game::Game()
 	Window::window.create(sf::VideoMode(1600, 900, 32), "Space Invaders");
 	Background::create();
 	LevelManager::create();
+	Explosion::create(100, 100);
 }
 
 void Game::exit()
@@ -39,6 +40,7 @@ void Game::output()
 	BasicEnemy::renderAll();
 	Player::render();
 	LevelManager::render();
+	Explosion::renderAll();
 	Window::window.display();
 }
 

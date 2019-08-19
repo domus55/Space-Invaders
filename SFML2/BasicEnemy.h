@@ -40,8 +40,8 @@ public:
 	static int mostToTheLeft();			//zwraca pozycje x statku najbardziej wysunietago na lewo
 
 	sf::Vector2f getPosition();
-	void moveRight();		//porusza statek w prawo
-	void moveLeft();		//porusza statek w lewo
+	void moveRight();					//porusza statek w prawo
+	void moveLeft();					//porusza statek w lewo
 
 protected:
 	virtual void render() = 0;
