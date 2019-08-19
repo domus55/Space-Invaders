@@ -70,7 +70,6 @@ void Explosion::renderAll()
 
 void Explosion::render(int explosionNumber)
 {
-	std::cout << animationObject << std::endl;
 	Animation::animation[animationObject]->render(&sprite);
 	if (Animation::animation[animationObject]->licznik2 == 26)
 	{
