@@ -2,19 +2,26 @@
 
 std::vector < std::shared_ptr <Shoot> > Shoot::shoot;
 
-Shoot::Shoot(float positionX, float positionY, float speedX, float speedY, float dmg, bool player)
+Shoot::Shoot(float positionX, float positionY, float speedX, float speedY, float dmg, bool player, int type, float shootScale)
 {
 	this->dmg = dmg;
 	this->speed.x = speedX;
 	this->speed.y = speedY;
 	this->playerShoot = player;
 
-	texture.loadFromFile("Images/shoot.png");
+	switch (type)
+	{
+	case 1: texture.loadFromFile("Images/shoot1.png"); sprite.setScale(0.5 * shootScale, 0.5 * shootScale);	break;
+	case 2: texture.loadFromFile("Images/shoot2.png"); sprite.setScale(0.4 * shootScale, 0.4 * shootScale);	break;
+	case 3: texture.loadFromFile("Images/shoot3.png"); sprite.setScale(1 * shootScale, 1 * shootScale);	break;
+	}
+
+	
 	sprite.setTexture(texture);
 
 	sf::Vector2f pos(positionX, positionY);
 	sprite.setPosition(pos);
-	sprite.setScale(0.5, 0.5);
+	
 
 
 	if (speedX == 0)
@@ -43,14 +50,14 @@ Shoot::Shoot(float positionX, float positionY, float speedX, float speedY, float
 	this->size.y = size.y * sprite.getScale().y;
 }
 
-void Shoot::create(sf::Vector2f position, sf::Vector2f speed, float dmg, bool player)
+void Shoot::create(sf::Vector2f position, sf::Vector2f speed, float dmg, bool player, int type, float shootScale)
 {
-	Shoot::shoot.push_back(std::make_shared <Shoot>(position.x, position.y, speed.x, speed.y, dmg, player));
+	Shoot::shoot.push_back(std::make_shared <Shoot>(position.x, position.y, speed.x, speed.y, dmg, player, type, shootScale));
 }
 
-void Shoot::create(float positionX, float positionY, float speedX, float speedY, float dmg, bool player)
+void Shoot::create(float positionX, float positionY, float speedX, float speedY, float dmg, bool player, int type, float shootScale)
 {
-	Shoot::shoot.push_back(std::make_shared <Shoot>(positionX, positionY, speedX, speedY, dmg, player));
+	Shoot::shoot.push_back(std::make_shared <Shoot>(positionX, positionY, speedX, speedY, dmg, player, type, shootScale));
 }
 
 void Shoot::updateAll()

@@ -5,11 +5,8 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 {
 	if (level == 1)
 	{
-		hp = 1;
 		speed = 0.1;
-		shootDmg = 1;
 		shootSpeed = 1;
-		shootDelay = 3000;
 		randShootDelay = 2000;
 
 		sprite.setScale(0.3, 0.3);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
@@ -17,11 +14,8 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 
 	if (level == 2)
 	{
-		hp = 1;
 		speed = 0.12;
-		shootDmg = 1;
 		shootSpeed = 1.2;
-		shootDelay = 3000;
 		randShootDelay = 600;
 
 		sprite.setScale(0.35, 0.35);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
@@ -29,15 +23,17 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 
 	if (level == 3)
 	{
-		hp = 1;
 		speed = 0.15;
-		shootDmg = 1;
 		shootSpeed = 1.5;
-		shootDelay = 3000;
 		randShootDelay = 0;
 
 		sprite.setScale(0.4, 0.4);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
 	}
+
+	hp = 1;
+	shootDelay = 3000;
+	shootType = 2;
+	shootScale = 1;
 							
 	texture.loadFromFile("Images/EnemyEasy.png");		//³aduje teksture
 	sprite.setTexture(texture);							//ustawia teksture sprajtu

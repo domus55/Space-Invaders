@@ -11,6 +11,8 @@ BasicEnemy::BasicEnemy(int id)
 	shootDelay = 1000;
 	randShootDelay = 0;
 	myDeltaTime = 0;
+	shootType = 3;
+	shootScale = 1;
 
 	this->id = id;
 
@@ -84,7 +86,7 @@ void BasicEnemy::shoot()
 	{
 		sf::Vector2f pos;
 		pos = sprite.getPosition();
-		Shoot::create(pos.x, pos.y, 0, shootSpeed, shootDmg, false);
+		Shoot::create(pos.x, pos.y, 0, shootSpeed, shootDmg, false, shootType, shootScale);
 		if (randShootDelay == 0) myDeltaTime = 0;
 		else myDeltaTime = (std::rand() % randShootDelay) - randShootDelay/2;
 	}

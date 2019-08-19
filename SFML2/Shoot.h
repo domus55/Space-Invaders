@@ -22,9 +22,9 @@ private:
 	
 
 public:
-	Shoot(float positionX, float positionY, float speedX, float speedY, float dmg, bool player);
-	static void create(sf::Vector2f position, sf::Vector2f speed, float dmg, bool player);						//tworzy pocisk
-	static void create(float positionX, float positionY, float speedX, float speedY, float dmg, bool player);	//tworzy pocisk
+	Shoot(float positionX, float positionY, float speedX, float speedY, float dmg, bool player, int type, float shootScale);
+	static void create(sf::Vector2f position, sf::Vector2f speed, float dmg, bool, int type, float shootScale = 1);						//tworzy pocisk
+	static void create(float positionX, float positionY, float speedX, float speedY, float dmg, bool player, int type, float shootScale = 1);	//tworzy pocisk
 	static void updateAll();						//przesuwa wszystkie pociski i sprawdza ich kolizje
 	static void renderAll();						//renderuje wszystkie pociski		
 	float getDmg();

@@ -13,7 +13,11 @@ class Player
 	float shootDuration; // czestotliwosc wystrzalu
 	float speed; // predkosc playera
 	int hp; // zycie gracza
+	static bool renderHitbox;
 	sf::Texture playerModel;
+	sf::Texture hitboxTexture;
+	sf::Sprite hitbox1;
+	sf::Sprite hitbox2;
 	sf::Texture heart;
 	sf::Texture halfHeart;
 	sf::Texture emptyHeart;

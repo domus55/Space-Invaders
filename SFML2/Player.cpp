@@ -1,6 +1,7 @@
 #include "Player.h"
 
 Player Player::player;
+bool Player::renderHitbox = false;
 
 Player::Player()
 {
@@ -26,6 +27,16 @@ Player::Player()
 	drawHeartModel3.setTexture(heart);
 
 	Player::player.playerHp();
+
+	hitboxTexture.loadFromFile("Images/hitbox.png");
+	hitbox1.setTexture(hitboxTexture);
+	hitbox2.setTexture(hitboxTexture);
+	sf::Vector2u Hitboxsize = hitboxTexture.getSize();
+	hitbox1.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
+	hitbox1.setScale(0.45, 0.9);
+
+	hitbox2.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
+	hitbox2.setScale(1.1, 0.2);
 }
 
 void Player::render()
@@ -34,6 +45,9 @@ void Player::render()
 	Window::window.draw(Player::player.drawHeartModel1);
 	Window::window.draw(Player::player.drawHeartModel2);
 	Window::window.draw(Player::player.drawHeartModel3);
+
+	if (renderHitbox) Window::window.draw(Player::player.hitbox1);
+	if (renderHitbox) Window::window.draw(Player::player.hitbox2);
 }
 
 void Player::update()
@@ -66,16 +80,19 @@ void Player::playerShoot()
 	{
 		sf::Vector2f pos;
 		pos = drawPlayerModel.getPosition();
-		Shoot::create(pos.x, pos.y, 0, -shootSpeed, shootDmg, true);
+		Shoot::create(pos.x, pos.y, 0, -shootSpeed, shootDmg, true, 1, 1);
 		myDeltaTime = 0;
 	}
 }
 
 void Player::checkCollision()
 {
+	hitbox1.setPosition(drawPlayerModel.getPosition());
+	hitbox2.setPosition(drawPlayerModel.getPosition().x, drawPlayerModel.getPosition().y + 35);
+
 	for (int i = Shoot::shoot.size() - 1; i >= 0; i--)
 	{
-		if (Shoot::shoot[i]->playerShoot == false && Collider::checkCollision(drawPlayerModel, Shoot::shoot[i]->sprite))
+		if (Shoot::shoot[i]->playerShoot == false && (Collider::checkCollision(hitbox1, Shoot::shoot[i]->sprite) || Collider::checkCollision(hitbox2, Shoot::shoot[i]->sprite)))
 		{
 			hp -= Shoot::shoot[i]->getDmg();
 			Shoot::shoot.erase(Shoot::shoot.begin() + i);
