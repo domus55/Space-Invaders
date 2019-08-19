@@ -85,6 +85,17 @@ void BasicEnemy::moveLeft()
 	}
 }
 
+void BasicEnemy::render()
+{
+	Window::window.draw(sprite);
+}
+
+void BasicEnemy::update(int enemyNumber)
+{
+	shoot();
+	checkCollision(enemyNumber);	//musi byc na koncu metody, bo moze usunac obiekt
+}
+
 void BasicEnemy::shoot()
 {
 	myDeltaTime += GameInfo::getDeltaTime();
@@ -118,7 +129,7 @@ void BasicEnemy::checkCollision(int enemyNumber)
 			timeToDeath = 1;
 		}
 			
-		if (timeToDeath > 400) enemy.erase(enemy.begin() + enemyNumber);
+		if (timeToDeath > 300) enemy.erase(enemy.begin() + enemyNumber);
 
 		timeToDeath += GameInfo::getDeltaTime();
 	}

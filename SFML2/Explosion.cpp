@@ -14,7 +14,7 @@ Explosion::Explosion(float x, float y)
 	static bool firstTimeAniamation = true;
 	if (firstTimeAniamation)
 	{
-		animation = Animation::addAnimation(3);
+		animation = Animation::addAnimation();
 
 		Animation::addImage(animation, "Images/explosion/explosion1.png");
 		Animation::addImage(animation, "Images/explosion/explosion2.png");
@@ -46,8 +46,7 @@ Explosion::Explosion(float x, float y)
 
 		firstTimeAniamation = false;
 	}
-	//Animation::animation[animation]->blockAmount++;
-	animationObject = Animation::addObject(animation, 3);
+	animationObject = Animation::addObject(animation, 15);
 }
 
 void Explosion::create(sf::Vector2f position)

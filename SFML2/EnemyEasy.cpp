@@ -46,16 +46,6 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 	this->size.y = size.y * sprite.getScale().y;
 }
 
-void EnemyEasy::update(int enemyNumber)
-{
-	shoot();
-	checkCollision(enemyNumber);	//musi byc na koncu metody, bo moze usunac obiekt
-}
-
-void EnemyEasy::render()
-{
-	Window::window.draw(sprite);
-}
 
 void EnemyEasy::create(float posX, float posY, int level, int id)
 {

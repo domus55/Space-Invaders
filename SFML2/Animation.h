@@ -10,7 +10,7 @@ class Animation
 {
 public:
 	Animation(int animationNumber, int time);
-	static int addAnimation(int time);									//tworzy nowa animacje i zwraca jej numer, aby dodac tekstury do tej animacji nalezy uzyc addImage(numerAnimacji)
+	static int addAnimation();											//tworzy nowa animacje i zwraca jej numer, aby dodac tekstury do tej animacji nalezy uzyc addImage(numerAnimacji)
 	static int addObject(int animationNumber, int time);				//zwraca numer tablicy animowanego obiektu
 	static void addImage(int animationNumber, std::string texture);		//dodaje kolejna teksture do animacji
 	void render(sf::Sprite *sprite);	

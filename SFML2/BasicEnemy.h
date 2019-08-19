@@ -46,8 +46,8 @@ public:
 	void moveLeft();					//porusza statek w lewo
 
 protected:
-	virtual void render() = 0;
-	virtual void update(int enemyNumber) = 0;
+	virtual void render();
+	virtual void update(int enemyNumber);
 
 	void shoot();
 	void checkCollision(int enemyNumber);

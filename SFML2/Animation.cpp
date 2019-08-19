@@ -11,7 +11,7 @@ Animation::Animation(int animationNumber, int time)
 	licznik2 = 0;
 }
 
-int Animation::addAnimation(int time)
+int Animation::addAnimation()
 {
 	std::vector < sf::Texture> anim;
 	textures.push_back(anim);
@@ -34,7 +34,7 @@ void Animation::addImage(int animationNumber, std::string texture)
 
 void Animation::render(sf::Sprite *sprite)
 {
-	licznik += GameInfo::getDeltaTime() / 16.0;
+	licznik += GameInfo::getDeltaTime();
 	if (licznik >= time)
 	{
 		licznik2++;
