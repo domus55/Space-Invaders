@@ -3,6 +3,7 @@
 #include <string>
 #include "BasicEnemy.h"
 #include "EnemyEasy.h"
+#include "Animation.h"
 
 class LevelManager {
 public:

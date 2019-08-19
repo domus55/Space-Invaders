@@ -9,6 +9,7 @@
 #include "GameInfo.h"
 #include "Collider.h"
 #include "Shoot.h"
+#include "Explosion.h"
 
 class BasicEnemy{
 
@@ -27,6 +28,7 @@ protected:
 	int randShootDelay;		//gdy jest równy 0, wszystkie statki strzalaj¹ jednoczeœnie, czym wiêkszy, tym bardziej losowo bêd¹ strzelaæ
 	int myDeltaTime;		//zmienna wykorzystywana, aby strzaly byly stworzone w odpowiednim odstepie, nie tykac
 	int shootType;			//rodzaj textury pocisku, od 1 do 3
+	int timeToDeath;		//czas w milisekundach do usuniecia obiektu, potrzebny zeby wybuch ladnie wygladal, nie tykac
 
 	sf::Texture texture;
 	sf::Sprite sprite;

@@ -50,6 +50,7 @@ void LevelManager::render()
 
 		if (deltaTime > 1500)
 		{
+			Animation::restart();
 			deltaTime = 0;
 			nextLevel();
 		}

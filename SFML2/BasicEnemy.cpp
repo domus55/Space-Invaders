@@ -13,6 +13,7 @@ BasicEnemy::BasicEnemy(int id)
 	myDeltaTime = 0;
 	shootType = 3;
 	shootScale = 1;
+	timeToDeath = 0;
 
 	this->id = id;
 
@@ -66,16 +67,22 @@ int BasicEnemy::mostToTheLeft()
 
 void BasicEnemy::moveRight()
 {
-	sf::Vector2f pos = sprite.getPosition();
-	pos.x += speed * GameInfo::getDeltaTime();
-	sprite.setPosition(pos);
+	if (timeToDeath == 0)
+	{
+		sf::Vector2f pos = sprite.getPosition();
+		pos.x += speed * GameInfo::getDeltaTime();
+		sprite.setPosition(pos);
+	}
 }
 
 void BasicEnemy::moveLeft()
 {
-	sf::Vector2f pos = sprite.getPosition();
-	pos.x -= speed * GameInfo::getDeltaTime();
-	sprite.setPosition(pos);
+	if (timeToDeath == 0)
+	{
+		sf::Vector2f pos = sprite.getPosition();
+		pos.x -= speed * GameInfo::getDeltaTime();
+		sprite.setPosition(pos);
+	}
 }
 
 void BasicEnemy::shoot()
@@ -103,5 +110,18 @@ void BasicEnemy::checkCollision(int enemyNumber)
 		}
 	}
 
-	if (hp <= 0) enemy.erase(enemy.begin() + enemyNumber);
+	if (hp <= 0)
+	{
+		if (timeToDeath == 0)
+		{
+			Explosion::create(sprite.getPosition());
+			timeToDeath = 1;
+		}
+			
+		if (timeToDeath > 400) enemy.erase(enemy.begin() + enemyNumber);
+
+		timeToDeath += GameInfo::getDeltaTime();
+	}
+
+
 }

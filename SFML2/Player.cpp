@@ -7,7 +7,7 @@ Player::Player()
 {
 	shootSpeed = 5;
 	shootDmg = 1;
-	shootDuration = 1000;
+	shootDuration = 500;
 	speed = 0.5;
 	hp = 6;
 
