@@ -5,6 +5,9 @@
 #include "GameInfo.h"
 #include "Shoot.h"
 #include "Collider.h"
+#include <string>
+#include "BasicEnemy.h"
+#include "LevelManager.h"
 
 class Player
 {
@@ -21,6 +24,9 @@ class Player
 	sf::Texture heart;
 	sf::Texture halfHeart;
 	sf::Texture emptyHeart;
+	static sf::Font font;
+	static sf::Text text;
+	bool deathDelay;
 
 public:
 	sf::Sprite drawPlayerModel;
@@ -30,10 +36,12 @@ public:
 
 	static Player player; // obiekt player
 	Player();
-	static void render(); // render player'a
-	static void update(); // zmiana pozycji, sprawdzenie czy strzela
-	void playerMove(); // ruch gracza
-	void playerShoot(); // strzal gracza
-	void checkCollision(); // kolizja
-	void playerHp(); // ¿ycie gracza
+	static void render();		// render player'a
+	static void update();		// zmiana pozycji, sprawdzenie czy strzela
+	void playerMove();			// ruch gracza
+	void playerShoot();			// strzal gracza
+	void checkCollision();		// kolizja
+	void playerHp();			// ¿ycie gracza
+	void playerDeath();			// œmieræ gracza
+	void playerDeathTime();		// dzia³ania w okresie trwania œmierci
 };
