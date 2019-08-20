@@ -1,7 +1,7 @@
 #include "Player.h"
 
 Player Player::player;
-bool Player::renderHitbox = true;
+bool Player::renderHitbox = false;
 sf::Text Player::text;
 sf::Font Player::font;
 
