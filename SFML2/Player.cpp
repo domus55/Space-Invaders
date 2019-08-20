@@ -1,7 +1,7 @@
 #include "Player.h"
 
 Player Player::player;
-bool Player::renderHitbox = false;
+bool Player::renderHitbox = true;
 sf::Text Player::text;
 sf::Font Player::font;
 
@@ -13,6 +13,7 @@ Player::Player()
 	speed = 0.5;
 	hp = 6;
 	deathDelay = false;
+	renderDeath = false;
 
 	playerModel.loadFromFile("Images/spaceship.png");
 	drawPlayerModel.setTexture(playerModel);
@@ -48,7 +49,7 @@ void Player::render()
 	Window::window.draw(Player::player.drawHeartModel1);
 	Window::window.draw(Player::player.drawHeartModel2);
 	Window::window.draw(Player::player.drawHeartModel3);
-	Window::window.draw(text);
+	if (Player::player.renderDeath) Window::window.draw(text);
 
 	if (renderHitbox) Window::window.draw(Player::player.hitbox1);
 	if (renderHitbox) Window::window.draw(Player::player.hitbox2);
@@ -132,26 +133,21 @@ void Player::playerDeath()
 	font.loadFromFile("Images/arial.ttf");
 	text.setFont(font);
 	text.setCharacterSize(100);
-	text.setFillColor(sf::Color::Red);
 	text.setPosition(800, 425);
 	text.setStyle(sf::Text::Bold);
-
-	static std::string tekst;
-	static int deltaTime = 0;
-	tekst = "YOU DIED!";
-	text.setString(tekst);
+	text.setString("YOU DIED");
 
 	sf::FloatRect textRect = text.getLocalBounds();
 	text.setOrigin(textRect.left + textRect.width / 2.0f,
 		textRect.top + textRect.height / 2.0f);
-	
-	//BasicEnemy::enemy.clear();
+
 	hp = 6;
 
 	drawHeartModel1.setTexture(heart);
 	drawHeartModel2.setTexture(heart);
 	drawHeartModel3.setTexture(heart);
 	
+	renderDeath = true;
 	deathDelay = true;
 }
 
@@ -162,10 +158,11 @@ void Player::playerDeathTime()
 
 	if (time > 1000)
 	{
-		text.setFillColor(sf::Color(255, 0, 0, 0));
+		renderDeath = false;
 		LevelManager::actualLevel = 0;
 		BasicEnemy::enemy.clear();
 		Shoot::shoot.clear();
 		deathDelay = false;
+		time = 0;
 	}
 }

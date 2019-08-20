@@ -27,6 +27,7 @@ class Player
 	static sf::Font font;
 	static sf::Text text;
 	bool deathDelay;
+	bool renderDeath;
 
 public:
 	sf::Sprite drawPlayerModel;
