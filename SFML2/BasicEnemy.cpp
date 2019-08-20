@@ -41,49 +41,49 @@ sf::Vector2f BasicEnemy::getPosition()
 	return sprite.getPosition();
 }
 
-int BasicEnemy::mostToTheRight()
+int BasicEnemy::mostToTheRight(int id)
 {
 	int max = -10000;
 
 	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
 	{
-		if (BasicEnemy::enemy[i]->getPosition().x > max) max = BasicEnemy::enemy[i]->getPosition().x;
+		if (BasicEnemy::enemy[i]->getPosition().x > max && (id == -1 || id == BasicEnemy::enemy[i]->id)) max = BasicEnemy::enemy[i]->getPosition().x;
 	}
 
 	return max;
 }
 
-int BasicEnemy::mostToTheLeft()
+int BasicEnemy::mostToTheLeft(int id)
 {
 	int max = 10000;
 
 	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
 	{
-		if (BasicEnemy::enemy[i]->getPosition().x < max) max = BasicEnemy::enemy[i]->getPosition().x;
+		if (BasicEnemy::enemy[i]->getPosition().x < max && (id == -1 || id == BasicEnemy::enemy[i]->id)) max = BasicEnemy::enemy[i]->getPosition().x;
 	}
 
 	return max;
 }
 
-int BasicEnemy::mostToTheTop()
+int BasicEnemy::mostToTheTop(int id)
 {
 	int max = 10000;
 
 	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
 	{
-		if (BasicEnemy::enemy[i]->getPosition().y < max) max = BasicEnemy::enemy[i]->getPosition().y;
+		if (BasicEnemy::enemy[i]->getPosition().y < max && (id == -1 || id == BasicEnemy::enemy[i]->id)) max = BasicEnemy::enemy[i]->getPosition().y;
 	}
 
 	return max;
 }
 
-int BasicEnemy::mostToTheBottom()
+int BasicEnemy::mostToTheBottom(int id)
 {
 	int max = -10000;
 
 	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
 	{
-		if (BasicEnemy::enemy[i]->getPosition().y > max) max = BasicEnemy::enemy[i]->getPosition().y;
+		if (BasicEnemy::enemy[i]->getPosition().y > max && (id == -1 || id == BasicEnemy::enemy[i]->id)) max = BasicEnemy::enemy[i]->getPosition().y;
 	}
 
 	return max;

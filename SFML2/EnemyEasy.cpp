@@ -9,7 +9,7 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 		shootSpeed = 1;
 		randShootDelay = 2000;
 
-		sprite.setScale(0.3, 0.3);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
+		sprite.setScale(0.45, 0.45);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
 	}
 
 	if (level == 2)
@@ -27,7 +27,7 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 		shootSpeed = 1.5;
 		randShootDelay = 0;
 
-		sprite.setScale(0.4, 0.4);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
+		sprite.setScale(0.25, 0.25);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
 	}
 
 	hp = 1;
@@ -45,7 +45,6 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 	this->size.x = size.x * sprite.getScale().x;
 	this->size.y = size.y * sprite.getScale().y;
 }
-
 
 void EnemyEasy::create(float posX, float posY, int level, int id)
 {

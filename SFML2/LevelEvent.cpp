@@ -5,6 +5,13 @@ void LevelEvent::update()
 	switch(LevelManager::actualLevel)
 	{
 	case 2: level2(); break;
+	case 3: level3(); break;
+	case 4: level4(); break;
+	case 5: level5(); break;
+	case 6: level6(); break;
+	case 7: level7(); break;
+	case 8: level8(); break;
+	case 9: level9(); break;
 	}
 	
 }
@@ -26,3 +33,83 @@ void LevelEvent::level2()
 	if (BasicEnemy::mostToTheBottom() > 100) down = false;
 }
 
+void LevelEvent::level3()
+{
+	static bool left = true;
+	static bool down = true;
+
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (BasicEnemy::enemy[i]->id == 0 && down) BasicEnemy::enemy[i]->moveDown();
+	}
+
+	if (BasicEnemy::mostToTheBottom() > 100) down = false;
+}
+
+void LevelEvent::level4()
+{
+	static bool left = true;
+	static bool down = true;
+
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (BasicEnemy::enemy[i]->id == 0 && down) BasicEnemy::enemy[i]->moveDown();
+	}
+
+	if (BasicEnemy::mostToTheBottom() > 100) down = false;
+}
+
+void LevelEvent::level5()
+{
+	static bool army1Right = true;
+	static bool army2Left = true;
+
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (BasicEnemy::enemy[i]->id == 0 && army1Right) BasicEnemy::enemy[i]->moveRight();
+		if (BasicEnemy::enemy[i]->id == 0 && !army1Right) BasicEnemy::enemy[i]->moveLeft();
+
+		if (BasicEnemy::enemy[i]->id == 1 && army2Left) BasicEnemy::enemy[i]->moveLeft();
+		if (BasicEnemy::enemy[i]->id == 1 && !army2Left) BasicEnemy::enemy[i]->moveRight();
+	}
+
+	if (BasicEnemy::mostToTheRight(0) > 1400) army1Right = false;
+	if (BasicEnemy::mostToTheLeft(0) < 200) army1Right = true;
+
+	if (BasicEnemy::mostToTheRight(1) > 1400) army2Left = true;
+	if (BasicEnemy::mostToTheLeft(1) < 200) army2Left = false;
+}
+
+void LevelEvent::level6()
+{
+	static bool down = true;
+
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (down) BasicEnemy::enemy[i]->moveDown();
+	}
+
+	if (BasicEnemy::mostToTheBottom() > 300) down = false;
+}
+
+void LevelEvent::level7()
+{
+
+}
+
+void LevelEvent::level8()
+{
+
+}
+
+void LevelEvent::level9()
+{
+	static bool down = true;
+
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (BasicEnemy::enemy[i]->id == 0 && down) BasicEnemy::enemy[i]->moveDown();
+	}
+
+	if (BasicEnemy::mostToTheBottom() > 300) down = false;
+}

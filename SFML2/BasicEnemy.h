@@ -39,10 +39,10 @@ public:
 	static void updateAll();
 	static void renderAll();
 
-	static int mostToTheRight();		//zwraca pozycje x statku najbardziej wysunietago na prawo
-	static int mostToTheLeft();			//zwraca pozycje x statku najbardziej wysunietago na lewo
-	static int mostToTheTop();			//zwraca pozycje y statku najbardziej wysunietago na gore
-	static int mostToTheBottom();		//zwraca pozycje y statku najbardziej wysunietago na dol
+	static int mostToTheRight(int id = -1);		//zwraca pozycje x statku najbardziej wysunietago na prawo
+	static int mostToTheLeft(int id = -1);			//zwraca pozycje x statku najbardziej wysunietago na lewo
+	static int mostToTheTop(int id = -1);			//zwraca pozycje y statku najbardziej wysunietago na gore
+	static int mostToTheBottom(int id = -1);		//zwraca pozycje y statku najbardziej wysunietago na dol
 
 	sf::Vector2f getPosition();
 	void moveRight();					//porusza statek w prawo
