@@ -10,6 +10,7 @@
 #include "Collider.h"
 #include "Shoot.h"
 #include "Explosion.h"
+#include "Particle.h"
 
 class BasicEnemy{
 
@@ -40,10 +41,14 @@ public:
 
 	static int mostToTheRight();		//zwraca pozycje x statku najbardziej wysunietago na prawo
 	static int mostToTheLeft();			//zwraca pozycje x statku najbardziej wysunietago na lewo
+	static int mostToTheTop();			//zwraca pozycje y statku najbardziej wysunietago na gore
+	static int mostToTheBottom();		//zwraca pozycje y statku najbardziej wysunietago na dol
 
 	sf::Vector2f getPosition();
 	void moveRight();					//porusza statek w prawo
 	void moveLeft();					//porusza statek w lewo
+	void moveUp();						//porusza statek w gore
+	void moveDown();					//porusza statek w dol
 
 protected:
 	virtual void render();

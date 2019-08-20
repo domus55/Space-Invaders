@@ -12,6 +12,7 @@
 #include "Shoot.h"
 #include "Player.h"
 #include "Explosion.h"
+#include "Particle.h"
 #include "BasicEnemy.h"
 #include "EnemyEasy.h"
 

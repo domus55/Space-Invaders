@@ -65,6 +65,30 @@ int BasicEnemy::mostToTheLeft()
 	return max;
 }
 
+int BasicEnemy::mostToTheTop()
+{
+	int max = 10000;
+
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (BasicEnemy::enemy[i]->getPosition().y < max) max = BasicEnemy::enemy[i]->getPosition().y;
+	}
+
+	return max;
+}
+
+int BasicEnemy::mostToTheBottom()
+{
+	int max = -10000;
+
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (BasicEnemy::enemy[i]->getPosition().y > max) max = BasicEnemy::enemy[i]->getPosition().y;
+	}
+
+	return max;
+}
+
 void BasicEnemy::moveRight()
 {
 	if (timeToDeath == 0)
@@ -81,6 +105,26 @@ void BasicEnemy::moveLeft()
 	{
 		sf::Vector2f pos = sprite.getPosition();
 		pos.x -= speed * GameInfo::getDeltaTime();
+		sprite.setPosition(pos);
+	}
+}
+
+void BasicEnemy::moveUp()
+{
+	if (timeToDeath == 0)
+	{
+		sf::Vector2f pos = sprite.getPosition();
+		pos.y -= speed * GameInfo::getDeltaTime();
+		sprite.setPosition(pos);
+	}
+}
+
+void BasicEnemy::moveDown()
+{
+	if (timeToDeath == 0)
+	{
+		sf::Vector2f pos = sprite.getPosition();
+		pos.y += speed * GameInfo::getDeltaTime();
 		sprite.setPosition(pos);
 	}
 }
@@ -118,6 +162,7 @@ void BasicEnemy::checkCollision(int enemyNumber)
 		{
 			hp -= Shoot::shoot[i]->getDmg();
 			Shoot::shoot.erase(Shoot::shoot.begin() + i);
+			Particle::addParticle(sprite.getPosition().x, sprite.getPosition().y, "BasicEnemy", 15, 0.5);
 		}
 	}
 

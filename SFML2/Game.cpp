@@ -29,12 +29,14 @@ void Game::update()
 	BasicEnemy::updateAll();
 	LevelEvent::update();
 	Player::update();
+	Particle::updateAll();
 }
 
 void Game::output()
 {
 	Window::window.clear();
 	Background::render();
+	Particle::renderAll();
 	BasicEnemy::renderAll();
 	Shoot::renderAll();
 	BasicEnemy::renderAll();
