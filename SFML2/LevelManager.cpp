@@ -63,6 +63,14 @@ void LevelManager::nextLevel()
 	{
 	case 1: level1(); break;
 	case 2: level2(); break;
+	case 3: level3(); break;
+	case 4: level4(); break;
+	case 5: level5(); break;
+	case 6: level6(); break;
+	case 7: level7(); break;
+	case 8: level8(); break;
+	case 9: level9(); break;
+	case 10: level10(); break;
 	}
 }
 
@@ -80,5 +88,80 @@ void LevelManager::level2()
 	{
 		EnemyEasy::create(i * 300 + 325, -100, 1, 0);
 	}
+}
+
+void LevelManager::level3()
+{
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyEasy::create(i * 250 + 175, -100, 1, 0);
+	}
+}
+
+void LevelManager::level4()
+{
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyEasy::create(i * 250 + 175, -100, 2, 0);
+	}
+}
+
+void LevelManager::level5()
+{
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyEasy::create(-i * 200 - 200, 100, 2, 0);
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyEasy::create(i * 200 + 1800, 200, 2, 1);
+	}
+}
+
+void LevelManager::level6()
+{
+	for (int i = 0; i < 2; i++)
+	{
+		EnemyEasy::create(i * 600 + 475, -500, 3, 1);
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyEasy::create(i * 300 + 325, -200, 1, 0);
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyEasy::create(i * 300 + 325, -100, 1, 0);
+	}
+}
+
+void LevelManager::level7()
+{
+	
+}
+
+void LevelManager::level8()
+{
+	
+}
+
+void LevelManager::level9()
+{
+	for (int i = 0; i < 7; i++)
+	{
+		EnemyEasy::create(i * 150 + 325, -500, 3, 0);
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyEasy::create(i * 300 + 325, -100, 1, 0);
+	}
+}
+
+void LevelManager::level10()
+{
+	
 }
 
