@@ -16,6 +16,7 @@ public:
 	static std::vector < std::shared_ptr <Explosion> > explosion;
 
 	Explosion(float x, float y);
+	static void loadAnimation();
 	static void create(sf::Vector2f position);
 	static void create(float x, float y);
 	static void renderAll();

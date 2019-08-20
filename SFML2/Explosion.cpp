@@ -10,43 +10,40 @@ Explosion::Explosion(float x, float y)
 	sf::Vector2u size = texture.getSize();
 	sprite.setOrigin(size.x / 2, size.y / 2);
 	sprite.setPosition(x, y);
-
-	static bool firstTimeAniamation = true;
-	if (firstTimeAniamation)
-	{
-		animation = Animation::addAnimation();
-
-		Animation::addImage(animation, "Images/explosion/explosion1.png");
-		Animation::addImage(animation, "Images/explosion/explosion2.png");
-		Animation::addImage(animation, "Images/explosion/explosion3.png");
-		Animation::addImage(animation, "Images/explosion/explosion4.png");
-		Animation::addImage(animation, "Images/explosion/explosion5.png");
-		Animation::addImage(animation, "Images/explosion/explosion6.png");
-		Animation::addImage(animation, "Images/explosion/explosion7.png");
-		Animation::addImage(animation, "Images/explosion/explosion8.png");
-		Animation::addImage(animation, "Images/explosion/explosion9.png");
-		Animation::addImage(animation, "Images/explosion/explosion10.png");
-		Animation::addImage(animation, "Images/explosion/explosion11.png");
-		Animation::addImage(animation, "Images/explosion/explosion12.png");
-		Animation::addImage(animation, "Images/explosion/explosion13.png");
-		Animation::addImage(animation, "Images/explosion/explosion14.png");
-		Animation::addImage(animation, "Images/explosion/explosion13.png");
-		Animation::addImage(animation, "Images/explosion/explosion12.png");
-		Animation::addImage(animation, "Images/explosion/explosion11.png");
-		Animation::addImage(animation, "Images/explosion/explosion10.png");
-		Animation::addImage(animation, "Images/explosion/explosion9.png");
-		Animation::addImage(animation, "Images/explosion/explosion8.png");
-		Animation::addImage(animation, "Images/explosion/explosion7.png");
-		Animation::addImage(animation, "Images/explosion/explosion6.png");
-		Animation::addImage(animation, "Images/explosion/explosion5.png");
-		Animation::addImage(animation, "Images/explosion/explosion4.png");
-		Animation::addImage(animation, "Images/explosion/explosion3.png");
-		Animation::addImage(animation, "Images/explosion/explosion2.png");
-		Animation::addImage(animation, "Images/explosion/explosion1.png");
-
-		firstTimeAniamation = false;
-	}
 	animationObject = Animation::addObject(animation, 15);
+}
+
+void Explosion::loadAnimation()
+{
+	animation = Animation::addAnimation();
+
+	Animation::addImage(animation, "Images/explosion/explosion1.png");
+	Animation::addImage(animation, "Images/explosion/explosion2.png");
+	Animation::addImage(animation, "Images/explosion/explosion3.png");
+	Animation::addImage(animation, "Images/explosion/explosion4.png");
+	Animation::addImage(animation, "Images/explosion/explosion5.png");
+	Animation::addImage(animation, "Images/explosion/explosion6.png");
+	Animation::addImage(animation, "Images/explosion/explosion7.png");
+	Animation::addImage(animation, "Images/explosion/explosion8.png");
+	Animation::addImage(animation, "Images/explosion/explosion9.png");
+	Animation::addImage(animation, "Images/explosion/explosion10.png");
+	Animation::addImage(animation, "Images/explosion/explosion11.png");
+	Animation::addImage(animation, "Images/explosion/explosion12.png");
+	Animation::addImage(animation, "Images/explosion/explosion13.png");
+	Animation::addImage(animation, "Images/explosion/explosion14.png");
+	Animation::addImage(animation, "Images/explosion/explosion13.png");
+	Animation::addImage(animation, "Images/explosion/explosion12.png");
+	Animation::addImage(animation, "Images/explosion/explosion11.png");
+	Animation::addImage(animation, "Images/explosion/explosion10.png");
+	Animation::addImage(animation, "Images/explosion/explosion9.png");
+	Animation::addImage(animation, "Images/explosion/explosion8.png");
+	Animation::addImage(animation, "Images/explosion/explosion7.png");
+	Animation::addImage(animation, "Images/explosion/explosion6.png");
+	Animation::addImage(animation, "Images/explosion/explosion5.png");
+	Animation::addImage(animation, "Images/explosion/explosion4.png");
+	Animation::addImage(animation, "Images/explosion/explosion3.png");
+	Animation::addImage(animation, "Images/explosion/explosion2.png");
+	Animation::addImage(animation, "Images/explosion/explosion1.png");
 }
 
 void Explosion::create(sf::Vector2f position)
