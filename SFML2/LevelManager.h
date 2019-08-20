@@ -4,6 +4,7 @@
 #include "BasicEnemy.h"
 #include "EnemyEasy.h"
 #include "Animation.h"
+#include "EnemyMedium.h"
 
 class LevelManager {
 public:

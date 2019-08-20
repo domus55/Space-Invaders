@@ -101,7 +101,9 @@ void Shoot::shootDestroy(int shootNumber)
 {
 	sf::Vector2f pos;
 	pos = sprite.getPosition();
-	if (pos.y < 0 || pos.y > 900 || pos.x < 0 || pos.x > 1600)
+
+	//   Ponad map¹ ||   Pod map¹  || lewo mapa || prawo mapa //
+	if (pos.y < -50 || pos.y > 950 || pos.x < 0 || pos.x > 1600)
 	{
 		shoot.erase(shoot.begin() + shootNumber);
 	}
