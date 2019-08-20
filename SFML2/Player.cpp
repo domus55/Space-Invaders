@@ -2,6 +2,8 @@
 
 Player Player::player;
 bool Player::renderHitbox = false;
+sf::Text Player::text;
+sf::Font Player::font;
 
 Player::Player()
 {
@@ -10,6 +12,7 @@ Player::Player()
 	shootDuration = 500;
 	speed = 0.5;
 	hp = 6;
+	deathDelay = false;
 
 	playerModel.loadFromFile("Images/spaceship.png");
 	drawPlayerModel.setTexture(playerModel);
@@ -45,6 +48,7 @@ void Player::render()
 	Window::window.draw(Player::player.drawHeartModel1);
 	Window::window.draw(Player::player.drawHeartModel2);
 	Window::window.draw(Player::player.drawHeartModel3);
+	Window::window.draw(text);
 
 	if (renderHitbox) Window::window.draw(Player::player.hitbox1);
 	if (renderHitbox) Window::window.draw(Player::player.hitbox2);
@@ -55,6 +59,7 @@ void Player::update()
 	Player::player.playerMove();
 	Player::player.playerShoot();
 	Player::player.checkCollision();
+	if (Player::player.deathDelay == true) Player::player.playerDeathTime();
 }
 
 void Player::playerMove()
@@ -105,8 +110,12 @@ void Player::checkCollision()
 			case 3:	drawHeartModel2.setTexture(halfHeart); break;
 			case 2:	drawHeartModel2.setTexture(emptyHeart); break;
 			case 1:	drawHeartModel1.setTexture(halfHeart); break;
-			case 0:	drawHeartModel1.setTexture(emptyHeart); break;
-			}
+			case 0: 
+			{
+				drawHeartModel1.setTexture(emptyHeart);
+				playerDeath();
+			}	break;
+			}	
 		}
 	}
 }
@@ -116,4 +125,47 @@ void Player::playerHp()
 	drawHeartModel1.setPosition(20, 10);
 	drawHeartModel2.setPosition(100, 10);
 	drawHeartModel3.setPosition(180, 10);
+}
+
+void Player::playerDeath()
+{
+	font.loadFromFile("Images/arial.ttf");
+	text.setFont(font);
+	text.setCharacterSize(100);
+	text.setFillColor(sf::Color::Red);
+	text.setPosition(800, 425);
+	text.setStyle(sf::Text::Bold);
+
+	static std::string tekst;
+	static int deltaTime = 0;
+	tekst = "YOU DIED!";
+	text.setString(tekst);
+
+	sf::FloatRect textRect = text.getLocalBounds();
+	text.setOrigin(textRect.left + textRect.width / 2.0f,
+		textRect.top + textRect.height / 2.0f);
+	
+	//BasicEnemy::enemy.clear();
+	hp = 6;
+
+	drawHeartModel1.setTexture(heart);
+	drawHeartModel2.setTexture(heart);
+	drawHeartModel3.setTexture(heart);
+	
+	deathDelay = true;
+}
+
+void Player::playerDeathTime()
+{
+	static float time = 0;
+	time += GameInfo::getDeltaTime();
+
+	if (time > 1000)
+	{
+		text.setFillColor(sf::Color(255, 0, 0, 0));
+		LevelManager::actualLevel = 0;
+		BasicEnemy::enemy.clear();
+		Shoot::shoot.clear();
+		deathDelay = false;
+	}
 }
