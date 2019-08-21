@@ -28,7 +28,7 @@ void LevelManager::render()
 		static std::string tekst;
 		static int deltaTime = 0;
 		if (deltaTime == 0)
-		{
+		{ 
 			LevelManager::actualLevel++;
 			tekst = "Level ";
 			tekst += std::to_string(actualLevel);
@@ -41,7 +41,7 @@ void LevelManager::render()
 			deltaTime = 1;
 		}
 		deltaTime += GameInfo::getDeltaTime();
-		
+		 
 		if(deltaTime <= 765)text.setFillColor(sf::Color(255, 255, 255, deltaTime / 3));
 		else text.setFillColor(sf::Color(255, 255, 255, 255));
 
@@ -86,7 +86,7 @@ void LevelManager::level2()
 {
 	for (int i = 0; i < 4; i++)
 	{
-		EnemyMedium::create(i * 300 + 325, -100, 1, 0);
+		EnemyEasy::create(i * 300 + 325, -100, 1, 0);
 	}
 }
 

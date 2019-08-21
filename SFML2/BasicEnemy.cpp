@@ -1,4 +1,5 @@
 #include "BasicEnemy.h"
+#include "PowerUp.h"
 
 std::vector < std::shared_ptr <BasicEnemy> > BasicEnemy::enemy;
 bool BasicEnemy::renderHitbox = false;
@@ -210,7 +211,7 @@ void BasicEnemy::checkCollision(int enemyNumber)
 	{
 		if (timeToDeath == 0)
 		{
-			Explosion::create(sprite.getPosition());
+			destroy();
 			timeToDeath = 1;
 		}
 			
@@ -220,6 +221,15 @@ void BasicEnemy::checkCollision(int enemyNumber)
 	}
 
 
+}
+
+void BasicEnemy::destroy()
+{
+	Explosion::create(sprite.getPosition());
+	int los = rand() % 60;
+	if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
+	if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
+	if (los == 2) PowerUp::create(sprite.getPosition(), "hp");
 }
 
 void BasicEnemy::createLeftParticle()

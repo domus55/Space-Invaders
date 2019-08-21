@@ -9,7 +9,7 @@ Player::Player()
 {
 	shootSpeed = 5;
 	shootDmg = 1;
-	shootDuration = 500;
+	shootDuration = 1000;
 	speed = 0.5;
 	hp = 6;
 	deathDelay = false;
@@ -165,4 +165,30 @@ void Player::playerDeathTime()
 		deathDelay = false;
 		time = 0;
 	}
+}
+
+void Player::addHp()
+{
+	hp += 2;
+	if (hp > 6) hp = 6;
+
+	switch (hp)
+	{
+	case 6: drawHeartModel3.setTexture(heart); break;
+	case 5:	drawHeartModel3.setTexture(halfHeart); drawHeartModel2.setTexture(heart); break;
+	case 4:	drawHeartModel3.setTexture(emptyHeart); break;
+	case 3:	drawHeartModel2.setTexture(halfHeart); drawHeartModel1.setTexture(heart); break;
+	case 2:	drawHeartModel2.setTexture(emptyHeart); break;
+	case 1:	drawHeartModel1.setTexture(halfHeart); break;
+	}
+}
+
+void Player::addShootDelay()
+{
+	shootDuration *= 0.9;
+}
+
+void Player::addShootSpeed()
+{
+	shootSpeed *= 1.1;
 }

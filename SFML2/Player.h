@@ -45,4 +45,7 @@ public:
 	void playerHp();			// ¿ycie gracza
 	void playerDeath();			// œmieræ gracza
 	void playerDeathTime();		// dzia³ania w okresie trwania œmierci
+	void addHp();				//wywolywana po zebraniu serduszka
+	void addShootDelay();		//wywolywana po zebraniu powerup'a
+	void addShootSpeed();		//wywolywana po zebraniu powerup'a
 };

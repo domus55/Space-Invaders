@@ -64,6 +64,7 @@ protected:
 
 	void shoot();
 	void checkCollision(int enemyNumber);
+	void destroy();					//metoda wykonywana, gdy przeciwnik umiera
 	virtual void createLeftParticle();
 	virtual void createMiddleParticle();
 	virtual void createRightParticle();

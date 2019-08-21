@@ -13,6 +13,7 @@
 #include "Player.h"
 #include "Explosion.h"
 #include "Particle.h"
+#include "PowerUp.h"
 #include "BasicEnemy.h"
 #include "EnemyEasy.h"
 

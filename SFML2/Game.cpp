@@ -30,6 +30,7 @@ void Game::update()
 	LevelEvent::update();
 	Player::update();
 	Particle::updateAll();
+	PowerUp::updateAll();
 }
 
 void Game::output()
@@ -41,8 +42,9 @@ void Game::output()
 	Shoot::renderAll();
 	BasicEnemy::renderAll();
 	Player::render();
-	LevelManager::render();
+	PowerUp::renderAll();
 	Explosion::renderAll();
+	LevelManager::render();
 	Window::window.display();
 }
 
