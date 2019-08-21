@@ -3,42 +3,47 @@
 EnemyMedium::EnemyMedium(float x, float y, int level, int id)
 	: BasicEnemy(id)
 {
-	textureBroken = true;
-
 	if (level == 1)
 	{
-		speed = 0.1;
-		shootSpeed = 1;
-		randShootDelay = 2000;
-
-		sprite.setScale(0.3, 0.3);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
+		shootDelay = 3000;
+		sprite.setColor(sf::Color(255, 255, 255));
 	}
 
 	if (level == 2)
 	{
-		speed = 0.12;
-		shootSpeed = 1.2;
-		randShootDelay = 600;
-
-		sprite.setScale(0.35, 0.35);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
+		shootDelay = 2400;
+		sprite.setColor(sf::Color(255, 230, 230));
 	}
 
 	if (level == 3)
 	{
-		speed = 0.15;
-		shootSpeed = 1.5;
-		randShootDelay = 0;
-
-		sprite.setScale(0.25, 0.25);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
+		shootDelay = 1800;
+		sprite.setColor(sf::Color(255, 200, 200));
 	}
 
+	speed = 0.1;
+	shootSpeed = 1.5;
+	randShootDelay = 0;
+	sprite.setScale(0.3, 0.3);
+
+	hitbox1.setScale(0.5, 0.3);
+	hitbox1pos.x = -60;
+	hitbox1pos.y = 0;
+
+	hitbox2.setScale(0.6, 0.55);
+	hitbox2pos.x = 0;
+	hitbox2pos.y = 0;
+
+	hitbox3.setScale(0.5, 0.3);
+	hitbox3pos.x = 60;
+	hitbox3pos.y = 0;
+
 	hp = 2;
-	shootDelay = 3000;
 	shootType = 2;
 	shootScale = 1;
 
-	texture.loadFromFile("Images/enemyMedium.png");		//³aduje teksture
-	sprite.setTexture(texture);							//ustawia teksture sprajtu
+	texture.loadFromFile("Images/Enemies/EnemyMedium/normal.png");
+	sprite.setTexture(texture);
 
 	sf::Vector2u size = texture.getSize();
 
@@ -52,15 +57,35 @@ void EnemyMedium::update(int enemyNumber)
 {
 	shoot();
 	checkCollision(enemyNumber);	//musi byc na koncu metody, bo moze usunac obiekt
-	if (hp < 2 && textureBroken == true)
-	{
-		std::cout << "Siusiak";
-		texture.loadFromFile("Images/enemyMediumBroken.png");		//³aduje teksture
-		textureBroken = false;
-	}
 }
 
 void EnemyMedium::create(float posX, float posY, int level, int id)
 {
 	BasicEnemy::enemy.push_back(std::make_shared <EnemyMedium>(posX, posY, level, id));
+}
+
+void EnemyMedium::createLeftParticle()
+{
+	Particle::addParticle(sprite.getPosition().x + hitbox1pos.x, sprite.getPosition().y + hitbox1pos.y, "BasicEnemy", 15, 0.5);
+	if (hp == 2)
+	{
+		hitbox1pos.x += 20;
+		texture.loadFromFile("Images/Enemies/EnemyMedium/brokenLeft.png");
+	}
+}
+
+void EnemyMedium::createMiddleParticle()
+{
+	Particle::addParticle(sprite.getPosition().x + hitbox2pos.x, sprite.getPosition().y + hitbox2pos.y, "BasicEnemy", 15, 0.5);
+	if (hp == 2) texture.loadFromFile("Images/Enemies/EnemyMedium/brokenMiddle.png");
+}
+
+void EnemyMedium::createRightParticle()
+{
+	Particle::addParticle(sprite.getPosition().x + hitbox3pos.x, sprite.getPosition().y + hitbox3pos.y, "BasicEnemy", 15, 0.5);
+	if (hp == 2)
+	{
+		hitbox3pos.x -= 20;
+		texture.loadFromFile("Images/Enemies/EnemyMedium/brokenRight.png");
+	}
 }

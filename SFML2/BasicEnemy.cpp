@@ -1,6 +1,7 @@
 #include "BasicEnemy.h"
 
 std::vector < std::shared_ptr <BasicEnemy> > BasicEnemy::enemy;
+bool BasicEnemy::renderHitbox = false;
 
 BasicEnemy::BasicEnemy(int id)
 {
@@ -18,6 +19,16 @@ BasicEnemy::BasicEnemy(int id)
 	this->id = id;
 
 	srand(time(NULL));
+
+	hitboxTexture.loadFromFile("Images/hitbox.png");
+	hitbox1.setTexture(hitboxTexture);
+	hitbox2.setTexture(hitboxTexture);
+	hitbox3.setTexture(hitboxTexture);
+
+	sf::Vector2u Hitboxsize = hitboxTexture.getSize();
+	hitbox1.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
+	hitbox2.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
+	hitbox3.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
 }
 
 void BasicEnemy::updateAll()
@@ -132,6 +143,12 @@ void BasicEnemy::moveDown()
 void BasicEnemy::render()
 {
 	Window::window.draw(sprite);
+	if (renderHitbox)
+	{
+		Window::window.draw(hitbox1);
+		Window::window.draw(hitbox2);
+		Window::window.draw(hitbox3);
+	}
 }
 
 void BasicEnemy::update(int enemyNumber)
@@ -156,13 +173,36 @@ void BasicEnemy::shoot()
 
 void BasicEnemy::checkCollision(int enemyNumber)
 {
+	sf::Vector2f pos = sprite.getPosition();
+	hitbox1.setPosition(pos + hitbox1pos);
+	hitbox2.setPosition(pos + hitbox2pos);
+	hitbox3.setPosition(pos + hitbox3pos);
+
 	for (int i = Shoot::shoot.size() - 1; i >= 0; i--)
 	{
-		if (Shoot::shoot[i]->playerShoot && Collider::checkCollision(sprite, Shoot::shoot[i]->sprite))
+		if (Shoot::shoot[i]->playerShoot && Collider::checkCollision(hitbox2, Shoot::shoot[i]->sprite))
 		{
+			createMiddleParticle();
 			hp -= Shoot::shoot[i]->getDmg();
 			Shoot::shoot.erase(Shoot::shoot.begin() + i);
-			Particle::addParticle(sprite.getPosition().x, sprite.getPosition().y, "BasicEnemy", 15, 0.5);
+		}
+		else
+		{
+			if (Shoot::shoot[i]->playerShoot && Collider::checkCollision(hitbox1, Shoot::shoot[i]->sprite))
+			{
+				createLeftParticle();
+				hp -= Shoot::shoot[i]->getDmg();
+				Shoot::shoot.erase(Shoot::shoot.begin() + i);
+			}
+			else
+			{
+				if (Shoot::shoot[i]->playerShoot && Collider::checkCollision(hitbox3, Shoot::shoot[i]->sprite))
+				{
+					createRightParticle();
+					hp -= Shoot::shoot[i]->getDmg();
+					Shoot::shoot.erase(Shoot::shoot.begin() + i);
+				}
+			}
 		}
 	}
 
@@ -180,4 +220,19 @@ void BasicEnemy::checkCollision(int enemyNumber)
 	}
 
 
+}
+
+void BasicEnemy::createLeftParticle()
+{
+	Particle::addParticle(sprite.getPosition().x + hitbox1pos.x, sprite.getPosition().y + hitbox1pos.y, "BasicEnemy", 15, 0.5);
+}
+
+void BasicEnemy::createMiddleParticle()
+{
+	Particle::addParticle(sprite.getPosition().x + hitbox2pos.x, sprite.getPosition().y + hitbox2pos.y, "BasicEnemy", 15, 0.5);
+}
+
+void BasicEnemy::createRightParticle()
+{
+	Particle::addParticle(sprite.getPosition().x + hitbox3pos.x, sprite.getPosition().y + hitbox3pos.y, "BasicEnemy", 15, 0.5);
 }

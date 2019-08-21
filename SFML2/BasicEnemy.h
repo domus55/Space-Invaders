@@ -30,7 +30,15 @@ protected:
 	int myDeltaTime;		//zmienna wykorzystywana, aby strzaly byly stworzone w odpowiednim odstepie, nie tykac
 	int shootType;			//rodzaj textury pocisku, od 1 do 3
 	int timeToDeath;		//czas w milisekundach do usuniecia obiektu, potrzebny zeby wybuch ladnie wygladal, nie tykac
+	static bool renderHitbox;
 
+	sf::Vector2f hitbox1pos;
+	sf::Vector2f hitbox2pos;
+	sf::Vector2f hitbox3pos;
+	sf::Texture hitboxTexture;
+	sf::Sprite hitbox1;
+	sf::Sprite hitbox2;
+	sf::Sprite hitbox3;
 	sf::Texture texture;
 	sf::Sprite sprite;
 	
@@ -56,4 +64,7 @@ protected:
 
 	void shoot();
 	void checkCollision(int enemyNumber);
+	virtual void createLeftParticle();
+	virtual void createMiddleParticle();
+	virtual void createRightParticle();
 };

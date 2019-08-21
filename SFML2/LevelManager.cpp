@@ -78,7 +78,7 @@ void LevelManager::level1()
 {
 	for (int i = 0; i < 3; i++)
 	{
-		EnemyMedium::create(i * 300 + 500, 100, 1);
+		EnemyEasy::create(i * 300 + 500, 100, 1);
 	}
 }
 
@@ -86,7 +86,7 @@ void LevelManager::level2()
 {
 	for (int i = 0; i < 4; i++)
 	{
-		EnemyEasy::create(i * 300 + 325, -100, 1, 0);
+		EnemyMedium::create(i * 300 + 325, -100, 1, 0);
 	}
 }
 

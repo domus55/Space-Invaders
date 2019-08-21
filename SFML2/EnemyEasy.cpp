@@ -10,6 +10,18 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 		randShootDelay = 2000;
 
 		sprite.setScale(0.45, 0.45);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
+
+		hitbox1.setScale(0.5, 0.3);
+		hitbox1pos.x = -60;
+		hitbox1pos.y = 0;
+
+		hitbox2.setScale(0.6, 0.55);
+		hitbox2pos.x = 0;
+		hitbox2pos.y = 0;
+
+		hitbox3.setScale(0.5, 0.3);
+		hitbox3pos.x = 60;
+		hitbox3pos.y = 0;
 	}
 
 	if (level == 2)
@@ -18,7 +30,19 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 		shootSpeed = 1.2;
 		randShootDelay = 600;
 
-		sprite.setScale(0.35, 0.35);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
+		sprite.setScale(0.35, 0.35);
+
+		hitbox1.setScale(0.4, 0.25);
+		hitbox1pos.x = -45;
+		hitbox1pos.y = 0;
+
+		hitbox2.setScale(0.5, 0.45);
+		hitbox2pos.x = 0;
+		hitbox2pos.y = 0;
+
+		hitbox3.setScale(0.4, 0.25);
+		hitbox3pos.x = 45;
+		hitbox3pos.y = 0;
 	}
 
 	if (level == 3)
@@ -28,6 +52,18 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 		randShootDelay = 0;
 
 		sprite.setScale(0.25, 0.25);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
+
+		hitbox1.setScale(0.3, 0.15);
+		hitbox1pos.x = -25;
+		hitbox1pos.y = 0;
+
+		hitbox2.setScale(0.3, 0.3);
+		hitbox2pos.x = 0;
+		hitbox2pos.y = 0;
+
+		hitbox3.setScale(0.3, 0.15);
+		hitbox3pos.x = 25;
+		hitbox3pos.y = 0;
 	}
 
 	hp = 1;
