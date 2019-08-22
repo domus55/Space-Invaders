@@ -8,6 +8,9 @@
 #include <string>
 #include "BasicEnemy.h"
 #include "LevelManager.h"
+#include "Particle.h"
+#include "Explosion.h"
+#include <Windows.h>
 
 class Player
 {
@@ -30,6 +33,8 @@ class Player
 	static sf::Text text;
 	bool deathDelay;
 	bool renderDeath;
+	bool checkDeathFx;
+	bool canMove;
 
 public:
 	sf::Sprite drawPlayerModel;
@@ -47,9 +52,10 @@ public:
 	void playerHp();			// ¿ycie gracza
 	void playerDeath();			// œmieræ gracza
 	void playerDeathTime();		// dzia³ania w okresie trwania œmierci
-	void addHp();				//wywolywana po zebraniu serduszka
-	void addShootDelay();		//wywolywana po zebraniu powerup'a
-	void addShootSpeed();		//wywolywana po zebraniu powerup'a
-	void addShootAmmount();		//wywolywana po zebraniu powerup'a
-	void sizeDown();		//wywolywana po zebraniu powerup'a
+	void addHp();				// wywolywana po zebraniu serduszka
+	void addShootDelay();		// wywolywana po zebraniu powerup'a
+	void addShootSpeed();		// wywolywana po zebraniu powerup'a
+	void addShootAmmount();		// wywolywana po zebraniu powerup'a
+	void sizeDown();			// wywolywana po zebraniu powerup'a
+	void deathFx();				// wybuch i particle po œmierci
 };

@@ -11,9 +11,11 @@ Player::Player()
 	shootDmg = 1;
 	shootDuration = 1500;
 	speed = 0.5;
-	hp = 6;
+	hp = 1;
 	deathDelay = false;
 	renderDeath = false;
+	checkDeathFx = false;
+	canMove = true;
 	shootAmmount = 1;
 	hitbox2PosY = 35;
 
@@ -59,10 +61,11 @@ void Player::render()
 
 void Player::update()
 {
-	Player::player.playerMove();
+	if (Player::player.canMove == true) Player::player.playerMove();
 	Player::player.playerShoot();
 	Player::player.checkCollision();
 	if (Player::player.deathDelay == true) Player::player.playerDeathTime();
+	if (Player::player.checkDeathFx == true) Player::player.deathFx();
 }
 
 void Player::playerMove()
@@ -180,20 +183,32 @@ void Player::playerDeath()
 	
 	renderDeath = true;
 	deathDelay = true;
+	checkDeathFx = true;
+	canMove = false;
 }
 
 void Player::playerDeathTime()
 {
+	//static void addParticle(float a, float h, std::string name, int ammount, float speed);
+
 	static float time = 0;
 	time += GameInfo::getDeltaTime();
+	drawPlayerModel.setColor(sf::Color(255, 255, 255, 0));
 
-	if (time > 1000)
+	if (time <= 2785 && time > 1000)
+	{
+		drawPlayerModel.setColor(sf::Color(255, 255, 255, (time - 1000) / 7));
+	}
+	if (time > 2785) drawPlayerModel.setColor(sf::Color(255, 255, 255, 255));
+
+	if (time > 3000)
 	{
 		renderDeath = false;
 		LevelManager::actualLevel = 0;
 		BasicEnemy::enemy.clear();
 		Shoot::shoot.clear();
 		deathDelay = false;
+		canMove = true;
 		time = 0;
 	}
 }
@@ -257,4 +272,11 @@ void Player::sizeDown()
 	hitbox1.setScale(hitbox1.getScale().x * 0.95, hitbox1.getScale().y * 0.95);
 	hitbox2.setScale(hitbox2.getScale().x * 0.95, hitbox2.getScale().y * 0.95);
 	hitbox2PosY *= 0.95;
+}
+
+void Player::deathFx()
+{
+	Explosion::create(drawPlayerModel.getPosition());
+	Particle::addParticle(drawPlayerModel.getPosition().x, drawPlayerModel.getPosition().y, "BasicEnemy", 25, 1);
+	checkDeathFx = false;
 }
