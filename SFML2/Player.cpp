@@ -7,9 +7,9 @@ sf::Font Player::font;
 
 Player::Player()
 {
-	shootSpeed = 5;
+	shootSpeed = 2.5;
 	shootDmg = 1;
-	shootDuration = 1000;
+	shootDuration = 1500;
 	speed = 0.5;
 	hp = 6;
 	deathDelay = false;
@@ -216,11 +216,23 @@ void Player::addHp()
 
 void Player::addShootDelay()
 {
+	static bool firstTime = true;
+	if (firstTime)
+	{
+		shootDuration *= 0.6;
+		firstTime = false;
+	}
 	shootDuration *= 0.9;
 }
 
 void Player::addShootSpeed()
 {
+	static bool firstTime = true;
+	if (firstTime)
+	{
+		shootSpeed *= 2;
+		firstTime = false;
+	}
 	shootSpeed *= 1.1;
 }
 
@@ -231,6 +243,16 @@ void Player::addShootAmmount()
 
 void Player::sizeDown()
 {
+	static bool firstTime = true;
+	if (firstTime)
+	{
+		drawPlayerModel.setScale(drawPlayerModel.getScale().x * 0.85, drawPlayerModel.getScale().y * 0.85);
+		hitbox1.setScale(hitbox1.getScale().x * 0.85, hitbox1.getScale().y * 0.85);
+		hitbox2.setScale(hitbox2.getScale().x * 0.85, hitbox2.getScale().y * 0.85);
+		hitbox2PosY *= 0.85;
+		firstTime = false;
+	}
+
 	drawPlayerModel.setScale(drawPlayerModel.getScale().x * 0.95, drawPlayerModel.getScale().y * 0.95);
 	hitbox1.setScale(hitbox1.getScale().x * 0.95, hitbox1.getScale().y * 0.95);
 	hitbox2.setScale(hitbox2.getScale().x * 0.95, hitbox2.getScale().y * 0.95);

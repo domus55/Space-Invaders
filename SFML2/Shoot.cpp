@@ -21,27 +21,11 @@ Shoot::Shoot(float positionX, float positionY, float speedX, float speedY, float
 
 	sf::Vector2f pos(positionX, positionY);
 	sprite.setPosition(pos);
-	
 
+	double angleInRadian = atan2((double)speedY, (double)speedX); //angle in radian
+	double angleInDegree = angleInRadian * 180 / 3.141592653589793238463; //angle in degree
 
-	if (speedX == 0)
-	{
-		if(speedY > 0) sprite.setRotation(90);
-		else sprite.setRotation(-90);
-	}
-
-	if(speedY == 0)
-	{
-		if(speedX > 0) sprite.setRotation(0);
-		else sprite.setRotation(180);
-	}
-
-	if(speedX > 0 && speedY > 0) sprite.setRotation(45);
-	if(speedX < 0 && speedY > 0) sprite.setRotation(135);
-	if(speedX > 0 && speedY < 0) sprite.setRotation(-45);
-	if(speedX < 0 && speedY < 0) sprite.setRotation(225);
-
-	
+	sprite.setRotation(angleInDegree);
 
 	sf::Vector2u size = texture.getSize();
 	sprite.setOrigin(size.x / 2, size.y / 2);
