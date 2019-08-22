@@ -88,7 +88,36 @@ void Player::playerShoot()
 	{
 		sf::Vector2f pos;
 		pos = drawPlayerModel.getPosition();
-		Shoot::create(pos.x, pos.y, 0, -shootSpeed, shootDmg, true, 1, 1);
+		switch (shootAmmount)
+		{
+		case 1: Shoot::create(pos.x, pos.y, 0, -shootSpeed, shootDmg, true, 1, 1); break;
+		case 2:
+		{
+			Shoot::create(pos.x - 25, pos.y, 0, -shootSpeed, shootDmg, true, 1, 0.9);
+			Shoot::create(pos.x + 25, pos.y, 0, -shootSpeed, shootDmg, true, 1, 0.9);
+		}	break;
+		case 3:
+		{
+			Shoot::create(pos.x - 40, pos.y + 15, 0, -shootSpeed, shootDmg, true, 1, 0.8);
+			Shoot::create(pos.x, pos.y - 40, 0, -shootSpeed, shootDmg, true, 1, 0.8);
+			Shoot::create(pos.x + 40, pos.y + 15, 0, -shootSpeed, shootDmg, true, 1, 0.8);
+		}	break;
+		case 4:
+		{
+			Shoot::create(pos.x - 40, pos.y + 15, -shootSpeed / 3, -shootSpeed, shootDmg, true, 1, 0.8);
+			Shoot::create(pos.x - 25, pos.y - 40, 0, -shootSpeed, shootDmg, true, 1, 0.8);
+			Shoot::create(pos.x + 25, pos.y - 40, 0, -shootSpeed, shootDmg, true, 1, 0.8);
+			Shoot::create(pos.x + 40, pos.y + 15, shootSpeed / 3, -shootSpeed, shootDmg, true, 1, 0.8);
+		}	break;
+		case 5:
+		{
+			Shoot::create(pos.x - 40, pos.y + 15, -shootSpeed / 3, -shootSpeed, shootDmg, true, 1, 0.8);
+			Shoot::create(pos.x - 25, pos.y - 40, -shootSpeed / 10, -shootSpeed, shootDmg, true, 1, 0.8);
+			Shoot::create(pos.x, pos.y - 40, 0, -shootSpeed, shootDmg, true, 1, 0.8);
+			Shoot::create(pos.x + 25, pos.y - 40, shootSpeed / 10, -shootSpeed, shootDmg, true, 1, 0.8);
+			Shoot::create(pos.x + 40, pos.y + 15, shootSpeed / 3, -shootSpeed, shootDmg, true, 1, 0.8);
+		}
+		}
 		myDeltaTime = 0;
 	}
 }

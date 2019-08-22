@@ -62,7 +62,7 @@ void PowerUp::checkCollision()
 		if (name == "hp") Player::player.addHp();
 		if (name == "shootDelay") Player::player.addShootDelay();
 		if (name == "shootSpeed") Player::player.addShootSpeed();
-		if (name == "shootDmg") Player::player.addShootAmmount();
+		if (name == "shootAmmount") Player::player.addShootAmmount();
 		if (name == "sizeDown") Player::player.sizeDown();
 
 		destroy = true;
