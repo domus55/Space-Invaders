@@ -6,9 +6,10 @@ std::vector < std::shared_ptr <PowerUp> > PowerUp::powerUp;
 PowerUp::PowerUp(sf::Vector2f pos, std::string name)
 {
 	if (name == "hp") texture.loadFromFile("Images/PowerUps/hp.png");
-	if (name == "shootDelay") texture.loadFromFile("Images/PowerUps/ShootDelay.png");
-	if (name == "shootSpeed") texture.loadFromFile("Images/PowerUps/ShootSpeed.png");
-	//if (name == "shootDmg") texture.loadFromFile("Images/PowerUps/ShootSpeed.png"); dodaæ kolejny powerUp
+	if (name == "shootDelay") texture.loadFromFile("Images/PowerUps/shootDelay.png");
+	if (name == "shootSpeed") texture.loadFromFile("Images/PowerUps/shootSpeed.png");
+	if (name == "shootAmmount") texture.loadFromFile("Images/PowerUps/shootAmmount.png");
+	if (name == "sizeDown") texture.loadFromFile("Images/PowerUps/sizeDown.png");
 
 	this->name = name;
 	destroy = false;
@@ -61,7 +62,8 @@ void PowerUp::checkCollision()
 		if (name == "hp") Player::player.addHp();
 		if (name == "shootDelay") Player::player.addShootDelay();
 		if (name == "shootSpeed") Player::player.addShootSpeed();
-		//if (name == "shootSpeed") Player::player.addShootDmg();		dodaæ kolejny powerup
+		if (name == "shootDmg") Player::player.addShootAmmount();
+		if (name == "sizeDown") Player::player.sizeDown();
 
 		destroy = true;
 	}

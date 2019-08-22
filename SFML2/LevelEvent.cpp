@@ -94,12 +94,31 @@ void LevelEvent::level6()
 
 void LevelEvent::level7()
 {
+	static bool left = true;
+	static bool down = true;
 
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (BasicEnemy::enemy[i]->id == 0 && left && !down) BasicEnemy::enemy[i]->moveLeft();
+		if (BasicEnemy::enemy[i]->id == 0 && !left && !down) BasicEnemy::enemy[i]->moveRight();
+		if (BasicEnemy::enemy[i]->id == 0 && down) BasicEnemy::enemy[i]->moveDown();
+	}
+
+	if (BasicEnemy::mostToTheLeft() < 100) left = false;
+	if (BasicEnemy::mostToTheRight() > 1500) left = true;
+	if (BasicEnemy::mostToTheBottom() > 100) down = false;
 }
 
 void LevelEvent::level8()
 {
+	static bool down = true;
 
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (down) BasicEnemy::enemy[i]->moveDown();
+	}
+
+	if (BasicEnemy::mostToTheBottom() > 300) down = false;
 }
 
 void LevelEvent::level9()

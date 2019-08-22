@@ -14,6 +14,8 @@ Player::Player()
 	hp = 6;
 	deathDelay = false;
 	renderDeath = false;
+	shootAmmount = 1;
+	hitbox2PosY = 35;
 
 	playerModel.loadFromFile("Images/spaceship.png");
 	drawPlayerModel.setTexture(playerModel);
@@ -94,7 +96,7 @@ void Player::playerShoot()
 void Player::checkCollision()
 {
 	hitbox1.setPosition(drawPlayerModel.getPosition());
-	hitbox2.setPosition(drawPlayerModel.getPosition().x, drawPlayerModel.getPosition().y + 35);
+	hitbox2.setPosition(drawPlayerModel.getPosition().x, drawPlayerModel.getPosition().y + hitbox2PosY);
 
 	for (int i = Shoot::shoot.size() - 1; i >= 0; i--)
 	{
@@ -191,4 +193,17 @@ void Player::addShootDelay()
 void Player::addShootSpeed()
 {
 	shootSpeed *= 1.1;
+}
+
+void Player::addShootAmmount()
+{
+	shootAmmount++;
+}
+
+void Player::sizeDown()
+{
+	drawPlayerModel.setScale(drawPlayerModel.getScale().x * 0.95, drawPlayerModel.getScale().y * 0.95);
+	hitbox1.setScale(hitbox1.getScale().x * 0.95, hitbox1.getScale().y * 0.95);
+	hitbox2.setScale(hitbox2.getScale().x * 0.95, hitbox2.getScale().y * 0.95);
+	hitbox2PosY *= 0.95;
 }

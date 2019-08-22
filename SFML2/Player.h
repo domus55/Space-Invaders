@@ -16,6 +16,8 @@ class Player
 	float shootDuration; // czestotliwosc wystrzalu
 	float speed; // predkosc playera
 	int hp; // zycie gracza
+	int shootAmmount; // iloscStrzalow
+	float hitbox2PosY;
 	static bool renderHitbox;
 	sf::Texture playerModel;
 	sf::Texture hitboxTexture;
@@ -48,4 +50,6 @@ public:
 	void addHp();				//wywolywana po zebraniu serduszka
 	void addShootDelay();		//wywolywana po zebraniu powerup'a
 	void addShootSpeed();		//wywolywana po zebraniu powerup'a
+	void addShootAmmount();		//wywolywana po zebraniu powerup'a
+	void sizeDown();		//wywolywana po zebraniu powerup'a
 };

@@ -226,10 +226,12 @@ void BasicEnemy::checkCollision(int enemyNumber)
 void BasicEnemy::destroy()
 {
 	Explosion::create(sprite.getPosition());
-	int los = rand() % 60;
+	int los = rand() % 100;
 	if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
 	if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
 	if (los == 2) PowerUp::create(sprite.getPosition(), "hp");
+	if (los == 3) PowerUp::create(sprite.getPosition(), "shootAmmount");
+	if (los == 4) PowerUp::create(sprite.getPosition(), "sizeDown");
 }
 
 void BasicEnemy::createLeftParticle()
