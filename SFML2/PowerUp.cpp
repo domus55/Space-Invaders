@@ -84,7 +84,7 @@ void PowerUp::disappear(int powerUpNumber)
 	sprite.setColor(sf::Color(255, 255, 255, color));
 
 	if (color <= 0) sprite.setColor(sf::Color(255, 255, 255, 0));
-	//if (color < -2000) powerUp.erase(powerUp.begin() + powerUpNumber);
+	if (color < -2500) powerUp.erase(powerUp.begin() + powerUpNumber);
 }
 
 
