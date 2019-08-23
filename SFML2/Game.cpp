@@ -11,6 +11,7 @@ Game::Game()
 	Explosion::loadAnimation();
 	BasicEnemy::loadSound();
 	PowerUp::loadSound();
+	GameVersion::create();
 }
 
 void Game::exit()
@@ -49,6 +50,7 @@ void Game::output()
 	PowerUp::renderAll();
 	Explosion::renderAll();
 	LevelManager::render();
+	GameVersion::render();
 	Window::window.display();
 }
 
