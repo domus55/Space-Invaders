@@ -15,7 +15,6 @@
 
 class Player
 {
-	float shootDmg; // obrazenia, jakie zadaje strzal
 	float shootSpeed; // predkosc strzalu
 	float shootDuration; // czestotliwosc wystrzalu
 	float speed; // predkosc playera

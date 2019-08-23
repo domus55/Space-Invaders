@@ -4,6 +4,8 @@ Game::Game()
 {
 	isRunning = true;
 	Window::window.create(sf::VideoMode(1600, 900, 32), "Space Invaders");
+	Window::window.clear(sf::Color(0, 0, 0));
+	Window::window.display();
 	Background::create();
 	LevelManager::create();
 	Explosion::loadAnimation();
@@ -31,6 +33,7 @@ void Game::update()
 	Player::update();
 	Particle::updateAll();
 	PowerUp::updateAll();
+	std::cout << Explosion::explosion.size();
 }
 
 void Game::output()

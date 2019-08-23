@@ -8,7 +8,6 @@ BasicEnemy::BasicEnemy(int id)
 {
 	hp = 3;
 	speed = 0.2;
-	shootDmg = 1;
 	shootSpeed = 1;
 	shootDelay = 1000;
 	randShootDelay = 0;
@@ -16,6 +15,7 @@ BasicEnemy::BasicEnemy(int id)
 	shootType = 3;
 	shootScale = 1;
 	timeToDeath = 0;
+	deathDeltaTime = 300;
 
 	this->id = id;
 
@@ -168,7 +168,7 @@ void BasicEnemy::shoot()
 	{
 		sf::Vector2f pos;
 		pos = sprite.getPosition();
-		Shoot::create(pos.x, pos.y, 0, shootSpeed, shootDmg, false, shootType, shootScale);
+		Shoot::create(pos.x, pos.y, 0, shootSpeed, false, shootType, shootScale);
 		if (randShootDelay == 0) myDeltaTime = 0;
 		else myDeltaTime = (std::rand() % randShootDelay) - randShootDelay/2;
 	}
@@ -219,13 +219,12 @@ void BasicEnemy::checkCollision(int enemyNumber)
 			destroy();
 			timeToDeath = 1;
 		}
-			
-		if (timeToDeath > 300) enemy.erase(enemy.begin() + enemyNumber);
 
 		timeToDeath += GameInfo::getDeltaTime();
+		if (timeToDeath > deathDeltaTime) enemy.erase(enemy.begin() + enemyNumber);
+
+		
 	}
-
-
 }
 
 void BasicEnemy::destroy()

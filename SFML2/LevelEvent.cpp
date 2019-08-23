@@ -12,6 +12,7 @@ void LevelEvent::update()
 	case 7: level7(); break;
 	case 8: level8(); break;
 	case 9: level9(); break;
+	case 10: level10(); break;
 	}
 	
 }
@@ -131,4 +132,16 @@ void LevelEvent::level9()
 	}
 
 	if (BasicEnemy::mostToTheBottom() > 300) down = false;
+}
+
+void LevelEvent::level10()
+{
+	static bool down = true;
+
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (down) BasicEnemy::enemy[i]->moveDown();
+	}
+
+	if (BasicEnemy::mostToTheBottom() > 200) down = false;
 }

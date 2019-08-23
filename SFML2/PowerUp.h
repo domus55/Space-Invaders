@@ -14,6 +14,7 @@ public:
 
 	PowerUp(sf::Vector2f pos, std::string name);
 	static void create(sf::Vector2f pos, std::string name);
+	static void create(float posX, float posY, std::string name);
 	static void updateAll();
 	static void renderAll();
 
