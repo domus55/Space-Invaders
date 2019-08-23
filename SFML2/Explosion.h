@@ -12,15 +12,18 @@ class Explosion
 	int animationObject;
 	sf::Texture texture;
 	sf::Sprite sprite;
-	static sf::Music explosionSound;
+	static sf::SoundBuffer soundBuffer;
+	sf::Sound sound;
+	bool destroyed;
+	int deltaTime;
 	
 public:
 	static std::vector < std::shared_ptr <Explosion> > explosion;
 
-	Explosion(float x, float y);
+	Explosion(float x, float y, float scale = 1, float timeScale = 1);
 	static void loadAnimation();
-	static void create(sf::Vector2f position);
-	static void create(float x, float y);
+	static void create(sf::Vector2f position, float scale = 1, float timeScale = 1);
+	static void create(float x, float y, float scale = 1, float timeScale = 1);
 	static void renderAll();
 	void render(int explosionNumber);
 };

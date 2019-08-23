@@ -29,6 +29,11 @@ void PowerUp::create(sf::Vector2f pos, std::string name)
 	PowerUp::powerUp.push_back(std::make_shared <PowerUp>(pos, name));
 }
 
+void PowerUp::create(float posX, float posY, std::string name)
+{
+	PowerUp::powerUp.push_back(std::make_shared <PowerUp>(sf::Vector2f(posX, posY), name));
+}
+
 void PowerUp::updateAll()
 {
 	for (int i = PowerUp::powerUp.size() - 1; i >= 0; i--)
@@ -79,7 +84,7 @@ void PowerUp::disappear(int powerUpNumber)
 	sprite.setColor(sf::Color(255, 255, 255, color));
 
 	if (color <= 0) sprite.setColor(sf::Color(255, 255, 255, 0));
-	//if (color < -2000) powerUp.erase(powerUp.begin() + powerUpNumber);
+	if (color < -2500) powerUp.erase(powerUp.begin() + powerUpNumber);
 }
 
 

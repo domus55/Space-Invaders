@@ -12,14 +12,22 @@ void LevelEvent::update()
 	case 7: level7(); break;
 	case 8: level8(); break;
 	case 9: level9(); break;
+	case 10: level10(); break;
 	}
-	
 }
 
 void LevelEvent::level2()
 {
 	static bool left = true;
 	static bool down = true;
+
+	static clock_t prevTime = clock();
+	if (clock() - prevTime > 1000)
+	{
+		left = true;
+		down = true;
+	}
+	prevTime = clock();
 
 	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
 	{
@@ -38,6 +46,14 @@ void LevelEvent::level3()
 	static bool left = true;
 	static bool down = true;
 
+	static clock_t prevTime = clock();
+	if (clock() - prevTime > 1000)
+	{
+		left = true;
+		down = true;
+	}
+	prevTime = clock();
+
 	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
 	{
 		if (BasicEnemy::enemy[i]->id == 0 && down) BasicEnemy::enemy[i]->moveDown();
@@ -51,6 +67,14 @@ void LevelEvent::level4()
 	static bool left = true;
 	static bool down = true;
 
+	static clock_t prevTime = clock();
+	if (clock() - prevTime > 1000)
+	{
+		left = true;
+		down = true;
+	}
+	prevTime = clock();
+
 	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
 	{
 		if (BasicEnemy::enemy[i]->id == 0 && down) BasicEnemy::enemy[i]->moveDown();
@@ -63,6 +87,14 @@ void LevelEvent::level5()
 {
 	static bool army1Right = true;
 	static bool army2Left = true;
+
+	static clock_t prevTime = clock();
+	if (clock() - prevTime > 1000)
+	{
+		army1Right = true;
+		army2Left = true;
+	}
+	prevTime = clock();
 
 	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
 	{
@@ -84,6 +116,13 @@ void LevelEvent::level6()
 {
 	static bool down = true;
 
+	static clock_t prevTime = clock();
+	if (clock() - prevTime > 1000)
+	{
+		down = true;
+	}
+	prevTime = clock();
+
 	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
 	{
 		if (down) BasicEnemy::enemy[i]->moveDown();
@@ -96,6 +135,14 @@ void LevelEvent::level7()
 {
 	static bool left = true;
 	static bool down = true;
+
+	static clock_t prevTime = clock();
+	if (clock() - prevTime > 1000)
+	{
+		left = true;
+		down = true;
+	}
+	prevTime = clock();
 
 	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
 	{
@@ -113,6 +160,13 @@ void LevelEvent::level8()
 {
 	static bool down = true;
 
+	static clock_t prevTime = clock();
+	if (clock() - prevTime > 1000)
+	{
+		down = true;
+	}
+	prevTime = clock();
+
 	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
 	{
 		if (down) BasicEnemy::enemy[i]->moveDown();
@@ -125,10 +179,36 @@ void LevelEvent::level9()
 {
 	static bool down = true;
 
+	static clock_t prevTime = clock();
+	if (clock() - prevTime > 1000)
+	{
+		down = true;
+	}
+	prevTime = clock();
+
 	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
 	{
 		if (BasicEnemy::enemy[i]->id == 0 && down) BasicEnemy::enemy[i]->moveDown();
 	}
 
 	if (BasicEnemy::mostToTheBottom() > 300) down = false;
+}
+
+void LevelEvent::level10()
+{
+	static bool down = true;
+
+	static clock_t prevTime = clock();
+	if (clock() - prevTime > 1000)
+	{
+		down = true;
+	}
+	prevTime = clock();
+
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (down) BasicEnemy::enemy[i]->moveDown();
+	}
+
+	if (BasicEnemy::mostToTheBottom() > 200) down = false;
 }

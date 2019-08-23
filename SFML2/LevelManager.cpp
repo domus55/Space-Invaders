@@ -178,6 +178,6 @@ void LevelManager::level9()
 
 void LevelManager::level10()
 {
-	
+	BossBrown::create(800, -200);
 }
 

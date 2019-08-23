@@ -7,9 +7,8 @@ sf::Font Player::font;
 
 Player::Player()
 {
-	shootSpeed = 2.5;
-	shootDmg = 1;
-	shootDuration = 1500;
+	shootSpeed = 5;
+	shootDuration = 300;
 	speed = 0.5;
 	hp = 6;
 	shooted = false;
@@ -102,32 +101,32 @@ void Player::playerShoot()
 		pos = drawPlayerModel.getPosition();
 		switch (shootAmmount)
 		{
-		case 1: Shoot::create(pos.x, pos.y, 0, -shootSpeed, shootDmg, true, 1, 1); break;
+		case 1: Shoot::create(pos.x, pos.y, 0, -shootSpeed, true, 1, 1); break;
 		case 2:
 		{
-			Shoot::create(pos.x - 25, pos.y, 0, -shootSpeed, shootDmg, true, 1, 0.9);
-			Shoot::create(pos.x + 25, pos.y, 0, -shootSpeed, shootDmg, true, 1, 0.9);
+			Shoot::create(pos.x - 25, pos.y, 0, -shootSpeed, true, 1, 0.9);
+			Shoot::create(pos.x + 25, pos.y, 0, -shootSpeed, true, 1, 0.9);
 		}	break;
 		case 3:
 		{
-			Shoot::create(pos.x - 40, pos.y + 15, 0, -shootSpeed, shootDmg, true, 1, 0.8);
-			Shoot::create(pos.x, pos.y - 40, 0, -shootSpeed, shootDmg, true, 1, 0.8);
-			Shoot::create(pos.x + 40, pos.y + 15, 0, -shootSpeed, shootDmg, true, 1, 0.8);
+			Shoot::create(pos.x - 40, pos.y + 15, 0, -shootSpeed, true, 1, 0.8);
+			Shoot::create(pos.x, pos.y - 40, 0, -shootSpeed, true, 1, 0.8);
+			Shoot::create(pos.x + 40, pos.y + 15, 0, -shootSpeed, true, 1, 0.8);
 		}	break;
 		case 4:
 		{
-			Shoot::create(pos.x - 40, pos.y + 15, -shootSpeed / 3, -shootSpeed, shootDmg, true, 1, 0.8);
-			Shoot::create(pos.x - 25, pos.y - 40, 0, -shootSpeed, shootDmg, true, 1, 0.8);
-			Shoot::create(pos.x + 25, pos.y - 40, 0, -shootSpeed, shootDmg, true, 1, 0.8);
-			Shoot::create(pos.x + 40, pos.y + 15, shootSpeed / 3, -shootSpeed, shootDmg, true, 1, 0.8);
+			Shoot::create(pos.x - 40, pos.y + 15, -shootSpeed / 3, -shootSpeed, true, 1, 0.8);
+			Shoot::create(pos.x - 25, pos.y - 40, 0, -shootSpeed, true, 1, 0.8);
+			Shoot::create(pos.x + 25, pos.y - 40, 0, -shootSpeed, true, 1, 0.8);
+			Shoot::create(pos.x + 40, pos.y + 15, shootSpeed / 3, -shootSpeed, true, 1, 0.8);
 		}	break;
 		case 5:
 		{
-			Shoot::create(pos.x - 40, pos.y + 15, -shootSpeed / 3, -shootSpeed, shootDmg, true, 1, 0.8);
-			Shoot::create(pos.x - 25, pos.y - 40, -shootSpeed / 10, -shootSpeed, shootDmg, true, 1, 0.8);
-			Shoot::create(pos.x, pos.y - 40, 0, -shootSpeed, shootDmg, true, 1, 0.8);
-			Shoot::create(pos.x + 25, pos.y - 40, shootSpeed / 10, -shootSpeed, shootDmg, true, 1, 0.8);
-			Shoot::create(pos.x + 40, pos.y + 15, shootSpeed / 3, -shootSpeed, shootDmg, true, 1, 0.8);
+			Shoot::create(pos.x - 40, pos.y + 15, -shootSpeed / 3, -shootSpeed, true, 1, 0.8);
+			Shoot::create(pos.x - 25, pos.y - 40, -shootSpeed / 10, -shootSpeed, true, 1, 0.8);
+			Shoot::create(pos.x, pos.y - 40, 0, -shootSpeed, true, 1, 0.8);
+			Shoot::create(pos.x + 25, pos.y - 40, shootSpeed / 10, -shootSpeed, true, 1, 0.8);
+			Shoot::create(pos.x + 40, pos.y + 15, shootSpeed / 3, -shootSpeed, true, 1, 0.8);
 		}
 		}
 		myDeltaTime = 0;
@@ -223,8 +222,6 @@ void Player::playerDeath()
 
 void Player::playerDeathTime()
 {
-	//static void addParticle(float a, float h, std::string name, int ammount, float speed);
-
 	static float time = 0;
 	time += GameInfo::getDeltaTime();
 	drawPlayerModel.setColor(sf::Color(255, 255, 255, 0));
