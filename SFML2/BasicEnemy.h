@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <vector>
 #include <string>
 #include <cstdlib>
@@ -41,6 +42,7 @@ protected:
 	sf::Sprite hitbox3;
 	sf::Texture texture;
 	sf::Sprite sprite;
+	sf::Music enemyHit;
 	
 public:
 	BasicEnemy(int id);

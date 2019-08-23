@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Window.h"
 #include "GameInfo.h"
 #include "Player.h"
@@ -22,6 +23,7 @@ private:
 	sf::Sprite sprite;
 	sf::Texture texture;
 	std::string name;
+	sf::Music powerUpSound;
 
 	void update(int powerUpNumber);
 	void render();

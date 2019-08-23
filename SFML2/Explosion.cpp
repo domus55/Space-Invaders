@@ -2,6 +2,7 @@
 
 int Explosion::animation = -1;
 std::vector < std::shared_ptr <Explosion> > Explosion::explosion;
+sf::Music Explosion::explosionSound;
 
 Explosion::Explosion(float x, float y)
 {
@@ -11,10 +12,13 @@ Explosion::Explosion(float x, float y)
 	sprite.setOrigin(size.x / 2, size.y / 2);
 	sprite.setPosition(x, y);
 	animationObject = Animation::addObject(animation, 15);
+	//explosionSound.play();
 }
 
 void Explosion::loadAnimation()
 {
+	explosionSound.openFromFile("Sounds/explosion.wav");
+
 	animation = Animation::addAnimation();
 
 	Animation::addImage(animation, "Images/explosion/explosion1.png");

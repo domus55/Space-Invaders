@@ -45,6 +45,10 @@ Player::Player()
 
 	hitbox2.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
 	hitbox2.setScale(1.1, 0.2);
+
+	playerShootSound.openFromFile("Sounds/playerShootSound.wav");
+	playerDeathSound.openFromFile("Sounds/playerDeathSound.wav");
+	playerDeathSound.setPitch(5);
 }
 
 void Player::render()
@@ -89,6 +93,10 @@ void Player::playerShoot()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && myDeltaTime > shootDuration)
 	{
+		playerShootSound.stop();
+		playerShootSound.play();
+		
+
 		sf::Vector2f pos;
 		pos = drawPlayerModel.getPosition();
 		switch (shootAmmount)
@@ -180,6 +188,9 @@ void Player::playerDeath()
 	drawHeartModel1.setTexture(heart);
 	drawHeartModel2.setTexture(heart);
 	drawHeartModel3.setTexture(heart);
+
+	playerDeathSound.stop();
+	playerDeathSound.play();
 	
 	renderDeath = true;
 	deathDelay = true;

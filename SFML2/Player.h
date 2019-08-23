@@ -11,6 +11,7 @@
 #include "Particle.h"
 #include "Explosion.h"
 #include <Windows.h>
+#include <SFML/Audio.hpp>
 
 class Player
 {
@@ -29,6 +30,8 @@ class Player
 	sf::Texture heart;
 	sf::Texture halfHeart;
 	sf::Texture emptyHeart;
+	sf::Music playerShootSound;
+	sf::Music playerDeathSound;
 	static sf::Font font;
 	static sf::Text text;
 	bool deathDelay;

@@ -30,6 +30,8 @@ BasicEnemy::BasicEnemy(int id)
 	hitbox1.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
 	hitbox2.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
 	hitbox3.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
+
+	enemyHit.openFromFile("Sounds/enemyHit.wav");
 }
 
 void BasicEnemy::updateAll()
@@ -186,6 +188,7 @@ void BasicEnemy::checkCollision(int enemyNumber)
 			createMiddleParticle();
 			hp -= Shoot::shoot[i]->getDmg();
 			Shoot::shoot.erase(Shoot::shoot.begin() + i);
+			enemyHit.play();
 		}
 		else
 		{
@@ -194,6 +197,7 @@ void BasicEnemy::checkCollision(int enemyNumber)
 				createLeftParticle();
 				hp -= Shoot::shoot[i]->getDmg();
 				Shoot::shoot.erase(Shoot::shoot.begin() + i);
+				enemyHit.play();
 			}
 			else
 			{
@@ -202,6 +206,7 @@ void BasicEnemy::checkCollision(int enemyNumber)
 					createRightParticle();
 					hp -= Shoot::shoot[i]->getDmg();
 					Shoot::shoot.erase(Shoot::shoot.begin() + i);
+					enemyHit.play();
 				}
 			}
 		}

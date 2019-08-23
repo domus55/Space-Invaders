@@ -20,6 +20,8 @@ PowerUp::PowerUp(sf::Vector2f pos, std::string name)
 	sprite.setOrigin(size.x / 2, size.y / 2);
 	sprite.setPosition(pos.x, pos.y);
 	sprite.setScale(0.3, 0.3);
+
+	powerUpSound.openFromFile("Sounds/powerUp.wav");
 }
 
 void PowerUp::create(sf::Vector2f pos, std::string name)
@@ -59,6 +61,8 @@ void PowerUp::checkCollision()
 {
 	if (Collider::checkCollision(sprite, Player::player.drawPlayerModel))
 	{
+		powerUpSound.play();
+
 		if (name == "hp") Player::player.addHp();
 		if (name == "shootDelay") Player::player.addShootDelay();
 		if (name == "shootSpeed") Player::player.addShootSpeed();
@@ -74,7 +78,8 @@ void PowerUp::disappear(int powerUpNumber)
 	color -= 0.5 * GameInfo::getDeltaTime();
 	sprite.setColor(sf::Color(255, 255, 255, color));
 
-	if (color <= 0) powerUp.erase(powerUp.begin() + powerUpNumber);
+	if (color <= 0) sprite.setColor(sf::Color(255, 255, 255, 0));
+	//if (color < -2000) powerUp.erase(powerUp.begin() + powerUpNumber);
 }
 
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Animation.h"
 #include "Window.h"
 #include <iostream>
@@ -11,6 +12,7 @@ class Explosion
 	int animationObject;
 	sf::Texture texture;
 	sf::Sprite sprite;
+	static sf::Music explosionSound;
 	
 public:
 	static std::vector < std::shared_ptr <Explosion> > explosion;
