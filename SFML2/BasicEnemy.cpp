@@ -3,6 +3,7 @@
 
 std::vector < std::shared_ptr <BasicEnemy> > BasicEnemy::enemy;
 bool BasicEnemy::renderHitbox = false;
+sf::SoundBuffer BasicEnemy::enemyHitSoundBuffer;
 
 BasicEnemy::BasicEnemy(int id)
 {
@@ -31,7 +32,7 @@ BasicEnemy::BasicEnemy(int id)
 	hitbox2.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
 	hitbox3.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
 
-	enemyHit.openFromFile("Sounds/enemyHit.wav");
+	enemyHit.setBuffer(enemyHitSoundBuffer);
 }
 
 void BasicEnemy::updateAll()
@@ -143,6 +144,11 @@ void BasicEnemy::moveDown()
 	}
 }
 
+void BasicEnemy::loadSound()
+{
+	enemyHitSoundBuffer.loadFromFile("Sounds/enemyHit.wav");
+}
+
 void BasicEnemy::render()
 {
 	Window::window.draw(sprite);
@@ -230,7 +236,7 @@ void BasicEnemy::checkCollision(int enemyNumber)
 void BasicEnemy::destroy()
 {
 	Explosion::create(sprite.getPosition());
-	int los = rand() % 5;
+	int los = rand() % 100;
 	if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
 	if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
 	if (los == 2) PowerUp::create(sprite.getPosition(), "hp");

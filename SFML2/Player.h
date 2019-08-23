@@ -30,8 +30,10 @@ class Player
 	sf::Texture heart;
 	sf::Texture halfHeart;
 	sf::Texture emptyHeart;
-	sf::Music playerShootSound;
-	sf::Music playerDeathSound;
+	sf::Sound playerShootSound;
+	sf::Sound playerDeathSound;
+	sf::SoundBuffer playerShootSoundBuffer;
+	sf::SoundBuffer playerDeathSoundBuffer;
 	static sf::Font font;
 	static sf::Text text;
 	bool shooted;

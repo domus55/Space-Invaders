@@ -46,8 +46,11 @@ Player::Player()
 	hitbox2.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
 	hitbox2.setScale(1.1, 0.2);
 
-	playerShootSound.openFromFile("Sounds/playerShootSound.wav");
-	playerDeathSound.openFromFile("Sounds/playerDeathSound.wav");
+	playerShootSoundBuffer.loadFromFile("Sounds/playerShootSound.wav");
+	playerShootSound.setBuffer(playerShootSoundBuffer);
+
+	playerDeathSoundBuffer.loadFromFile("Sounds/playerDeathSound.wav");
+	playerDeathSound.setBuffer(playerDeathSoundBuffer);
 	playerDeathSound.setPitch(5);
 }
 

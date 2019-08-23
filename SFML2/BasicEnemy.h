@@ -42,7 +42,8 @@ protected:
 	sf::Sprite hitbox3;
 	sf::Texture texture;
 	sf::Sprite sprite;
-	sf::Music enemyHit;
+	sf::Sound enemyHit;
+	static sf::SoundBuffer enemyHitSoundBuffer;
 	
 public:
 	BasicEnemy(int id);
@@ -59,6 +60,7 @@ public:
 	void moveLeft();					//porusza statek w lewo
 	void moveUp();						//porusza statek w gore
 	void moveDown();					//porusza statek w dol
+	static void loadSound();
 
 protected:
 	virtual void render();

@@ -9,6 +9,8 @@ Game::Game()
 	Background::create();
 	LevelManager::create();
 	Explosion::loadAnimation();
+	BasicEnemy::loadSound();
+	PowerUp::loadSound();
 }
 
 void Game::exit()
