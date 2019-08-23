@@ -1,6 +1,8 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <Windows.h>
 #include "Window.h"
 #include "GameInfo.h"
 #include "Shoot.h"
@@ -10,8 +12,7 @@
 #include "LevelManager.h"
 #include "Particle.h"
 #include "Explosion.h"
-#include <Windows.h>
-#include <SFML/Audio.hpp>
+
 
 class Player
 {

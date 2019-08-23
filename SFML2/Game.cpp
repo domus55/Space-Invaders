@@ -33,7 +33,6 @@ void Game::update()
 	Player::update();
 	Particle::updateAll();
 	PowerUp::updateAll();
-	std::cout << Explosion::explosion.size();
 }
 
 void Game::output()
