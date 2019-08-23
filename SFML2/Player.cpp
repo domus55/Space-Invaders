@@ -150,6 +150,7 @@ void Player::checkCollision()
 			if (shooted == false)
 			{
 				hp -= Shoot::shoot[i]->getDmg();
+				Particle::addParticle(drawPlayerModel.getPosition().x, drawPlayerModel.getPosition().y, "BasicEnemy", 5, 0.25);
 				switch (hp)
 				{
 				case 6: drawHeartModel3.setTexture(heart); break;
