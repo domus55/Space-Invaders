@@ -11,7 +11,8 @@ Player::Player()
 	shootDmg = 1;
 	shootDuration = 1500;
 	speed = 0.5;
-	hp = 1;
+	hp = 6;
+	shooted = false;
 	deathDelay = false;
 	renderDeath = false;
 	checkDeathFx = false;
@@ -70,6 +71,7 @@ void Player::update()
 	Player::player.checkCollision();
 	if (Player::player.deathDelay == true) Player::player.playerDeathTime();
 	if (Player::player.checkDeathFx == true) Player::player.deathFx();
+	if (Player::player.shooted == true) Player::player.playerShooted();
 }
 
 void Player::playerMove()
@@ -96,7 +98,6 @@ void Player::playerShoot()
 		playerShootSound.stop();
 		playerShootSound.play();
 		
-
 		sf::Vector2f pos;
 		pos = drawPlayerModel.getPosition();
 		switch (shootAmmount)
@@ -142,23 +143,28 @@ void Player::checkCollision()
 	{
 		if (Shoot::shoot[i]->playerShoot == false && (Collider::checkCollision(hitbox1, Shoot::shoot[i]->sprite) || Collider::checkCollision(hitbox2, Shoot::shoot[i]->sprite)))
 		{
-			hp -= Shoot::shoot[i]->getDmg();
 			Shoot::shoot.erase(Shoot::shoot.begin() + i);
 
-			switch (hp)
+			if (shooted == false)
 			{
-			case 6: drawHeartModel3.setTexture(heart); break;
-			case 5:	drawHeartModel3.setTexture(halfHeart); break;
-			case 4:	drawHeartModel3.setTexture(emptyHeart); break;
-			case 3:	drawHeartModel2.setTexture(halfHeart); break;
-			case 2:	drawHeartModel2.setTexture(emptyHeart); break;
-			case 1:	drawHeartModel1.setTexture(halfHeart); break;
-			case 0: 
-			{
-				drawHeartModel1.setTexture(emptyHeart);
-				playerDeath();
-			}	break;
-			}	
+				hp -= Shoot::shoot[i]->getDmg();
+				switch (hp)
+				{
+				case 6: drawHeartModel3.setTexture(heart); break;
+				case 5:	drawHeartModel3.setTexture(halfHeart); break;
+				case 4:	drawHeartModel3.setTexture(emptyHeart); break;
+				case 3:	drawHeartModel2.setTexture(halfHeart); break;
+				case 2:	drawHeartModel2.setTexture(emptyHeart); break;
+				case 1:	drawHeartModel1.setTexture(halfHeart); break;
+				case 0:
+				{
+					drawHeartModel1.setTexture(emptyHeart);
+					playerDeath();
+				}	break;
+				}
+
+			}
+			shooted = true;
 		}
 	}
 }
@@ -168,6 +174,23 @@ void Player::playerHp()
 	drawHeartModel1.setPosition(20, 10);
 	drawHeartModel2.setPosition(100, 10);
 	drawHeartModel3.setPosition(180, 10);
+}
+
+void Player::playerShooted()
+{
+	static float time = 0;
+	time += GameInfo::getDeltaTime();
+
+	if (time < 333) drawPlayerModel.setColor(sf::Color(255, 255, 255, 0));
+	if (time > 333 && time < 666) drawPlayerModel.setColor(sf::Color(255, 255, 255, 255));
+	if (time > 666 && time < 999) drawPlayerModel.setColor(sf::Color(255, 255, 255, 0));
+
+	if (time > 1000)
+	{
+		drawPlayerModel.setColor(sf::Color(255, 255, 255, 255));
+		shooted = false;
+		time = 0;
+	}
 }
 
 void Player::playerDeath()

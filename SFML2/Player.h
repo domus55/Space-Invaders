@@ -34,6 +34,7 @@ class Player
 	sf::Music playerDeathSound;
 	static sf::Font font;
 	static sf::Text text;
+	bool shooted;
 	bool deathDelay;
 	bool renderDeath;
 	bool checkDeathFx;
@@ -53,6 +54,7 @@ public:
 	void playerShoot();			// strzal gracza
 	void checkCollision();		// kolizja
 	void playerHp();			// ¿ycie gracza
+	void playerShooted();		// postrzelony gracz
 	void playerDeath();			// œmieræ gracza
 	void playerDeathTime();		// dzia³ania w okresie trwania œmierci
 	void addHp();				// wywolywana po zebraniu serduszka
