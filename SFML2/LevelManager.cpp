@@ -1,6 +1,6 @@
 #include "LevelManager.h"
 
-int LevelManager::actualLevel = 0;
+int LevelManager::actualLevel = 9;
 bool LevelManager::animation = false;
 sf::Text LevelManager::text;
 sf::Font LevelManager::font;
@@ -178,6 +178,7 @@ void LevelManager::level9()
 
 void LevelManager::level10()
 {
-	
+	//BossBrown::create(800, -200);
+	BossBrown::create(800, 200);
 }
 

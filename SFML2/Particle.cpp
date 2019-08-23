@@ -33,8 +33,12 @@ Particle::Particle(float a, float h, std::string name, float speed)
 	this->speed.y = (los2 - 50) / 100.0f;
 	rotation = (los3 - 50) / 100.0f;
 
-	this->speed.x *= speed;
-	this->speed.y *= speed;
+	float c = sqrt(pow(this->speed.x, 2) + pow(this->speed.y, 2));
+	this->speed.x /= c;
+	this->speed.y /= c;
+
+	this->speed.x *= (rand() % 100) / (float)100 * speed;
+	this->speed.y *= (rand() % 100) / (float)100 * speed;
 }
 
 void Particle::renderAll()

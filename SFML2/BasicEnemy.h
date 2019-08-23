@@ -22,13 +22,13 @@ protected:
 	sf::Vector2f size;		//szerokosc i wysokosc statku w pikselach
 	float hp;				//iloœæ ¿ycia
 	float speed;			//prêdkoœæ przeciwnika
-	float shootDmg;			//obra¿enia zadawane przez strza³y
 	float shootSpeed;		//prêdkoœæ strza³u
 	float shootScale;		//okresla wielkosc strzalu
 	int shootDelay;			//odstêp miêdzy strza³ami w milisekundach
 	int randShootDelay;		//gdy jest równy 0, wszystkie statki strzalaj¹ jednoczeœnie, czym wiêkszy, tym bardziej losowo bêd¹ strzelaæ
 	int myDeltaTime;		//zmienna wykorzystywana, aby strzaly byly stworzone w odpowiednim odstepie, nie tykac
 	int shootType;			//rodzaj textury pocisku, od 1 do 3
+	int deathDeltaTime;		//czas w milisekundach do usuniecia obiektu, domyslnie 300
 	int timeToDeath;		//czas w milisekundach do usuniecia obiektu, potrzebny zeby wybuch ladnie wygladal, nie tykac
 	static bool renderHitbox;
 
@@ -62,9 +62,9 @@ protected:
 	virtual void render();
 	virtual void update(int enemyNumber);
 
-	void shoot();
-	void checkCollision(int enemyNumber);
-	void destroy();					//metoda wykonywana, gdy przeciwnik umiera
+	virtual void shoot();
+	virtual void checkCollision(int enemyNumber);
+	virtual void destroy();					//metoda wykonywana, gdy przeciwnik umiera
 	virtual void createLeftParticle();
 	virtual void createMiddleParticle();
 	virtual void createRightParticle();

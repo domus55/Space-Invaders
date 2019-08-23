@@ -3,14 +3,15 @@
 int Explosion::animation = -1;
 std::vector < std::shared_ptr <Explosion> > Explosion::explosion;
 
-Explosion::Explosion(float x, float y)
+Explosion::Explosion(float x, float y, float scale, float timeScale)
 {
 	texture.loadFromFile("Images/explosion/explosion1.png");
 	sprite.setTexture(texture);
 	sf::Vector2u size = texture.getSize();
 	sprite.setOrigin(size.x / 2, size.y / 2);
 	sprite.setPosition(x, y);
-	animationObject = Animation::addObject(animation, 15);
+	sprite.setScale(scale, scale);
+	animationObject = Animation::addObject(animation, 15 * timeScale);
 }
 
 void Explosion::loadAnimation()
@@ -46,14 +47,14 @@ void Explosion::loadAnimation()
 	Animation::addImage(animation, "Images/explosion/explosion1.png");
 }
 
-void Explosion::create(sf::Vector2f position)
+void Explosion::create(sf::Vector2f position, float scale, float timeScale)
 {
-	Explosion::explosion.push_back(std::make_shared <Explosion>(position.x, position.y));
+	Explosion::explosion.push_back(std::make_shared <Explosion>(position.x, position.y, scale, timeScale));
 }
 
-void Explosion::create(float x, float y)
+void Explosion::create(float x, float y, float scale, float timeScale)
 {
-	Explosion::explosion.push_back(std::make_shared <Explosion>(x, y));
+	Explosion::explosion.push_back(std::make_shared <Explosion>(x, y, scale, timeScale));
 }
 
 void Explosion::renderAll()
