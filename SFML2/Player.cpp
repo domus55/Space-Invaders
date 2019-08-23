@@ -1,30 +1,26 @@
 #include "Player.h"
 
 Player Player::player;
-bool Player::renderHitbox = false;
+bool Player::renderHitbox = true;
 sf::Text Player::text;
 sf::Font Player::font;
 
 Player::Player()
 {
-	shootSpeed = 5;
-	shootDuration = 300;
-	speed = 0.5;
-	hp = 6;
 	shooted = false;
 	deathDelay = false;
 	renderDeath = false;
 	checkDeathFx = false;
 	canMove = true;
-	shootAmmount = 1;
-	hitbox2PosY = 35;
+	canShoot = true;
+
+	resetStats();
 
 	playerModel.loadFromFile("Images/spaceship.png");
 	drawPlayerModel.setTexture(playerModel);
 	drawPlayerModel.setPosition(1600 / 2, 800);
 	sf::Vector2u size = playerModel.getSize();
 	drawPlayerModel.setOrigin(size.x / 2, size.y / 2);
-	drawPlayerModel.setScale(0.2, 0.2);
 
 	heart.loadFromFile("Images/heart.png");
 	halfHeart.loadFromFile("Images/halfheart.png");
@@ -41,10 +37,8 @@ Player::Player()
 	hitbox2.setTexture(hitboxTexture);
 	sf::Vector2u Hitboxsize = hitboxTexture.getSize();
 	hitbox1.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
-	hitbox1.setScale(0.45, 0.9);
 
 	hitbox2.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
-	hitbox2.setScale(1.1, 0.2);
 
 	playerShootSoundBuffer.loadFromFile("Sounds/playerShootSound.wav");
 	playerShootSound.setBuffer(playerShootSoundBuffer);
@@ -76,6 +70,19 @@ void Player::update()
 	if (Player::player.shooted == true) Player::player.playerShooted();
 }
 
+void Player::resetStats()
+{
+	shootSpeed = 5;
+	shootDuration = 300;
+	speed = 0.5;
+	hp = 6;
+	shootAmmount = 1;
+	hitbox2PosY = 35;
+	drawPlayerModel.setScale(0.2, 0.2);
+	hitbox1.setScale(0.45, 0.9);
+	hitbox2.setScale(1.1, 0.2);
+}
+
 void Player::playerMove()
 {
 	sf::Vector2f pos;
@@ -95,7 +102,7 @@ void Player::playerShoot()
 	static int myDeltaTime = 0;
 	myDeltaTime += GameInfo::getDeltaTime();
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && myDeltaTime > shootDuration)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && myDeltaTime > shootDuration && canShoot == true)
 	{
 		playerShootSound.stop();
 		playerShootSound.play();
@@ -198,6 +205,9 @@ void Player::playerShooted()
 
 void Player::playerDeath()
 {
+	Shoot::shoot.clear();
+	resetStats();
+	drawPlayerModel.setPosition(1600 / 2, 800);
 	font.loadFromFile("Images/arial.ttf");
 	text.setFont(font);
 	text.setCharacterSize(100);
@@ -222,6 +232,7 @@ void Player::playerDeath()
 	deathDelay = true;
 	checkDeathFx = true;
 	canMove = false;
+	canShoot = false;
 }
 
 void Player::playerDeathTime()
@@ -244,6 +255,7 @@ void Player::playerDeathTime()
 		Shoot::shoot.clear();
 		deathDelay = false;
 		canMove = true;
+		canShoot = true;
 		time = 0;
 	}
 }

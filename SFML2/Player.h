@@ -41,6 +41,7 @@ class Player
 	bool renderDeath;
 	bool checkDeathFx;
 	bool canMove;
+	bool canShoot;
 
 public:
 	sf::Sprite drawPlayerModel;
@@ -65,4 +66,5 @@ public:
 	void addShootAmmount();		// wywolywana po zebraniu powerup'a
 	void sizeDown();			// wywolywana po zebraniu powerup'a
 	void deathFx();				// wybuch i particle po œmierci
+	void resetStats();			// przywrócenie bazowych statystyk
 };
