@@ -12,6 +12,7 @@ Game::Game()
 	BasicEnemy::loadSound();
 	PowerUp::loadSound();
 	GameVersion::create();
+	Music::playMusic();
 }
 
 void Game::exit()
