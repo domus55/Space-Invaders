@@ -6,9 +6,18 @@ Game::Game()
 	Window::window.create(sf::VideoMode(1600, 900, 32), "Space Invaders");
 	Window::window.clear(sf::Color(0, 0, 0));
 	Window::window.display();
-	Background::create();
-	LevelManager::create();
-	Explosion::loadAnimation();
+
+	std::thread t1(Background::create);
+	std::thread t2(LevelManager::create);
+	std::thread t3(Explosion::loadAnimation);
+	
+	t1.join();
+	t2.join();
+	t3.detach();
+
+	//Background::create();
+	//LevelManager::create();
+	//Explosion::loadAnimation();
 }
 
 void Game::exit()
