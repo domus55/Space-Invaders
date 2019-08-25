@@ -75,7 +75,7 @@ void Player::update()
 
 void Player::resetStats()
 {
-	shootSpeed = 1;
+	shootSpeed = 4;
 	shootDuration = 300;
 	speed = 0.5;
 	hp = 6;

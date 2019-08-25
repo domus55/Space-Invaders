@@ -7,6 +7,7 @@
 #include "EnemyMedium.h"
 #include "BossBrown.h"
 #include "EnemyTank.h"
+#include "EnemyFast.h"
 
 class LevelManager {
 public:
