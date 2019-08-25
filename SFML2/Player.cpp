@@ -76,7 +76,7 @@ void Player::resetStats()
 	shootDuration = 300;
 	speed = 0.5;
 	hp = 6;
-	shootAmmount = 1;
+	shootAmmount = 6;
 	hitbox2PosY = 35;
 	drawPlayerModel.setScale(0.2, 0.2);
 	hitbox1.setScale(0.45, 0.9);
@@ -125,10 +125,10 @@ void Player::playerShoot()
 		}	break;
 		case 4:
 		{
-			Shoot::create(pos.x - 40, pos.y + 15, -shootSpeed / 3, -shootSpeed, true, 1, 0.8);
+			Shoot::create(pos.x - 40, pos.y + 15, -shootSpeed / 6, -shootSpeed, true, 1, 0.8);
 			Shoot::create(pos.x - 25, pos.y - 40, 0, -shootSpeed, true, 1, 0.8);
 			Shoot::create(pos.x + 25, pos.y - 40, 0, -shootSpeed, true, 1, 0.8);
-			Shoot::create(pos.x + 40, pos.y + 15, shootSpeed / 3, -shootSpeed, true, 1, 0.8);
+			Shoot::create(pos.x + 40, pos.y + 15, shootSpeed / 6, -shootSpeed, true, 1, 0.8);
 		}	break;
 		case 5:
 		{
@@ -137,8 +137,63 @@ void Player::playerShoot()
 			Shoot::create(pos.x, pos.y - 40, 0, -shootSpeed, true, 1, 0.8);
 			Shoot::create(pos.x + 25, pos.y - 40, shootSpeed / 10, -shootSpeed, true, 1, 0.8);
 			Shoot::create(pos.x + 40, pos.y + 15, shootSpeed / 3, -shootSpeed, true, 1, 0.8);
-		}
-		case 6: shootAmmount = 5;
+		}	break;
+		case 6:
+		{
+			Shoot::create(pos.x - 50, pos.y - 40, -shootSpeed / 4, -shootSpeed, true, 1, 0.7);
+			Shoot::create(pos.x - 30, pos.y - 40, -shootSpeed / 6, -shootSpeed, true, 1, 0.7);
+			Shoot::create(pos.x - 10, pos.y - 40, -shootSpeed / 10, -shootSpeed, true, 1, 0.7);
+			Shoot::create(pos.x + 10, pos.y - 40, shootSpeed / 10, -shootSpeed, true, 1, 0.7);
+			Shoot::create(pos.x + 30, pos.y - 40, shootSpeed / 6, -shootSpeed, true, 1, 0.7);
+			Shoot::create(pos.x + 50, pos.y - 40, shootSpeed / 4, -shootSpeed, true, 1, 0.7);
+		}	break;
+		case 7:
+		{
+			Shoot::create(pos.x - 40, pos.y - 10, -shootSpeed / 4, -shootSpeed * 1.1, true, 1, 0.6);
+			Shoot::create(pos.x - 30, pos.y - 20, -shootSpeed / 6, -shootSpeed * 1.2, true, 1, 0.6);
+			Shoot::create(pos.x - 20, pos.y - 30, -shootSpeed / 10, -shootSpeed * 1.3, true, 1, 0.6);
+			Shoot::create(pos.x, pos.y - 50, 0, -shootSpeed / 1.1, true, 1, 1);
+			Shoot::create(pos.x + 20, pos.y - 30, shootSpeed / 10, -shootSpeed * 1.3, true, 1, 0.6);
+			Shoot::create(pos.x + 30, pos.y - 20, shootSpeed / 6, -shootSpeed * 1.2, true, 1, 0.6);
+			Shoot::create(pos.x + 40, pos.y - 10, shootSpeed / 4, -shootSpeed * 1.1, true, 1, 0.6);
+		}	break;
+		case 8:
+		{
+			Shoot::create(pos.x - 50, pos.y, -shootSpeed / 3, -shootSpeed, true, 1, 0.5);
+			Shoot::create(pos.x - 40, pos.y - 10, -shootSpeed / 4, -shootSpeed * 1.1, true, 1, 0.5);
+			Shoot::create(pos.x - 30, pos.y - 20, -shootSpeed / 6, -shootSpeed * 1.2, true, 1, 0.5);
+			Shoot::create(pos.x - 20, pos.y - 30, -shootSpeed / 10, -shootSpeed * 1.3, true, 1, 0.5);
+			Shoot::create(pos.x + 20, pos.y - 30, shootSpeed / 10, -shootSpeed * 1.3, true, 1, 0.5);
+			Shoot::create(pos.x + 30, pos.y - 20, shootSpeed / 6, -shootSpeed * 1.2, true, 1, 0.5);
+			Shoot::create(pos.x + 40, pos.y - 10, shootSpeed / 4, -shootSpeed * 1.1, true, 1, 0.5);
+			Shoot::create(pos.x + 50, pos.y, shootSpeed / 3, -shootSpeed, true, 1, 0.5);
+		}	break;
+		case 9:
+		{
+			Shoot::create(pos.x - 50, pos.y - 10, -shootSpeed / 3, -shootSpeed * 1, true, 1, 0.45);
+			Shoot::create(pos.x - 40, pos.y - 20, -shootSpeed / 4, -shootSpeed * 1.1, true, 1, 0.45);
+			Shoot::create(pos.x - 30, pos.y - 30, -shootSpeed / 6, -shootSpeed * 1.2, true, 1, 0.45);
+			Shoot::create(pos.x - 20, pos.y - 40, -shootSpeed / 10, -shootSpeed * 1.3, true, 1, 0.45);
+			Shoot::create(pos.x, pos.y - 50, 0, -shootSpeed * 1.4, true, 1, 0.45);
+			Shoot::create(pos.x + 20, pos.y - 40, shootSpeed / 10, -shootSpeed * 1.3, true, 1, 0.45);
+			Shoot::create(pos.x + 30, pos.y - 30, shootSpeed / 6, -shootSpeed * 1.2, true, 1, 0.45);
+			Shoot::create(pos.x + 40, pos.y - 20, shootSpeed / 4, -shootSpeed * 1.1, true, 1, 0.45);
+			Shoot::create(pos.x + 50, pos.y - 10, shootSpeed / 3, -shootSpeed * 1, true, 1, 0.45);
+		}	break;
+		case 10:
+		{
+			Shoot::create(pos.x - 60, pos.y + 10, -shootSpeed / 2.5, -shootSpeed * 0.9, true, 1, 0.4);
+			Shoot::create(pos.x - 50, pos.y - 0, -shootSpeed / 3, -shootSpeed * 1, true, 1, 0.4);
+			Shoot::create(pos.x - 40, pos.y - 10, -shootSpeed / 4, -shootSpeed * 1.1, true, 1, 0.4);
+			Shoot::create(pos.x - 30, pos.y - 20, -shootSpeed / 6, -shootSpeed * 1.2, true, 1, 0.4);
+			Shoot::create(pos.x - 20, pos.y - 30, -shootSpeed / 10, -shootSpeed * 1.3, true, 1, 0.4);
+			Shoot::create(pos.x + 20, pos.y - 30, shootSpeed / 10, -shootSpeed * 1.3, true, 1, 0.4);
+			Shoot::create(pos.x + 30, pos.y - 20, shootSpeed / 6, -shootSpeed * 1.2, true, 1, 0.4);
+			Shoot::create(pos.x + 40, pos.y - 10, shootSpeed / 4, -shootSpeed * 1.1, true, 1, 0.4);
+			Shoot::create(pos.x + 50, pos.y - 0, shootSpeed / 3, -shootSpeed * 1, true, 1, 0.4);
+			Shoot::create(pos.x + 60, pos.y + 10, shootSpeed / 2.5, -shootSpeed * 0.9, true, 1, 0.4);
+		}	break;
+		case 11: shootAmmount = 10;
 		}
 		myDeltaTime = 0;
 	}
