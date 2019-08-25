@@ -15,9 +15,10 @@ Game::Game()
 	t2.join();
 	t3.detach();
 
-	//Background::create();
-	//LevelManager::create();
-	//Explosion::loadAnimation();
+	BasicEnemy::loadSound();
+	PowerUp::loadSound();
+	GameVersion::create();
+	Music::playMusic();
 }
 
 void Game::exit()
@@ -56,6 +57,7 @@ void Game::output()
 	PowerUp::renderAll();
 	Explosion::renderAll();
 	LevelManager::render();
+	GameVersion::render();
 	Window::window.display();
 }
 

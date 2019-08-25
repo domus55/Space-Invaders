@@ -17,6 +17,7 @@ public:
 	static void create(float posX, float posY, std::string name);
 	static void updateAll();
 	static void renderAll();
+	static void loadSound(); // Wczytywanie dŸwiêku podniesienia PowerUp'a
 
 private:
 	bool destroy;		//jezeli tak, to jest uruchamiana animacja znikania
@@ -24,7 +25,8 @@ private:
 	sf::Sprite sprite;
 	sf::Texture texture;
 	std::string name;
-	sf::Music powerUpSound;
+	sf::Sound powerUpSound;
+	static sf::SoundBuffer powerUpSoundBuffer;
 
 	void update(int powerUpNumber);
 	void render();

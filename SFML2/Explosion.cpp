@@ -15,14 +15,14 @@ Explosion::Explosion(float x, float y, float scale, float timeScale)
 	animationObject = Animation::addObject(animation, 15 * timeScale);
 	destroyed = false;
 	sound.setBuffer(soundBuffer);
-	sound.setVolume(30);
+	sound.setVolume(25);
 	sound.play();
 	deltaTime = 0;
 }
 
 void Explosion::loadAnimation()
 {
-	soundBuffer.loadFromFile("Sounds/explosion.wav");
+	soundBuffer.loadFromFile("Sounds/explosion.ogg");
 
 	animation = Animation::addAnimation();
 

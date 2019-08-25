@@ -17,7 +17,8 @@
 #include "PowerUp.h"
 #include "BasicEnemy.h"
 #include "EnemyEasy.h"
-
+#include "GameVersion.h"
+#include "Music.h"
 
 class Game
 {

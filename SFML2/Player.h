@@ -30,14 +30,18 @@ class Player
 	sf::Texture heart;
 	sf::Texture halfHeart;
 	sf::Texture emptyHeart;
-	sf::Music playerShootSound;
-	sf::Music playerDeathSound;
+	sf::Sound playerShootSound;
+	sf::Sound playerDeathSound;
+	sf::SoundBuffer playerShootSoundBuffer;
+	sf::SoundBuffer playerDeathSoundBuffer;
 	static sf::Font font;
 	static sf::Text text;
+	bool shooted;
 	bool deathDelay;
 	bool renderDeath;
 	bool checkDeathFx;
 	bool canMove;
+	bool canShoot;
 
 public:
 	sf::Sprite drawPlayerModel;
@@ -53,6 +57,7 @@ public:
 	void playerShoot();			// strzal gracza
 	void checkCollision();		// kolizja
 	void playerHp();			// ¿ycie gracza
+	void playerShooted();		// postrzelony gracz
 	void playerDeath();			// œmieræ gracza
 	void playerDeathTime();		// dzia³ania w okresie trwania œmierci
 	void addHp();				// wywolywana po zebraniu serduszka
@@ -61,4 +66,5 @@ public:
 	void addShootAmmount();		// wywolywana po zebraniu powerup'a
 	void sizeDown();			// wywolywana po zebraniu powerup'a
 	void deathFx();				// wybuch i particle po œmierci
+	void resetStats();			// przywrócenie bazowych statystyk
 };

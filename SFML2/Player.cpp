@@ -7,23 +7,20 @@ sf::Font Player::font;
 
 Player::Player()
 {
-	shootSpeed = 5;
-	shootDuration = 300;
-	speed = 0.5;
-	hp = 6;
+	shooted = false;
 	deathDelay = false;
 	renderDeath = false;
 	checkDeathFx = false;
 	canMove = true;
-	shootAmmount = 1;
-	hitbox2PosY = 35;
+	canShoot = true;
+
+	resetStats();
 
 	playerModel.loadFromFile("Images/spaceship.png");
 	drawPlayerModel.setTexture(playerModel);
 	drawPlayerModel.setPosition(1600 / 2, 800);
 	sf::Vector2u size = playerModel.getSize();
 	drawPlayerModel.setOrigin(size.x / 2, size.y / 2);
-	drawPlayerModel.setScale(0.2, 0.2);
 
 	heart.loadFromFile("Images/heart.png");
 	halfHeart.loadFromFile("Images/halfheart.png");
@@ -40,13 +37,14 @@ Player::Player()
 	hitbox2.setTexture(hitboxTexture);
 	sf::Vector2u Hitboxsize = hitboxTexture.getSize();
 	hitbox1.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
-	hitbox1.setScale(0.45, 0.9);
 
 	hitbox2.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
-	hitbox2.setScale(1.1, 0.2);
 
-	playerShootSound.openFromFile("Sounds/playerShootSound.wav");
-	playerDeathSound.openFromFile("Sounds/playerDeathSound.wav");
+	playerShootSoundBuffer.loadFromFile("Sounds/playerShootSound.wav");
+	playerShootSound.setBuffer(playerShootSoundBuffer);
+
+	playerDeathSoundBuffer.loadFromFile("Sounds/playerDeathSound.wav");
+	playerDeathSound.setBuffer(playerDeathSoundBuffer);
 	playerDeathSound.setPitch(5);
 }
 
@@ -69,6 +67,20 @@ void Player::update()
 	Player::player.checkCollision();
 	if (Player::player.deathDelay == true) Player::player.playerDeathTime();
 	if (Player::player.checkDeathFx == true) Player::player.deathFx();
+	if (Player::player.shooted == true) Player::player.playerShooted();
+}
+
+void Player::resetStats()
+{
+	shootSpeed = 5;
+	shootDuration = 300;
+	speed = 0.5;
+	hp = 6;
+	shootAmmount = 1;
+	hitbox2PosY = 35;
+	drawPlayerModel.setScale(0.2, 0.2);
+	hitbox1.setScale(0.45, 0.9);
+	hitbox2.setScale(1.1, 0.2);
 }
 
 void Player::playerMove()
@@ -90,12 +102,11 @@ void Player::playerShoot()
 	static int myDeltaTime = 0;
 	myDeltaTime += GameInfo::getDeltaTime();
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && myDeltaTime > shootDuration)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && myDeltaTime > shootDuration && canShoot == true)
 	{
 		playerShootSound.stop();
 		playerShootSound.play();
 		
-
 		sf::Vector2f pos;
 		pos = drawPlayerModel.getPosition();
 		switch (shootAmmount)
@@ -141,23 +152,29 @@ void Player::checkCollision()
 	{
 		if (Shoot::shoot[i]->playerShoot == false && (Collider::checkCollision(hitbox1, Shoot::shoot[i]->sprite) || Collider::checkCollision(hitbox2, Shoot::shoot[i]->sprite)))
 		{
-			hp -= Shoot::shoot[i]->getDmg();
 			Shoot::shoot.erase(Shoot::shoot.begin() + i);
 
-			switch (hp)
+			if (shooted == false)
 			{
-			case 6: drawHeartModel3.setTexture(heart); break;
-			case 5:	drawHeartModel3.setTexture(halfHeart); break;
-			case 4:	drawHeartModel3.setTexture(emptyHeart); break;
-			case 3:	drawHeartModel2.setTexture(halfHeart); break;
-			case 2:	drawHeartModel2.setTexture(emptyHeart); break;
-			case 1:	drawHeartModel1.setTexture(halfHeart); break;
-			case 0: 
-			{
-				drawHeartModel1.setTexture(emptyHeart);
-				playerDeath();
-			}	break;
-			}	
+				hp -= Shoot::shoot[i]->getDmg();
+				Particle::addParticle(drawPlayerModel.getPosition().x, drawPlayerModel.getPosition().y, "BasicEnemy", 5, 0.25);
+				switch (hp)
+				{
+				case 6: drawHeartModel3.setTexture(heart); break;
+				case 5:	drawHeartModel3.setTexture(halfHeart); break;
+				case 4:	drawHeartModel3.setTexture(emptyHeart); break;
+				case 3:	drawHeartModel2.setTexture(halfHeart); break;
+				case 2:	drawHeartModel2.setTexture(emptyHeart); break;
+				case 1:	drawHeartModel1.setTexture(halfHeart); break;
+				case 0:
+				{
+					drawHeartModel1.setTexture(emptyHeart);
+					playerDeath();
+				}	break;
+				}
+
+			}
+			shooted = true;
 		}
 	}
 }
@@ -169,8 +186,28 @@ void Player::playerHp()
 	drawHeartModel3.setPosition(180, 10);
 }
 
+void Player::playerShooted()
+{
+	static float time = 0;
+	time += GameInfo::getDeltaTime();
+
+	if (time < 333) drawPlayerModel.setColor(sf::Color(255, 255, 255, 0));
+	if (time > 333 && time < 666) drawPlayerModel.setColor(sf::Color(255, 255, 255, 255));
+	if (time > 666 && time < 999) drawPlayerModel.setColor(sf::Color(255, 255, 255, 0));
+
+	if (time > 1000)
+	{
+		drawPlayerModel.setColor(sf::Color(255, 255, 255, 255));
+		shooted = false;
+		time = 0;
+	}
+}
+
 void Player::playerDeath()
 {
+	Shoot::shoot.clear();
+	resetStats();
+	drawPlayerModel.setPosition(1600 / 2, 800);
 	font.loadFromFile("Images/arial.ttf");
 	text.setFont(font);
 	text.setCharacterSize(100);
@@ -195,12 +232,11 @@ void Player::playerDeath()
 	deathDelay = true;
 	checkDeathFx = true;
 	canMove = false;
+	canShoot = false;
 }
 
 void Player::playerDeathTime()
 {
-	//static void addParticle(float a, float h, std::string name, int ammount, float speed);
-
 	static float time = 0;
 	time += GameInfo::getDeltaTime();
 	drawPlayerModel.setColor(sf::Color(255, 255, 255, 0));
@@ -219,6 +255,7 @@ void Player::playerDeathTime()
 		Shoot::shoot.clear();
 		deathDelay = false;
 		canMove = true;
+		canShoot = true;
 		time = 0;
 	}
 }

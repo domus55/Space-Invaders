@@ -1,7 +1,7 @@
 #include "PowerUp.h"
 
 std::vector < std::shared_ptr <PowerUp> > PowerUp::powerUp;
-
+sf::SoundBuffer PowerUp::powerUpSoundBuffer;
 
 PowerUp::PowerUp(sf::Vector2f pos, std::string name)
 {
@@ -21,7 +21,7 @@ PowerUp::PowerUp(sf::Vector2f pos, std::string name)
 	sprite.setPosition(pos.x, pos.y);
 	sprite.setScale(0.3, 0.3);
 
-	powerUpSound.openFromFile("Sounds/powerUp.wav");
+	powerUpSound.setBuffer(powerUpSoundBuffer);
 }
 
 void PowerUp::create(sf::Vector2f pos, std::string name)
@@ -85,6 +85,11 @@ void PowerUp::disappear(int powerUpNumber)
 
 	if (color <= 0) sprite.setColor(sf::Color(255, 255, 255, 0));
 	if (color < -2500) powerUp.erase(powerUp.begin() + powerUpNumber);
+}
+
+void PowerUp::loadSound()
+{
+	powerUpSoundBuffer.loadFromFile("Sounds/powerUp.wav");
 }
 
 
