@@ -21,10 +21,12 @@ public:
 
 protected:
 	sf::Vector2f size;		//szerokosc i wysokosc statku w pikselach
+	std::string particleName;	//nazwa partila tworzonego po trafieniu
 	float hp;				//iloœæ ¿ycia
 	float speed;			//prêdkoœæ przeciwnika
 	float shootSpeed;		//prêdkoœæ strza³u
 	float shootScale;		//okresla wielkosc strzalu
+	int particleAmmount;		//ilosc particli tworzonych po trafieniu
 	int shootDelay;			//odstêp miêdzy strza³ami w milisekundach
 	int randShootDelay;		//gdy jest równy 0, wszystkie statki strzalaj¹ jednoczeœnie, czym wiêkszy, tym bardziej losowo bêd¹ strzelaæ
 	int myDeltaTime;		//zmienna wykorzystywana, aby strzaly byly stworzone w odpowiednim odstepie, nie tykac

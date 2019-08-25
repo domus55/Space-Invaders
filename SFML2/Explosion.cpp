@@ -4,7 +4,7 @@ int Explosion::animation = -1;
 std::vector < std::shared_ptr <Explosion> > Explosion::explosion;
 sf::SoundBuffer Explosion::soundBuffer;
 
-Explosion::Explosion(float x, float y, float scale, float timeScale)
+Explosion::Explosion(float x, float y, float scale, float timeScale, int timeDelay)
 {
 	texture.loadFromFile("Images/explosion/explosion1.png");
 	sprite.setTexture(texture);
@@ -18,6 +18,7 @@ Explosion::Explosion(float x, float y, float scale, float timeScale)
 	sound.setVolume(25);
 	sound.play();
 	deltaTime = 0;
+	this->timeDelay = timeDelay;
 }
 
 void Explosion::loadAnimation()
@@ -55,14 +56,14 @@ void Explosion::loadAnimation()
 	Animation::addImage(animation, "Images/explosion/explosion1.png");
 }
 
-void Explosion::create(sf::Vector2f position, float scale, float timeScale)
+void Explosion::create(sf::Vector2f position, float scale, float timeScale, int timeDelay)
 {
-	Explosion::explosion.push_back(std::make_shared <Explosion>(position.x, position.y, scale, timeScale));
+	Explosion::explosion.push_back(std::make_shared <Explosion>(position.x, position.y, scale, timeScale, timeDelay));
 }
 
-void Explosion::create(float x, float y, float scale, float timeScale)
+void Explosion::create(float x, float y, float scale, float timeScale, int timeDelay)
 {
-	Explosion::explosion.push_back(std::make_shared <Explosion>(x, y, scale, timeScale));
+	Explosion::explosion.push_back(std::make_shared <Explosion>(x, y, scale, timeScale, timeDelay));
 }
 
 void Explosion::renderAll()
@@ -75,19 +76,26 @@ void Explosion::renderAll()
 
 void Explosion::render(int explosionNumber)
 {
-	if (destroyed)
+	timeDelay -= GameInfo::getDeltaTime();
+
+	if(timeDelay <= 0)
 	{
-		deltaTime += GameInfo::getDeltaTime();
-		if(deltaTime > 5000) Explosion::explosion.erase(Explosion::explosion.begin() + explosionNumber);
-	}
-	else
-	{
-		Animation::animation[animationObject]->render(&sprite);
-		if (Animation::animation[animationObject]->licznik2 == 26)
+		if (destroyed)
 		{
-			Animation::animation[animationObject]->licznik2 = 0;
-			destroyed = true;
+			deltaTime += GameInfo::getDeltaTime();
+			if (deltaTime > 5000) Explosion::explosion.erase(Explosion::explosion.begin() + explosionNumber);
+		}
+		else
+		{
+			Animation::animation[animationObject]->render(&sprite);
+			if (Animation::animation[animationObject]->licznik2 == 26)
+			{
+				Animation::animation[animationObject]->licznik2 = 0;
+				destroyed = true;
+			}
 		}
 	}
+
+	
 	
 }

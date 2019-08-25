@@ -1,6 +1,6 @@
 #include "LevelManager.h"
 
-int LevelManager::actualLevel = 0;
+int LevelManager::actualLevel = 10;
 bool LevelManager::animation = false;
 sf::Text LevelManager::text;
 sf::Font LevelManager::font;
@@ -71,6 +71,16 @@ void LevelManager::nextLevel()
 	case 8: level8(); break;
 	case 9: level9(); break;
 	case 10: level10(); break;
+	case 11: level11(); break;
+	case 12: level12(); break;
+	case 13: level13(); break;
+	case 14: level14(); break;
+	case 15: level15(); break;
+	case 16: level16(); break;
+	case 17: level17(); break;
+	case 18: level18(); break;
+	case 19: level19(); break;
+	case 20: level20(); break;
 	}
 }
 
@@ -181,3 +191,46 @@ void LevelManager::level10()
 	BossBrown::create(800, -200);
 }
 
+void LevelManager::level11()
+{
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyTank::create(i * 300 + 500, 200, i + 1);
+	}
+}
+
+void LevelManager::level12()
+{
+}
+
+void LevelManager::level13()
+{
+}
+
+void LevelManager::level14()
+{
+}
+
+void LevelManager::level15()
+{
+}
+
+void LevelManager::level16()
+{
+}
+
+void LevelManager::level17()
+{
+}
+
+void LevelManager::level18()
+{
+}
+
+void LevelManager::level19()
+{
+}
+
+void LevelManager::level20()
+{
+}

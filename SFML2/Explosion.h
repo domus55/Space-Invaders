@@ -16,14 +16,15 @@ class Explosion
 	sf::Sound sound;
 	bool destroyed;
 	int deltaTime;
+	int timeDelay;	//odstêp po jakim eksplozja sie zacznie
 	
 public:
 	static std::vector < std::shared_ptr <Explosion> > explosion;
 
-	Explosion(float x, float y, float scale = 1, float timeScale = 1);
+	Explosion(float x, float y, float scale = 1, float timeScale = 1, int timeDelay = 0);
 	static void loadAnimation();
-	static void create(sf::Vector2f position, float scale = 1, float timeScale = 1);
-	static void create(float x, float y, float scale = 1, float timeScale = 1);
+	static void create(sf::Vector2f position, float scale = 1, float timeScale = 1, int timeDelay = 0);
+	static void create(float x, float y, float scale = 1, float timeScale = 1, int timeDelay = 0);
 	static void renderAll();
 	void render(int explosionNumber);
 };

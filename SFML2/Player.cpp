@@ -75,11 +75,11 @@ void Player::update()
 
 void Player::resetStats()
 {
-	shootSpeed = 1;
+	shootSpeed = 5;
 	shootDuration = 300;
 	speed = 0.5;
 	hp = 6;
-	shootAmmount = 6;
+	shootAmmount = 1;
 	hitbox2PosY = 35;
 	drawPlayerModel.setScale(0.2, 0.2);
 	hitbox1.setScale(0.45, 0.9);
@@ -359,7 +359,7 @@ void Player::addShootDelay()
 	static bool firstTime = true;
 	if (firstTime)
 	{
-		shootDuration *= 0.6;
+		shootDuration *= 0.7;
 		firstTime = false;
 	}
 	shootDuration *= 0.9;
@@ -370,7 +370,7 @@ void Player::addShootSpeed()
 	static bool firstTime = true;
 	if (firstTime)
 	{
-		shootSpeed *= 2;
+		shootSpeed *= 1.5;
 		firstTime = false;
 	}
 	shootSpeed *= 1.1;

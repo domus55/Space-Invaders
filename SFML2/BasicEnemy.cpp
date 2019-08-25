@@ -2,7 +2,7 @@
 #include "PowerUp.h"
 
 std::vector < std::shared_ptr <BasicEnemy> > BasicEnemy::enemy;
-bool BasicEnemy::renderHitbox = true;
+bool BasicEnemy::renderHitbox = false;
 sf::SoundBuffer BasicEnemy::enemyHitSoundBuffer;
 
 BasicEnemy::BasicEnemy(int id)
@@ -17,6 +17,8 @@ BasicEnemy::BasicEnemy(int id)
 	shootScale = 1;
 	timeToDeath = 0;
 	deathDeltaTime = 300;
+	particleName = "BasicEnemy";
+	particleAmmount = 15;
 
 	this->id = id;
 
@@ -246,15 +248,15 @@ void BasicEnemy::destroy()
 
 void BasicEnemy::createLeftParticle()
 {
-	Particle::addParticle(sprite.getPosition().x + hitbox1pos.x, sprite.getPosition().y + hitbox1pos.y, "BasicEnemy", 15, 0.5);
+	Particle::addParticle(sprite.getPosition().x + hitbox1pos.x, sprite.getPosition().y + hitbox1pos.y, particleName, particleAmmount, 0.5);
 }
 
 void BasicEnemy::createMiddleParticle()
 {
-	Particle::addParticle(sprite.getPosition().x + hitbox2pos.x, sprite.getPosition().y + hitbox2pos.y, "BasicEnemy", 15, 0.5);
+	Particle::addParticle(sprite.getPosition().x + hitbox2pos.x, sprite.getPosition().y + hitbox2pos.y, particleName, particleAmmount, 0.5);
 }
 
 void BasicEnemy::createRightParticle()
 {
-	Particle::addParticle(sprite.getPosition().x + hitbox3pos.x, sprite.getPosition().y + hitbox3pos.y, "BasicEnemy", 15, 0.5);
+	Particle::addParticle(sprite.getPosition().x + hitbox3pos.x, sprite.getPosition().y + hitbox3pos.y, particleName, particleAmmount, 0.5);
 }

@@ -6,6 +6,7 @@ std::vector < std::shared_ptr <Particle> > Particle::particle;
 Particle::Particle(float a, float h, std::string name, float speed)
 {
 	if (name == "BasicEnemy") teksture.loadFromFile("Images/Particles/BasicEnemy.png");
+	if (name == "EnemyTank") teksture.loadFromFile("Images/Particles/EnemyTank.png");
 
 	static bool firstTime = true;
 	if (firstTime)

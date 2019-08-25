@@ -9,7 +9,7 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 		shootSpeed = 1;
 		randShootDelay = 2000;
 
-		sprite.setScale(0.45, 0.45);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
+		sprite.setScale(0.45, 0.45);
 
 		hitbox1.setScale(0.5, 0.3);
 		hitbox1pos.x = -60;
@@ -51,7 +51,7 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 		shootSpeed = 1.5;
 		randShootDelay = 0;
 
-		sprite.setScale(0.25, 0.25);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
+		sprite.setScale(0.25, 0.25);
 
 		hitbox1.setScale(0.3, 0.15);
 		hitbox1pos.x = -25;
@@ -71,8 +71,8 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 	shootType = 2;
 	shootScale = 1;
 							
-	texture.loadFromFile("Images/EnemyEasy.png");		//³aduje teksture
-	sprite.setTexture(texture);							//ustawia teksture sprajtu
+	texture.loadFromFile("Images/EnemyEasy.png");
+	sprite.setTexture(texture);					
 	
 	sf::Vector2u size = texture.getSize();
 
