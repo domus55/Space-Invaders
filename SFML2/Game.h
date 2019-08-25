@@ -4,6 +4,7 @@
 #include <time.h>
 #include <windows.h>
 #include <iostream>
+#include <thread>
 #include "Window.h"
 #include "Background.h"
 #include "GameInfo.h"
