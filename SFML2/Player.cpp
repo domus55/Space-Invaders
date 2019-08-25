@@ -79,7 +79,7 @@ void Player::resetStats()
 	shootDuration = 300;
 	speed = 0.5;
 	hp = 6;
-	shootAmmount = 1;
+	shootAmmount = 6;
 	hitbox2PosY = 35;
 	drawPlayerModel.setScale(0.2, 0.2);
 	hitbox1.setScale(0.45, 0.9);
