@@ -1,7 +1,7 @@
 #include "Player.h"
 
 Player Player::player;
-bool Player::renderHitbox = true;
+bool Player::renderHitbox = false;
 sf::Text Player::text;
 sf::Font Player::font;
 
@@ -138,6 +138,7 @@ void Player::playerShoot()
 			Shoot::create(pos.x + 25, pos.y - 40, shootSpeed / 10, -shootSpeed, true, 1, 0.8);
 			Shoot::create(pos.x + 40, pos.y + 15, shootSpeed / 3, -shootSpeed, true, 1, 0.8);
 		}
+		case 6: shootAmmount = 5;
 		}
 		myDeltaTime = 0;
 	}
