@@ -13,10 +13,12 @@ Player::Player()
 	checkDeathFx = false;
 	canMove = true;
 	canShoot = true;
+	light = false;
 
 	resetStats();
 
 	playerModel.loadFromFile("Images/spaceship.png");
+	playerModelLighted.loadFromFile("Images/spaceshipLighted.png");
 	drawPlayerModel.setTexture(playerModel);
 	drawPlayerModel.setPosition(1600 / 2, 800);
 	sf::Vector2u size = playerModel.getSize();
@@ -68,6 +70,7 @@ void Player::update()
 	if (Player::player.deathDelay == true) Player::player.playerDeathTime();
 	if (Player::player.checkDeathFx == true) Player::player.deathFx();
 	if (Player::player.shooted == true) Player::player.playerShooted();
+	if (Player::player.light == true) Player::player.playerLighted();
 }
 
 void Player::resetStats()
@@ -81,6 +84,21 @@ void Player::resetStats()
 	drawPlayerModel.setScale(0.2, 0.2);
 	hitbox1.setScale(0.45, 0.9);
 	hitbox2.setScale(1.1, 0.2);
+}
+
+void Player::playerLighted()
+{
+	static int time = 0;
+	time += GameInfo::getDeltaTime();
+
+	drawPlayerModel.setTexture(playerModelLighted);
+
+	if (time > 200)
+	{
+		drawPlayerModel.setTexture(playerModel);
+		light = false;
+		time = 0;
+	}
 }
 
 void Player::playerMove()
@@ -102,13 +120,18 @@ void Player::playerShoot()
 	static int myDeltaTime = 0;
 	myDeltaTime += GameInfo::getDeltaTime();
 
+	if (shootAmmount > 10) shootAmmount = 10;
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && myDeltaTime > shootDuration && canShoot == true)
 	{
 		playerShootSound.stop();
 		playerShootSound.play();
 		
+		light = true;
+
 		sf::Vector2f pos;
 		pos = drawPlayerModel.getPosition();
+
 		switch (shootAmmount)
 		{
 		case 1: Shoot::create(pos.x, pos.y, 0, -shootSpeed, true, 1, 1); break;
@@ -193,7 +216,6 @@ void Player::playerShoot()
 			Shoot::create(pos.x + 50, pos.y - 0, shootSpeed / 3, -shootSpeed * 1, true, 1, 0.4);
 			Shoot::create(pos.x + 60, pos.y + 10, shootSpeed / 2.5, -shootSpeed * 0.9, true, 1, 0.4);
 		}	break;
-		case 11: shootAmmount = 10;
 		}
 		myDeltaTime = 0;
 	}

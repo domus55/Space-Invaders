@@ -24,6 +24,7 @@ class Player
 	float hitbox2PosY;
 	static bool renderHitbox;
 	sf::Texture playerModel;
+	sf::Texture playerModelLighted;
 	sf::Texture hitboxTexture;
 	sf::Sprite hitbox1;
 	sf::Sprite hitbox2;
@@ -42,6 +43,7 @@ class Player
 	bool checkDeathFx;
 	bool canMove;
 	bool canShoot;
+	bool light;
 
 public:
 	sf::Sprite drawPlayerModel;
@@ -67,4 +69,5 @@ public:
 	void sizeDown();			// wywolywana po zebraniu powerup'a
 	void deathFx();				// wybuch i particle po œmierci
 	void resetStats();			// przywrócenie bazowych statystyk
+	void playerLighted();		// oœwietlenie statku
 };

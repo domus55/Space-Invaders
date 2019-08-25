@@ -2,7 +2,7 @@
 #include "PowerUp.h"
 
 std::vector < std::shared_ptr <BasicEnemy> > BasicEnemy::enemy;
-bool BasicEnemy::renderHitbox = false;
+bool BasicEnemy::renderHitbox = true;
 sf::SoundBuffer BasicEnemy::enemyHitSoundBuffer;
 
 BasicEnemy::BasicEnemy(int id)
