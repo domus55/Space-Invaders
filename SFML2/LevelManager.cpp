@@ -81,6 +81,16 @@ void LevelManager::nextLevel()
 	case 18: level18(); break;
 	case 19: level19(); break;
 	case 20: level20(); break;
+	case 21: level21(); break;
+	case 22: level22(); break;
+	case 23: level23(); break;
+	case 24: level24(); break;
+	case 25: level25(); break;
+	case 26: level26(); break;
+	case 27: level27(); break;
+	case 28: level28(); break;
+	case 29: level29(); break;
+	case 30: level30(); break;
 	}
 }
 
@@ -195,42 +205,209 @@ void LevelManager::level11()
 {
 	for (int i = 0; i < 3; i++)
 	{
-		EnemyTank::create(i * 300 + 500, 200, i + 1);
+		EnemyTank::create(i * 300 + 500, -200, 1, 0);
 	}
 }
 
 void LevelManager::level12()
 {
+	EnemyTank::create(-500, 400, 1, 0);
+	EnemyTank::create(-200, 400, 1, 0);
+	EnemyTank::create(1800, 400, 1, 1);
+	EnemyTank::create(2100, 400, 1, 1);
+
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyEasy::create(i * 250 + 175, -450, 1, 2);
+	}
 }
 
 void LevelManager::level13()
 {
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyEasy::create(-i * 200 - 200, 100, 3, 0);
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyEasy::create(i * 200 + 1800, 200, 3, 1);
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyEasy::create(-i * 200 - 200, 300, 3, 0);
+	}
 }
 
 void LevelManager::level14()
 {
+	EnemyMedium::create(-500, 400, 1, 0);
+	EnemyMedium::create(-200, 400, 1, 0);
+	EnemyMedium::create(1800, 400, 1, 1);
+	EnemyMedium::create(2100, 400, 1, 1);
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyFast::create(i * 300 + 500, -1000, 1, 2);
+	}
 }
 
 void LevelManager::level15()
 {
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyFast::create(i * 200 + 500, -1000, 3, 0);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyMedium::create(-i * 250 - 200, 250, 3, 1);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyMedium::create(i * 250 + 1800, 250, 3, 2);
+	}
 }
 
 void LevelManager::level16()
 {
+	for (int i = 0; i < 2; i++)
+	{
+		EnemyEasy::create(i * 600 + 475, -575, 3, 1);
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyMedium::create(i * 300 + 325, -300, 2, 0);
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyTank::create(i * 300 + 325, -100, 1, 0);
+	}
 }
 
 void LevelManager::level17()
 {
+	EnemyMedium::create(-500, 400, 2, 0);
+	EnemyMedium::create(-200, 400, 2, 0);
+	EnemyMedium::create(1800, 400, 2, 1);
+	EnemyMedium::create(2100, 400, 2, 1);
+
+	for (int i = 0; i < 5; i++)
+	{
+		EnemyFast::create(i * 300 + 200, -500, 1, 2);
+	}
 }
 
 void LevelManager::level18()
 {
+	EnemyTank::create(-500, 400, 2, 0);
+	EnemyTank::create(-200, 400, 1, 0);
+	EnemyTank::create(1800, 400, 1, 1);
+	EnemyTank::create(2100, 400, 2, 1);
+
+	for (int i = 0; i < 8; i++)
+	{
+		EnemyEasy::create(i * 180 + 175, -450, 3, 2);
+	}
 }
 
 void LevelManager::level19()
 {
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyFast::create(i * 200 + 500, -1000, 3, 0);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyMedium::create(-i * 250 - 200, 250, 3, 1);
+	}
+
+	for (int i = 0; i < 2; i++)
+	{
+		EnemyTank::create(-i * 400 - 200, 500, 3, 2);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyMedium::create(i * 250 + 1800, 250, 3, 3);
+	}
+
+	for (int i = 0; i < 2; i++)
+	{
+		EnemyTank::create(i * 400 + 1800, 500, 3, 4);
+	}
 }
 
 void LevelManager::level20()
+{
+}
+
+void LevelManager::level21()
+{
+}
+
+void LevelManager::level22()
+{
+	EnemyMedium::create(-600, 400, 3, 0);
+	EnemyMedium::create(-400, 400, 3, 0);
+	EnemyMedium::create(-200, 400, 3, 0);
+	EnemyMedium::create(1800, 400, 3, 1);
+	EnemyMedium::create(2000, 400, 3, 1);
+	EnemyMedium::create(2200, 400, 3, 1);
+
+	for (int i = 0; i < 5; i++)
+	{
+		EnemyFast::create(i * 300 + 200, -500, 2, 2);
+	}
+}
+
+void LevelManager::level23()
+{
+}
+
+void LevelManager::level24()
+{
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyMedium::create(-i * 200 - 200, 100, 3, 0);
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyMedium::create(i * 200 + 1800, 200, 3, 1);
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyMedium::create(-i * 200 - 200, 300, 3, 0);
+	}
+}
+
+void LevelManager::level25()
+{
+}
+
+void LevelManager::level26()
+{
+}
+
+void LevelManager::level27()
+{
+}
+
+void LevelManager::level28()
+{
+}
+
+void LevelManager::level29()
+{
+}
+
+void LevelManager::level30()
 {
 }

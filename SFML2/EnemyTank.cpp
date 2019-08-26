@@ -5,6 +5,12 @@ EnemyTank::EnemyTank(float x, float y, int level, int id)
 	: BasicEnemy(id)
 {
 	this->level = level;
+	switch (level)
+	{
+	case 1: hp = 10; leftWingHp = 3; rightWingHp = 3; break;
+	case 2: hp = 20; leftWingHp = 6; rightWingHp = 6; break;
+	case 3: hp = 30; leftWingHp = 9; rightWingHp = 9; break;
+	}
 
 	speed = 0.1;
 	shootSpeed = 1;
@@ -24,7 +30,6 @@ EnemyTank::EnemyTank(float x, float y, int level, int id)
 	hitbox3pos.x = 80;
 	hitbox3pos.y = 0;
 
-	hp = 10;
 	shootDelay = 5000;
 	shootType = 2;
 	shootScale = 1.5;
@@ -41,8 +46,6 @@ EnemyTank::EnemyTank(float x, float y, int level, int id)
 	this->size.x = size.x * sprite.getScale().x;
 	this->size.y = size.y * sprite.getScale().y;
 
-	leftWingHp = 3;
-	rightWingHp = 3;
 	deltaTime2 = 0;
 	deltaTime3 = 0;
 }
@@ -124,6 +127,7 @@ void EnemyTank::createLeftParticle()
 
 	if (leftWingHp == 0)
 	{
+		Explosion::create(hitbox1.getPosition(), 0.8, 1);
 		hitbox1pos.x += 80;
 		hitbox1.setScale(0, 0);
 		if(rightWingHp > 0) texture.loadFromFile("Images/Enemies/EnemyTank/brokenLeft.png");
@@ -144,6 +148,7 @@ void EnemyTank::createRightParticle()
 
 	if (rightWingHp == 0)
 	{
+		Explosion::create(hitbox3.getPosition(), 0.8, 1);
 		hitbox3pos.x -= 80;
 		hitbox3.setScale(0, 0);
 		if (leftWingHp > 0) texture.loadFromFile("Images/Enemies/EnemyTank/brokenRight.png");

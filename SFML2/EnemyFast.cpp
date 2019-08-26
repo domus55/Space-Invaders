@@ -3,34 +3,38 @@
 EnemyFast::EnemyFast(float x, float y, int level, int id)
 	: BasicEnemy(id)
 {
-	if (level == 1)
+
+	switch (level)
 	{
-		speed = 0.2;
-		shootSpeed = 2.5;
-		randShootDelay = 2000;
-
-		sprite.setScale(0.45, 0.45);			//ustawia skale sprajta(2 - jest wiêkszy, 0.5 - jest mniejszy)
-
-		hitbox1.setScale(0.3, 0.65);
-		hitbox1pos.x = 0;
-		hitbox1pos.y = 10;
-
-		hitbox2.setScale(0.2, 0.75);
-		hitbox2pos.x = 25;
-		hitbox2pos.y = -5;
-
-		hitbox3.setScale(0.2, 0.75);
-		hitbox3pos.x = -25;
-		hitbox3pos.y = -5;
+	case 1: shootDelay = 3000; break;
+	case 2: shootDelay = 2000; break;
+	case 3: shootDelay = 1000; break;
 	}
 
+	speed = 0.2;
+	shootSpeed = 2.5;
+	randShootDelay = 300;
+
+	sprite.setScale(0.45, 0.45);
+
+	hitbox1.setScale(0.3, 0.65);
+	hitbox1pos.x = 0;
+	hitbox1pos.y = 10;
+
+	hitbox2.setScale(0.2, 0.75);
+	hitbox2pos.x = 25;
+	hitbox2pos.y = -5;
+
+	hitbox3.setScale(0.2, 0.75);
+	hitbox3pos.x = -25;
+	hitbox3pos.y = -5;
+
 	hp = 1;
-	shootDelay = 5000;
 	shootType = 2;
 	shootScale = 0.75;
 
-	texture.loadFromFile("Images/EnemyFast.png");		//³aduje teksture
-	sprite.setTexture(texture);							//ustawia teksture sprajtu
+	texture.loadFromFile("Images/EnemyFast.png");
+	sprite.setTexture(texture);	
 
 	sf::Vector2u size = texture.getSize();
 
