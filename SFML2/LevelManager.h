@@ -42,4 +42,14 @@ private:
 	static void level18();
 	static void level19();
 	static void level20();
+	static void level21();
+	static void level22();
+	static void level23();
+	static void level24();
+	static void level25();
+	static void level26();
+	static void level27();
+	static void level28();
+	static void level29();
+	static void level30();
 };
