@@ -8,6 +8,8 @@
 #include "BossBrown.h"
 #include "EnemyTank.h"
 #include "EnemyFast.h"
+#include "EnemyFidgetSpinner.h"
+#include "EnemyInvisible.h"
 
 class LevelManager {
 public:
