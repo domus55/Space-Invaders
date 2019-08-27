@@ -1,7 +1,7 @@
 #include "Shoot.h"
 
 std::vector < std::shared_ptr <Shoot> > Shoot::shoot;
-bool Shoot::showHitbox = true;
+bool Shoot::showHitbox = false;
 
 Shoot::Shoot(float positionX, float positionY, float speedX, float speedY, bool player, int type, float shootScale)
 {
@@ -125,11 +125,11 @@ void Shoot::update(int shootNumber)
 
 	//sprite.rotate(0.2);
 
-	if (type == 1)
-	{
-		newPos.x = sf::Mouse::getPosition(Window::window).x;
-		newPos.y = sf::Mouse::getPosition(Window::window).y;
-	}
+	//if (type == 1)
+	//{
+	//	newPos.x = sf::Mouse::getPosition(Window::window).x;
+	//	newPos.y = sf::Mouse::getPosition(Window::window).y;
+	//}
 
 	hitbox1.setPosition(newPos);
 	hitbox2.setPosition(newPos);
