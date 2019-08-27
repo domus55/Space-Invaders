@@ -10,6 +10,7 @@
 #include "EnemyFast.h"
 #include "EnemyFidgetSpinner.h"
 #include "EnemyInvisible.h"
+#include "EnemyRocketMan.h"
 
 class LevelManager {
 public:
