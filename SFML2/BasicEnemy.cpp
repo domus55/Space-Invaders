@@ -2,7 +2,7 @@
 #include "PowerUp.h"
 
 std::vector < std::shared_ptr <BasicEnemy> > BasicEnemy::enemy;
-bool BasicEnemy::renderHitbox = false;
+bool BasicEnemy::renderHitbox = true;
 sf::SoundBuffer BasicEnemy::enemyHitSoundBuffer;
 
 BasicEnemy::BasicEnemy(int id)
@@ -191,7 +191,7 @@ void BasicEnemy::checkCollision(int enemyNumber)
 
 	for (int i = Shoot::shoot.size() - 1; i >= 0; i--)
 	{
-		if (Shoot::shoot[i]->playerShoot && Collider::checkCollision(hitbox2, Shoot::shoot[i]->sprite))
+		if (Shoot::shoot[i]->playerShoot && Shoot::shoot[i]->checkCollision(hitbox2))
 		{
 			createMiddleParticle();
 			hp -= Shoot::shoot[i]->getDmg();
@@ -200,7 +200,7 @@ void BasicEnemy::checkCollision(int enemyNumber)
 		}
 		else
 		{
-			if (Shoot::shoot[i]->playerShoot && Collider::checkCollision(hitbox1, Shoot::shoot[i]->sprite))
+			if (Shoot::shoot[i]->playerShoot && Shoot::shoot[i]->checkCollision(hitbox1))
 			{
 				createLeftParticle();
 				hp -= Shoot::shoot[i]->getDmg();
@@ -209,7 +209,7 @@ void BasicEnemy::checkCollision(int enemyNumber)
 			}
 			else
 			{
-				if (Shoot::shoot[i]->playerShoot && Collider::checkCollision(hitbox3, Shoot::shoot[i]->sprite))
+				if (Shoot::shoot[i]->playerShoot && Shoot::shoot[i]->checkCollision(hitbox3))
 				{
 					createRightParticle();
 					hp -= Shoot::shoot[i]->getDmg();

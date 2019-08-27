@@ -1,11 +1,13 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include <cmath>
 #include <math.h>
 #include "Window.h"
 #include "GameInfo.h"
-#include <iostream>
+#include "Collider.h"
+
 
 class Shoot
 {
@@ -15,10 +17,14 @@ public:
 	bool playerShoot;		//je¿eli true, to oznacza ¿e strza³ wystrzeli³ gracz, je¿eli false, to bot
 
 private:
+	static bool showHitbox;
+	int type;
 	float dmg;			//obra¿enia pocisku
 	sf::Vector2f speed;	//prêdkoœæ pocisku
 	sf::Vector2f size;	//wielkoœæ pocisku
 	sf::Texture texture;
+	sf::CircleShape hitbox1;
+	sf::RectangleShape hitbox2;
 	
 
 public:
@@ -27,6 +33,7 @@ public:
 	static void create(float positionX, float positionY, float speedX, float speedY, bool player, int type, float shootScale = 1);	//tworzy pocisk
 	static void updateAll();						//przesuwa wszystkie pociski i sprawdza ich kolizje
 	static void renderAll();						//renderuje wszystkie pociski		
+	bool checkCollision(sf::Sprite sprite);
 	float getDmg();
 
 private:

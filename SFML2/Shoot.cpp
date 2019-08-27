@@ -1,6 +1,7 @@
 #include "Shoot.h"
 
 std::vector < std::shared_ptr <Shoot> > Shoot::shoot;
+bool Shoot::showHitbox = true;
 
 Shoot::Shoot(float positionX, float positionY, float speedX, float speedY, bool player, int type, float shootScale)
 {
@@ -8,6 +9,8 @@ Shoot::Shoot(float positionX, float positionY, float speedX, float speedY, bool 
 	this->speed.x = speedX;
 	this->speed.y = speedY;
 	this->playerShoot = player;
+	this->type = type;
+
 
 	switch (type)
 	{
@@ -32,6 +35,36 @@ Shoot::Shoot(float positionX, float positionY, float speedX, float speedY, bool 
 
 	this->size.x = size.x * sprite.getScale().x;
 	this->size.y = size.y * sprite.getScale().y;
+
+	hitbox1.setFillColor(sf::Color(0, 0, 0, 0));
+	hitbox2.setFillColor(sf::Color(0, 0, 0, 0));
+
+	hitbox1.setOutlineThickness(2);
+	hitbox2.setOutlineThickness(2);
+
+	hitbox1.setOutlineColor(sf::Color::Blue);
+	hitbox2.setOutlineColor(sf::Color::Blue);
+
+	if(type == 1) sprite.setOrigin(size.x - 45, size.y / 2);
+
+	if (type == 1 || type == 3)
+	{
+		hitbox1.setRadius(24);
+		hitbox1.setOrigin(24, 24);
+		hitbox1.setScale(sprite.getScale());
+	}
+	if (type == 3)
+	{
+		hitbox1.setRadius(12);
+		hitbox1.setOrigin(12, 12);
+		hitbox1.setScale(sprite.getScale());
+	}
+	if (type == 2)
+	{
+		hitbox2.setSize(sf::Vector2f(10, 80));
+		hitbox2.setOrigin(5, 40);
+		hitbox2.setScale(sprite.getScale());
+	}
 }
 
 void Shoot::create(sf::Vector2f position, sf::Vector2f speed, bool player, int type, float shootScale)
@@ -60,6 +93,12 @@ void Shoot::renderAll()
 	}
 }
 
+bool Shoot::checkCollision(sf::Sprite sprite)
+{
+	if (type == 1 || type == 3) return Collider::checkCollision(sprite, hitbox1);
+	if(type == 2) return Collider::checkCollision(sprite, hitbox2);
+}
+
 float Shoot::getDmg()
 {
 	return dmg;
@@ -71,6 +110,18 @@ void Shoot::update(int shootNumber)
 	newPos.x += speed.x * GameInfo::getDeltaTime() * 0.1;
 	newPos.y += speed.y * GameInfo::getDeltaTime() * 0.1;
 
+	//sprite.rotate(0.2);
+
+	if (type == 2)
+	{
+		newPos.x = sf::Mouse::getPosition(Window::window).x;
+		newPos.y = sf::Mouse::getPosition(Window::window).y;
+	}
+
+	hitbox1.setPosition(newPos);
+	hitbox2.setPosition(newPos);
+
+
 	sprite.setPosition(newPos);
 	
 	shootDestroy(shootNumber);	//musi byc na koñcu motedy, bo mo¿e usun¹æ obiekt
@@ -79,6 +130,11 @@ void Shoot::update(int shootNumber)
 void Shoot::render()
 {
 	Window::window.draw(sprite);
+	if (showHitbox)
+	{
+		if (type == 1 || type == 3) Window::window.draw(hitbox1);
+		if(type == 2) Window::window.draw(hitbox2);
+	}
 }
 
 void Shoot::shootDestroy(int shootNumber)

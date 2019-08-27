@@ -1,7 +1,7 @@
 #include "Player.h"
 
 Player Player::player;
-bool Player::renderHitbox = false;
+bool Player::renderHitbox = true;
 sf::Text Player::text;
 sf::Font Player::font;
 
@@ -228,7 +228,7 @@ void Player::checkCollision()
 
 	for (int i = Shoot::shoot.size() - 1; i >= 0; i--)
 	{
-		if (Shoot::shoot[i]->playerShoot == false && (Collider::checkCollision(hitbox1, Shoot::shoot[i]->sprite) || Collider::checkCollision(hitbox2, Shoot::shoot[i]->sprite)))
+		if (Shoot::shoot[i]->playerShoot == false && (Shoot::shoot[i]->checkCollision(hitbox1) || Shoot::shoot[i]->checkCollision(hitbox2)))
 		{
 			Shoot::shoot.erase(Shoot::shoot.begin() + i);
 
