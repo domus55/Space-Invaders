@@ -33,7 +33,7 @@ EnemyFast::EnemyFast(float x, float y, int level, int id)
 	shootType = 2;
 	shootScale = 0.75;
 
-	texture.loadFromFile("Images/EnemyFast.png");
+	texture.loadFromFile("Images/Enemies/EnemyFast/normal.png");
 	sprite.setTexture(texture);	
 
 	sf::Vector2u size = texture.getSize();
