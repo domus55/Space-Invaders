@@ -48,10 +48,10 @@ void Animation::render(sf::Sprite *sprite)
 
 void Animation::restart()
 {
-	for (int i = animation.size() - 1; i >= 0; i--)
-	{
+	//for (int i = animation.size() - 1; i >= 0; i--)
+	//{
 		Animation::animation.clear();
-		animation[i]->licznik2 = 0;
-		animation[i]->licznik = 0;
-	}
+	//	animation[i]->licznik2 = 0;
+	//	animation[i]->licznik = 0;
+	//}
 }

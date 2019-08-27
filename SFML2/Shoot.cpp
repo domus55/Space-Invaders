@@ -99,6 +99,19 @@ bool Shoot::checkCollision(sf::Sprite sprite)
 	if(type == 2) return Collider::checkCollision(sprite, hitbox2);
 }
 
+bool Shoot::checkCollision(sf::RectangleShape sprite)
+{
+	if (type == 1 || type == 3) return Collider::checkCollision(sprite, hitbox1);
+	if (type == 2) return Collider::checkCollision(sprite, hitbox2);
+	
+}
+
+bool Shoot::checkCollision(sf::CircleShape circle)
+{
+	if (type == 1 || type == 3) return Collider::checkCollision(hitbox1, circle);
+	if (type == 2) return Collider::checkCollision(hitbox2, circle);
+}
+
 float Shoot::getDmg()
 {
 	return dmg;
@@ -112,7 +125,7 @@ void Shoot::update(int shootNumber)
 
 	//sprite.rotate(0.2);
 
-	if (type == 2)
+	if (type == 1)
 	{
 		newPos.x = sf::Mouse::getPosition(Window::window).x;
 		newPos.y = sf::Mouse::getPosition(Window::window).y;
@@ -124,7 +137,7 @@ void Shoot::update(int shootNumber)
 
 	sprite.setPosition(newPos);
 	
-	shootDestroy(shootNumber);	//musi byc na koñcu motedy, bo mo¿e usun¹æ obiekt
+	shootDestroy(shootNumber);	//musi byc na koñcu metody, bo mo¿e usun¹æ obiekt
 }
 
 void Shoot::render()

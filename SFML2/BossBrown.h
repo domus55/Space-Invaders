@@ -7,8 +7,8 @@ class BossBrown : public BasicBoss
 {
 	sf::Vector2f hitbox4pos;
 	sf::Vector2f hitbox5pos;
-	sf::Sprite hitbox4;
-	sf::Sprite hitbox5;
+	sf::RectangleShape hitbox4;
+	sf::RectangleShape hitbox5;
 
 	bool haveRightWing;
 	bool haveLeftWing;

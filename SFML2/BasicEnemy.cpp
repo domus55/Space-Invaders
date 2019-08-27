@@ -25,14 +25,29 @@ BasicEnemy::BasicEnemy(int id)
 	srand(time(NULL));
 
 	hitboxTexture.loadFromFile("Images/hitbox.png");
-	hitbox1.setTexture(hitboxTexture);
-	hitbox2.setTexture(hitboxTexture);
-	hitbox3.setTexture(hitboxTexture);
+	//hitbox1.setTexture(hitboxTexture);
+	//hitbox2.setTexture(hitboxTexture);
+	//hitbox3.setTexture(hitboxTexture);
 
-	sf::Vector2u Hitboxsize = hitboxTexture.getSize();
-	hitbox1.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
-	hitbox2.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
-	hitbox3.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
+	hitbox1.setSize(sf::Vector2f(100, 100));
+	hitbox2.setSize(sf::Vector2f(100, 100));
+	hitbox3.setSize(sf::Vector2f(100, 100));
+
+	hitbox1.setOrigin(50, 50);
+	hitbox2.setOrigin(50, 50);
+	hitbox3.setOrigin(50, 50);
+
+	hitbox1.setFillColor(sf::Color(0, 0, 0, 0));
+	hitbox2.setFillColor(sf::Color(0, 0, 0, 0));
+	hitbox3.setFillColor(sf::Color(0, 0, 0, 0));
+
+	hitbox1.setOutlineThickness(2);
+	hitbox2.setOutlineThickness(2);
+	hitbox3.setOutlineThickness(2);
+
+	hitbox1.setOutlineColor(sf::Color::Green);
+	hitbox2.setOutlineColor(sf::Color::Green);
+	hitbox3.setOutlineColor(sf::Color::Green);
 
 	enemyHit.setBuffer(enemyHitSoundBuffer);
 }

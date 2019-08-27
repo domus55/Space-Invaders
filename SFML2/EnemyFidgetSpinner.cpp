@@ -31,17 +31,16 @@ EnemyFidgetSpinner::EnemyFidgetSpinner(float x, float y, int level, int id)
 	randShootDelay = 100;
 	sprite.setScale(0.3, 0.3);
 
-	hitbox1.setScale(0.5, 0.5);
-	hitbox1pos.x = 0;
-	hitbox1pos.y = 35;
+	hitbox1.setScale(0, 0);
+	hitbox2.setScale(0, 0);
+	hitbox3.setScale(0, 0);
 
-	hitbox2.setScale(0.5, 0.5);
-	hitbox2pos.x = -50;
-	hitbox2pos.y = -30;
+	hitbox4.setRadius(25);
+	hitbox4.setOrigin(25, 25);
+	hitbox4.setFillColor(sf::Color(0, 0, 0, 0));
+	hitbox4.setOutlineThickness(2);
+	hitbox4.setOutlineColor(sf::Color::Green);
 
-	hitbox3.setScale(0.5, 0.5);
-	hitbox3pos.x = 50;
-	hitbox3pos.y = -30;
 
 	hp = 3;
 	shootType = 2;
@@ -63,7 +62,6 @@ void EnemyFidgetSpinner::update(int enemyNumber)
 	sprite.rotate(GameInfo::getDeltaTime() * rotateSpeed);
 	shoot();
 	checkCollision(enemyNumber);	//musi byc na koncu metody, bo moze usunac obiekt
-	
 }
 
 void EnemyFidgetSpinner::create(float posX, float posY, int level, int id)
@@ -157,5 +155,45 @@ void EnemyFidgetSpinner::shoot()
 
 		if (randShootDelay == 0) myDeltaTime = 0;
 		else myDeltaTime = (std::rand() % randShootDelay) - randShootDelay / 2;
+	}
+}
+
+void EnemyFidgetSpinner::checkCollision(int enemyNumber)
+{
+	sf::Vector2f pos = sprite.getPosition();
+	hitbox4.setPosition(pos);
+
+	for (int i = Shoot::shoot.size() - 1; i >= 0; i--)
+	{
+		if (Shoot::shoot[i]->playerShoot && Shoot::shoot[i]->checkCollision(hitbox4))
+		{
+			createMiddleParticle();
+			hp -= Shoot::shoot[i]->getDmg();
+			Shoot::shoot.erase(Shoot::shoot.begin() + i);
+			enemyHit.play();
+		}
+	}
+
+	if (hp <= 0)
+	{
+		if (timeToDeath == 0)
+		{
+			destroy();
+			timeToDeath = 1;
+		}
+
+		timeToDeath += GameInfo::getDeltaTime();
+		if (timeToDeath > deathDeltaTime) enemy.erase(enemy.begin() + enemyNumber);
+
+
+	}
+}
+
+void EnemyFidgetSpinner::render()
+{
+	Window::window.draw(sprite);
+	if (renderHitbox)
+	{
+		Window::window.draw(hitbox4);
 	}
 }

@@ -34,6 +34,8 @@ public:
 	static void updateAll();						//przesuwa wszystkie pociski i sprawdza ich kolizje
 	static void renderAll();						//renderuje wszystkie pociski		
 	bool checkCollision(sf::Sprite sprite);
+	bool checkCollision(sf::RectangleShape sprite);
+	bool checkCollision(sf::CircleShape sprite);
 	float getDmg();
 
 private:

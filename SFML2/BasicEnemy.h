@@ -39,9 +39,9 @@ protected:
 	sf::Vector2f hitbox2pos;
 	sf::Vector2f hitbox3pos;
 	sf::Texture hitboxTexture;
-	sf::Sprite hitbox1;
-	sf::Sprite hitbox2;
-	sf::Sprite hitbox3;
+	sf::RectangleShape hitbox1;
+	sf::RectangleShape hitbox2;
+	sf::RectangleShape hitbox3;
 	sf::Texture texture;
 	sf::Sprite sprite;
 	sf::Sound enemyHit;

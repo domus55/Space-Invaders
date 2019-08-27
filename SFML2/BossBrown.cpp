@@ -9,12 +9,11 @@ BossBrown::BossBrown(float posX, float posY, int id)
 
 	sprite.setScale(0.8, 0.8);
 
-	hitbox4.setTexture(hitboxTexture);
-	hitbox5.setTexture(hitboxTexture);
+	hitbox4.setSize(sf::Vector2f(100, 100));
+	hitbox5.setSize(sf::Vector2f(100, 100));
 
-	sf::Vector2u Hitboxsize = hitboxTexture.getSize();
-	hitbox4.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
-	hitbox5.setOrigin(Hitboxsize.x / 2, Hitboxsize.y / 2);
+	hitbox4.setOrigin(50, 50);
+	hitbox5.setOrigin(50, 50);
 
 	hitbox1.setScale(0.55, 0.8);
 	hitbox1pos.x = -50;
@@ -43,6 +42,15 @@ BossBrown::BossBrown(float posX, float posY, int id)
 	shootDelay = 3000;
 	shootType = 2;
 	shootScale = 1;
+
+	hitbox4.setFillColor(sf::Color(0, 0, 0, 0));
+	hitbox5.setFillColor(sf::Color(0, 0, 0, 0));
+
+	hitbox4.setOutlineThickness(2);
+	hitbox5.setOutlineThickness(2);
+
+	hitbox4.setOutlineColor(sf::Color::Green);
+	hitbox5.setOutlineColor(sf::Color::Green);
 
 	texture.loadFromFile("Images/Enemies/Boss/1/normal.png");
 	sprite.setTexture(texture);		
@@ -89,7 +97,7 @@ void BossBrown::checkCollision(int enemyNumber)
 
 	for (int i = Shoot::shoot.size() - 1; i >= 0; i--)
 	{
-		if (Shoot::shoot[i]->playerShoot && Collider::checkCollision(hitbox2, Shoot::shoot[i]->sprite))
+		if (Shoot::shoot[i]->playerShoot && Shoot::shoot[i]->checkCollision(hitbox2))
 		{
 			createMiddleParticle();
 			hp -= Shoot::shoot[i]->getDmg();
@@ -97,7 +105,7 @@ void BossBrown::checkCollision(int enemyNumber)
 		}
 		else
 		{
-			if (Shoot::shoot[i]->playerShoot && Collider::checkCollision(hitbox1, Shoot::shoot[i]->sprite))
+			if (Shoot::shoot[i]->playerShoot && Shoot::shoot[i]->checkCollision(hitbox1))
 			{
 				createLeftParticle();
 				hp -= Shoot::shoot[i]->getDmg();
@@ -105,7 +113,7 @@ void BossBrown::checkCollision(int enemyNumber)
 			}
 			else
 			{
-				if (Shoot::shoot[i]->playerShoot && Collider::checkCollision(hitbox3, Shoot::shoot[i]->sprite))
+				if (Shoot::shoot[i]->playerShoot && Shoot::shoot[i]->checkCollision(hitbox3))
 				{
 					createRightParticle();
 					hp -= Shoot::shoot[i]->getDmg();
@@ -113,7 +121,7 @@ void BossBrown::checkCollision(int enemyNumber)
 				}
 				else
 				{
-					if (Shoot::shoot[i]->playerShoot && Collider::checkCollision(hitbox4, Shoot::shoot[i]->sprite))
+					if (Shoot::shoot[i]->playerShoot && Shoot::shoot[i]->checkCollision(hitbox4))
 					{
 						createLeftWingParticle();
 						hp -= Shoot::shoot[i]->getDmg();
@@ -121,7 +129,7 @@ void BossBrown::checkCollision(int enemyNumber)
 					}
 					else
 					{
-						if (Shoot::shoot[i]->playerShoot && Collider::checkCollision(hitbox5, Shoot::shoot[i]->sprite))
+						if (Shoot::shoot[i]->playerShoot && Shoot::shoot[i]->checkCollision(hitbox5))
 						{
 							createRightWingParticle();
 							hp -= Shoot::shoot[i]->getDmg();

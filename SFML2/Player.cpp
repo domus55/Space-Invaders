@@ -228,10 +228,10 @@ void Player::checkCollision()
 
 	for (int i = Shoot::shoot.size() - 1; i >= 0; i--)
 	{
+		if(i >= Shoot::shoot.size() || i < 0) goto end;
+
 		if (Shoot::shoot[i]->playerShoot == false && (Shoot::shoot[i]->checkCollision(hitbox1) || Shoot::shoot[i]->checkCollision(hitbox2)))
 		{
-			Shoot::shoot.erase(Shoot::shoot.begin() + i);
-
 			if (shooted == false)
 			{
 				hp -= Shoot::shoot[i]->getDmg();
@@ -248,13 +248,16 @@ void Player::checkCollision()
 				{
 					drawHeartModel1.setTexture(emptyHeart);
 					playerDeath();
+					goto end;
 				}	break;
 				}
 
 			}
+			Shoot::shoot.erase(Shoot::shoot.begin() + i);
 			shooted = true;
 		}
 	}
+end:;
 }
 
 void Player::playerHp()
