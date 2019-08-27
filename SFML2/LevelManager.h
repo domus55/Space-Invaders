@@ -11,6 +11,7 @@
 #include "EnemyFidgetSpinner.h"
 #include "EnemyInvisible.h"
 #include "EnemyRocketMan.h"
+#include "EnemyTrackingShots.h"
 
 class LevelManager {
 public:
