@@ -149,17 +149,6 @@ void BossBrown::checkCollision(int enemyNumber)
 
 void BossBrown::shoot()
 {
-	/*myDeltaTime += GameInfo::getDeltaTime() * 10;
-
-	if (myDeltaTime > shootDelay)
-	{
-		sf::Vector2f pos;
-		pos = sprite.getPosition();
-		Shoot::create(pos.x, pos.y, 0, shootSpeed, shootDmg, false, shootType, shootScale);
-		if (randShootDelay == 0) myDeltaTime = 0;
-		else myDeltaTime = (std::rand() % randShootDelay) - randShootDelay / 2;
-	}*/
-
 	static int shootWing = 1000;
 	shootWing += GameInfo::getDeltaTime();
 
@@ -169,9 +158,6 @@ void BossBrown::shoot()
 		{
 			int angle = i * 10;
 			double angleInRadian = angle * 3.141592653589793238463 / 180;
-
-			
-			//double angleInRadian = atan2((double)speedY, (double)speedX); //angle in radian
 
 			sf::Vector2f speed;
 

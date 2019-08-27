@@ -9,7 +9,7 @@ public:
 	void update(int enemyNumber);
 	static void create(float posX, float posY, int level, int id = -1);
 private:
-	void createLeftParticle();
-	void createMiddleParticle();
-	void createRightParticle();
+	float rotateSpeed;
+
+	void shoot();
 };
