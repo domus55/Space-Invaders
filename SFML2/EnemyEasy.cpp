@@ -71,7 +71,7 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 	shootType = 2;
 	shootScale = 1;
 							
-	texture.loadFromFile("Images/EnemyEasy.png");
+	texture.loadFromFile("Images/Enemies/EnemyEasy/normal.png");
 	sprite.setTexture(texture);					
 	
 	sf::Vector2u size = texture.getSize();

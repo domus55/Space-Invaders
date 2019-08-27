@@ -5,26 +5,28 @@ EnemyInvisible::EnemyInvisible(float x, float y, int level, int id)
 {
 	if (level == 1)
 	{
-		shootDelay = 3000;
-		sprite.setColor(sf::Color(255, 255, 20));
+		invisibleScale = 1;
+		shootDelay = 2000;
 	}
 
 	if (level == 2)
 	{
-		shootDelay = 2400;
-		sprite.setColor(sf::Color(255, 230, 10));
+		invisibleScale = 1.5;
+		shootDelay = 1200;
 	}
 
 	if (level == 3)
 	{
-		shootDelay = 1800;
-		sprite.setColor(sf::Color(255, 200, 5));
+		invisibleScale = 2;
+		shootDelay = 800;
 	}
 
+
 	speed = 0.1;
-	shootSpeed = 1.5;
-	randShootDelay = 0;
+	shootSpeed = 2.5;
+	randShootDelay = 300;
 	sprite.setScale(0.5, 0.5);
+	sprite.setColor(sf::Color(255, 255, 20));
 
 	hitbox1.setScale(0.5, 0.75);
 	hitbox1pos.x = 0;
@@ -38,11 +40,12 @@ EnemyInvisible::EnemyInvisible(float x, float y, int level, int id)
 	hitbox3pos.x = 40;
 	hitbox3pos.y = -30;
 
-	hp = 2;
+	hp = 3;
 	shootType = 2;
 	shootScale = 1;
+	invisibleDeltaTime = 0;
 
-	texture.loadFromFile("Images/EnemyInvisible.png");
+	texture.loadFromFile("Images/Enemies/EnemyInvisible/normal.png");
 	sprite.setTexture(texture);
 	sprite.setColor(sf::Color(255, 255, 255, 30));
 
@@ -56,6 +59,25 @@ EnemyInvisible::EnemyInvisible(float x, float y, int level, int id)
 
 void EnemyInvisible::update(int enemyNumber)
 {
+	invisibleDeltaTime += GameInfo::getDeltaTime();
+	if (invisibleDeltaTime < 1000)
+	{
+		sprite.setColor(sf::Color(255, 255, 255, invisibleDeltaTime / 50));
+	}
+	else if (invisibleDeltaTime >= 1000 && invisibleDeltaTime < 4000)	//widzialny
+	{
+		sprite.setColor(sf::Color(255, 255, 255, 20));
+	}
+	else if (invisibleDeltaTime >= 4000 && invisibleDeltaTime < 5000)
+	{
+		sprite.setColor(sf::Color(255, 255, 255, (invisibleDeltaTime - 5000) / -50));
+	}
+	else if (invisibleDeltaTime >= 5000 && invisibleDeltaTime < 8000 * invisibleScale)	//niewidzialny
+	{
+		sprite.setColor(sf::Color(255, 255, 255, 0));
+	}
+	else if (invisibleDeltaTime >= 8000 * invisibleScale) invisibleDeltaTime -= 8000 * invisibleScale;
+
 	shoot();
 	checkCollision(enemyNumber);	//musi byc na koncu metody, bo moze usunac obiekt
 }
@@ -63,30 +85,4 @@ void EnemyInvisible::update(int enemyNumber)
 void EnemyInvisible::create(float posX, float posY, int level, int id)
 {
 	BasicEnemy::enemy.push_back(std::make_shared <EnemyInvisible>(posX, posY, level, id));
-}
-
-void EnemyInvisible::createLeftParticle()
-{
-	Particle::addParticle(sprite.getPosition().x + hitbox1pos.x, sprite.getPosition().y + hitbox1pos.y, "BasicEnemy", 15, 0.5);
-	if (hp == 2)
-	{
-		hitbox1pos.x += 20;
-		texture.loadFromFile("Images/Enemies/EnemyInvisible/brokenLeft.png");
-	}
-}
-
-void EnemyInvisible::createMiddleParticle()
-{
-	Particle::addParticle(sprite.getPosition().x + hitbox2pos.x, sprite.getPosition().y + hitbox2pos.y, "BasicEnemy", 15, 0.5);
-	if (hp == 2) texture.loadFromFile("Images/Enemies/EnemyInvisible/brokenMiddle.png");
-}
-
-void EnemyInvisible::createRightParticle()
-{
-	Particle::addParticle(sprite.getPosition().x + hitbox3pos.x, sprite.getPosition().y + hitbox3pos.y, "BasicEnemy", 15, 0.5);
-	if (hp == 2)
-	{
-		hitbox3pos.x -= 20;
-		texture.loadFromFile("Images/Enemies/EnemyInvisible/brokenRight.png");
-	}
 }

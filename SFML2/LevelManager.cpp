@@ -1,6 +1,6 @@
 #include "LevelManager.h"
 
-int LevelManager::actualLevel = 0;
+int LevelManager::actualLevel = 19;
 bool LevelManager::animation = false;
 sf::Text LevelManager::text;
 sf::Font LevelManager::font;
@@ -345,11 +345,7 @@ void LevelManager::level19()
 
 void LevelManager::level20()
 {
-	//for (int i = 0; i < 3; i++)
-	//{
-		EnemyFidgetSpinner::create(1 * 300 + 500, 100, 3);
-		//EnemyEasy::create(1 * 300 + 500, 100, 1);
-	//}
+	EnemyInvisible::create(800, 100, 1);
 }
 
 void LevelManager::level21()
