@@ -184,8 +184,6 @@ void EnemyFidgetSpinner::checkCollision(int enemyNumber)
 
 		timeToDeath += GameInfo::getDeltaTime();
 		if (timeToDeath > deathDeltaTime) enemy.erase(enemy.begin() + enemyNumber);
-
-
 	}
 }
 

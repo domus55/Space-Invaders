@@ -1,6 +1,6 @@
 #include "LevelManager.h"
 
-int LevelManager::actualLevel = 19;
+int LevelManager::actualLevel = 0;
 bool LevelManager::animation = false;
 sf::Text LevelManager::text;
 sf::Font LevelManager::font;
@@ -350,6 +350,7 @@ void LevelManager::level20()
 
 void LevelManager::level21()
 {
+	
 }
 
 void LevelManager::level22()
