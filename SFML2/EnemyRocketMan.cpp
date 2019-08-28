@@ -5,12 +5,25 @@ EnemyRocketMan::EnemyRocketMan(float x, float y, int level, int id)
 {
 	if (level == 1)
 	{
-		speed = 0.1;
-		shootSpeed = 1;
-		randShootDelay = 2000;
+		sprite.setColor(sf::Color(70, 70, 70));
+		shootDelay = 6000;
+		shootSpeed = 2;
+	}
+	if (level == 2)
+	{
+		sprite.setColor(sf::Color(150, 150, 150));
+		shootDelay = 4000;
+		shootSpeed = 3;
+	}
+	if (level == 3)
+	{
+		shootDelay = 2000;
+		shootSpeed = 5;
 	}
 
-	sprite.setScale(0.3, 0.3);
+	this->level = level;
+
+	sprite.setScale(0.4, 0.4);
 
 	hitbox1.setScale(0.35, 1);
 	hitbox1pos.x = -50;
@@ -25,9 +38,9 @@ EnemyRocketMan::EnemyRocketMan(float x, float y, int level, int id)
 	hitbox3pos.y = 10;
 
 	hp = 5;
-	shootDelay = 5000;
-	shootType = 2; // Tu ma byc zmieniony na nowy typ strzalu - rakiete
+	speed = 0.1;
 	shootScale = 1;
+	randShootDelay = 500;
 
 	texture.loadFromFile("Images/Enemies/RocketMan/EnemyRocketMan.png");
 	sprite.setTexture(texture);
@@ -43,5 +56,19 @@ EnemyRocketMan::EnemyRocketMan(float x, float y, int level, int id)
 void EnemyRocketMan::create(float posX, float posY, int level, int id)
 {
 	BasicEnemy::enemy.push_back(std::make_shared <EnemyRocketMan>(posX, posY, level, id));
+}
+
+void EnemyRocketMan::shoot()
+{
+	myDeltaTime += GameInfo::getDeltaTime();
+
+	if (myDeltaTime > shootDelay)
+	{
+		sf::Vector2f pos;
+		pos = sprite.getPosition();
+		Rocket::create(pos.x, pos.y, 0, shootSpeed, level);
+		if (randShootDelay == 0) myDeltaTime = 0;
+		else myDeltaTime = (std::rand() % randShootDelay) - randShootDelay / 2;
+	}
 }
 

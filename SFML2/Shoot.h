@@ -16,7 +16,7 @@ public:
 	sf::Sprite sprite;
 	bool playerShoot;		//je¿eli true, to oznacza ¿e strza³ wystrzeli³ gracz, je¿eli false, to bot
 
-private:
+protected:
 	static bool showHitbox;
 	int type;
 	float dmg;			//obra¿enia pocisku
@@ -29,7 +29,8 @@ private:
 
 public:
 	Shoot(float positionX, float positionY, float speedX, float speedY, bool player, int type, float shootScale);
-	static void create(sf::Vector2f position, sf::Vector2f speed, bool, int type, float shootScale = 1);						//tworzy pocisk
+	Shoot();
+	static void create(sf::Vector2f position, sf::Vector2f speed, bool player, int type, float shootScale = 1);						//tworzy pocisk
 	static void create(float positionX, float positionY, float speedX, float speedY, bool player, int type, float shootScale = 1);	//tworzy pocisk
 	static void updateAll();						//przesuwa wszystkie pociski i sprawdza ich kolizje
 	static void renderAll();						//renderuje wszystkie pociski		
@@ -38,8 +39,8 @@ public:
 	bool checkCollision(sf::CircleShape sprite);
 	float getDmg();
 
-private:
-	void update(int shootNumber);
+protected:
+	virtual void update(int shootNumber);
 	void render();
 	void shootDestroy(int shootNumber);
 };

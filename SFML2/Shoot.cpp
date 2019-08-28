@@ -67,6 +67,10 @@ Shoot::Shoot(float positionX, float positionY, float speedX, float speedY, bool 
 	}
 }
 
+Shoot::Shoot()
+{
+}
+
 void Shoot::create(sf::Vector2f position, sf::Vector2f speed, bool player, int type, float shootScale)
 {
 	Shoot::shoot.push_back(std::make_shared <Shoot>(position.x, position.y, speed.x, speed.y, player, type, shootScale));
@@ -95,8 +99,8 @@ void Shoot::renderAll()
 
 bool Shoot::checkCollision(sf::Sprite sprite)
 {
-	if (type == 1 || type == 3) return Collider::checkCollision(sprite, hitbox1);
-	if(type == 2) return Collider::checkCollision(sprite, hitbox2);
+	if (type == 1 || type == 3 || type == 4) return Collider::checkCollision(sprite, hitbox1);
+	if(type == 2 || type == 4) return Collider::checkCollision(sprite, hitbox2);
 }
 
 bool Shoot::checkCollision(sf::RectangleShape sprite)
