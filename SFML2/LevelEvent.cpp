@@ -504,6 +504,21 @@ void LevelEvent::level19()
 
 void LevelEvent::level20()
 {
+	static bool down = true;
+
+	static clock_t prevTime = clock();
+	if (clock() - prevTime > 1000)
+	{
+		down = true;
+	}
+	prevTime = clock();
+
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (down) BasicEnemy::enemy[i]->moveDown();
+	}
+
+	if (BasicEnemy::mostToTheBottom() > 300) down = false;
 }
 
 void LevelEvent::level21()

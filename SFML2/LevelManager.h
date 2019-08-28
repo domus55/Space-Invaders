@@ -12,6 +12,7 @@
 #include "EnemyInvisible.h"
 #include "EnemyRocketMan.h"
 #include "EnemyTrackingShots.h"
+#include "BossBlack.h"
 
 class LevelManager {
 public:

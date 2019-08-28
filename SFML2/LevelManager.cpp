@@ -345,7 +345,7 @@ void LevelManager::level19()
 
 void LevelManager::level20()
 {
-	EnemyInvisible::create(800, 100, 1);
+	BossBlack::create(800, -200, 1, 1);
 }
 
 void LevelManager::level21()
