@@ -41,12 +41,14 @@ BossBlack::BossBlack(float posX, float posY, int lvl, int id)
 		hp = 100;
 		centerShootTime = 6000;
 		wingShootTime = 3000;
+		particleName = "BossBlack1";
 	}
 	if (lvl == 2)
 	{
 		hp = 200;
 		centerShootTime = 4000;
 		wingShootTime = 2000;
+		particleName = "BossBlack1";
 	}
 
 	
@@ -299,20 +301,19 @@ void BossBlack::destroy()
 	Explosion::create(sprite.getPosition().x - 30, sprite.getPosition().y + 140, 1.5, 2);
 
 
-	Particle::addParticle(sprite.getPosition().x, sprite.getPosition().y, "BasicEnemy", 600, 2);
-	Particle::addParticle(sprite.getPosition().x + 100, sprite.getPosition().y - 50, "BasicEnemy", 20, 1);
-	Particle::addParticle(sprite.getPosition().x - 120, sprite.getPosition().y + 30, "BasicEnemy", 20, 1);
-	Particle::addParticle(sprite.getPosition().x - 60, sprite.getPosition().y - 100, "BasicEnemy", 20, 1);
-	Particle::addParticle(sprite.getPosition().x + 40, sprite.getPosition().y - 120, "BasicEnemy", 20, 1);
-	Particle::addParticle(sprite.getPosition().x + 50, sprite.getPosition().y + 120, "BasicEnemy", 20, 1);
-	Particle::addParticle(sprite.getPosition().x - 30, sprite.getPosition().y + 140, "BasicEnemy", 20, 1);
+	Particle::addParticle(sprite.getPosition().x, sprite.getPosition().y, particleName, 600, 2);
+	Particle::addParticle(sprite.getPosition().x + 100, sprite.getPosition().y - 50, particleName, 20, 1);
+	Particle::addParticle(sprite.getPosition().x - 120, sprite.getPosition().y + 30, particleName, 20, 1);
+	Particle::addParticle(sprite.getPosition().x - 60, sprite.getPosition().y - 100, particleName, 20, 1);
+	Particle::addParticle(sprite.getPosition().x + 40, sprite.getPosition().y - 120, particleName, 20, 1);
+	Particle::addParticle(sprite.getPosition().x + 50, sprite.getPosition().y + 120, particleName, 20, 1);
+	Particle::addParticle(sprite.getPosition().x - 30, sprite.getPosition().y + 140, particleName, 20, 1);
 }
 
 void BossBlack::createLeftWingParticle()
 {
-	static int timesHitedLeft;
 	timesHitedLeft++;
-	if (timesHitedLeft == hp * 0.4)
+	if (timesHitedLeft == (int)maxHp * 0.4)
 	{
 		haveLeftWing = false;
 		if (haveRightWing) texture.loadFromFile("Images/Enemies/Boss/2/leftWing.png");
@@ -324,14 +325,13 @@ void BossBlack::createLeftWingParticle()
 		hitbox4pos.y = 0;
 	}
 
-	Particle::addParticle(sprite.getPosition().x + hitbox4pos.x, sprite.getPosition().y + hitbox4pos.y, "BasicEnemy", 15, 0.5);
+	Particle::addParticle(sprite.getPosition().x + hitbox4pos.x, sprite.getPosition().y + hitbox4pos.y, particleName, particleAmmount, 0.5);
 }
 
 void BossBlack::createRightWingParticle()
 {
-	static int timesHitedRight = 0;
 	timesHitedRight++;
-	if (timesHitedRight == hp * 0.4)
+	if (timesHitedRight == (int)maxHp * 0.4)
 	{
 		haveRightWing = false;
 		if (haveLeftWing) texture.loadFromFile("Images/Enemies/Boss/2/rightWing.png");
@@ -342,5 +342,5 @@ void BossBlack::createRightWingParticle()
 		hitbox5pos.y = 0;
 	}
 
-	Particle::addParticle(sprite.getPosition().x + hitbox5pos.x, sprite.getPosition().y + hitbox5pos.y, "BasicEnemy", 15, 0.5);
+	Particle::addParticle(sprite.getPosition().x + hitbox5pos.x, sprite.getPosition().y + hitbox5pos.y, particleName, particleAmmount, 0.5);
 }

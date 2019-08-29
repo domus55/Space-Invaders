@@ -523,6 +523,21 @@ void LevelEvent::level20()
 
 void LevelEvent::level21()
 {
+	static bool down = true;
+
+	static clock_t prevTime = clock();
+	if (clock() - prevTime > 1000)
+	{
+		down = true;
+	}
+	prevTime = clock();
+
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (BasicEnemy::enemy[i]->id == 0 && down) BasicEnemy::enemy[i]->moveDown();
+	}
+
+	if (BasicEnemy::mostToTheBottom() > 300) down = false;
 }
 
 void LevelEvent::level22()
@@ -626,6 +641,35 @@ void LevelEvent::level26()
 
 void LevelEvent::level27()
 {
+	static bool left = true;
+	static bool down = true;
+	static bool army1Right = true;
+	static bool army2Left = true;
+
+	static clock_t prevTime = clock();
+	if (clock() - prevTime > 1000)
+	{
+		left = true;
+		down = true;
+		army1Right = true;
+		army2Left = true;
+	}
+	prevTime = clock();
+
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (BasicEnemy::enemy[i]->id == 0 && down) BasicEnemy::enemy[i]->moveDown();
+
+		if (BasicEnemy::enemy[i]->id == 1 && army1Right) BasicEnemy::enemy[i]->moveRight();
+
+		if (BasicEnemy::enemy[i]->id == 2 && army2Left) BasicEnemy::enemy[i]->moveLeft();
+	}
+
+	if (BasicEnemy::mostToTheBottom(0) > 100) down = false;
+
+	if (BasicEnemy::mostToTheRight(1) > 675) army1Right = false;
+
+	if (BasicEnemy::mostToTheLeft(2) < 925) army2Left = false;
 }
 
 void LevelEvent::level28()
