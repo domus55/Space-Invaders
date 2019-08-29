@@ -243,8 +243,8 @@ void BossBlack::shoot()
 					speed.y *= -1;
 				}
 
-				if (haveRightWing) Shoot::create(hitbox4.getPosition(), speed, false, 3);
-				if (haveLeftWing)
+				if (haveLeftWing) Shoot::create(hitbox4.getPosition(), speed, false, 3);
+				if (haveRightWing)
 				{
 					speed.x = -speed.x;
 					Shoot::create(hitbox5.getPosition(), speed, false, 3);
@@ -313,16 +313,15 @@ void BossBlack::destroy()
 void BossBlack::createLeftWingParticle()
 {
 	timesHitedLeft++;
-	if (timesHitedLeft == (int)maxHp * 0.4)
+	if (timesHitedLeft == (int)maxHp * 0.35)
 	{
 		haveLeftWing = false;
 		if (haveRightWing) texture.loadFromFile("Images/Enemies/Boss/2/leftWing.png");
 		else texture.loadFromFile("Images/Enemies/Boss/2/bothWings.png");
 
 		Explosion::create(sprite.getPosition().x + hitbox4pos.x, sprite.getPosition().y + hitbox4pos.y);
-		hitbox4.setScale(0, 0);
-		hitbox4pos.x = 0;
-		hitbox4pos.y = 0;
+		hitbox4pos.y -= 180;
+		hitbox4.setScale(0.55, 0.8);
 	}
 
 	Particle::addParticle(sprite.getPosition().x + hitbox4pos.x, sprite.getPosition().y + hitbox4pos.y, particleName, particleAmmount, 0.5);
@@ -331,15 +330,14 @@ void BossBlack::createLeftWingParticle()
 void BossBlack::createRightWingParticle()
 {
 	timesHitedRight++;
-	if (timesHitedRight == (int)maxHp * 0.4)
+	if (timesHitedRight == (int)maxHp * 0.35)
 	{
 		haveRightWing = false;
 		if (haveLeftWing) texture.loadFromFile("Images/Enemies/Boss/2/rightWing.png");
 		else texture.loadFromFile("Images/Enemies/Boss/2/bothWings.png");
 		Explosion::create(sprite.getPosition().x + hitbox5pos.x, sprite.getPosition().y + hitbox5pos.y);
-		hitbox5.setScale(0, 0);
-		hitbox5pos.x = 0;
-		hitbox5pos.y = 0;
+		hitbox5pos.y -= 180;
+		hitbox5.setScale(0.55, 0.8);
 	}
 
 	Particle::addParticle(sprite.getPosition().x + hitbox5pos.x, sprite.getPosition().y + hitbox5pos.y, particleName, particleAmmount, 0.5);

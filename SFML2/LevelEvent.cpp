@@ -33,6 +33,26 @@ void LevelEvent::update()
 	case 28: level28(); break;
 	case 29: level29(); break;
 	case 30: level30(); break;
+	case 31: level31(); break;
+	case 32: level32(); break;
+	case 33: level33(); break;
+	case 34: level34(); break;
+	case 35: level35(); break;
+	case 36: level36(); break;
+	case 37: level37(); break;
+	case 38: level38(); break;
+	case 39: level39(); break;
+	case 40: level40(); break;
+	case 41: level41(); break;
+	case 42: level42(); break;
+	case 43: level43(); break;
+	case 44: level44(); break;
+	case 45: level45(); break;
+	case 46: level46(); break;
+	case 47: level47(); break;
+	case 48: level48(); break;
+	case 49: level49(); break;
+	case 50: level50(); break;
 	}
 }
 
@@ -681,5 +701,83 @@ void LevelEvent::level29()
 }
 
 void LevelEvent::level30()
+{
+}
+
+void LevelEvent::level31()
+{
+}
+
+void LevelEvent::level32()
+{
+}
+
+void LevelEvent::level33()
+{
+}
+
+void LevelEvent::level34()
+{
+}
+
+void LevelEvent::level35()
+{
+}
+
+void LevelEvent::level36()
+{
+}
+
+void LevelEvent::level37()
+{
+}
+
+void LevelEvent::level38()
+{
+}
+
+void LevelEvent::level39()
+{
+}
+
+void LevelEvent::level40()
+{
+}
+
+void LevelEvent::level41()
+{
+}
+
+void LevelEvent::level42()
+{
+}
+
+void LevelEvent::level43()
+{
+}
+
+void LevelEvent::level44()
+{
+}
+
+void LevelEvent::level45()
+{
+}
+
+void LevelEvent::level46()
+{
+}
+
+void LevelEvent::level47()
+{
+}
+
+void LevelEvent::level48()
+{
+}
+void LevelEvent::level49()
+{
+}
+void LevelEvent::level50()
 {
 }

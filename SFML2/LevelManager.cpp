@@ -1,6 +1,6 @@
 #include "LevelManager.h"
 
-int LevelManager::actualLevel = 22;
+int LevelManager::actualLevel = 0;
 bool LevelManager::animation = false;
 sf::Text LevelManager::text;
 sf::Font LevelManager::font;
@@ -91,6 +91,26 @@ void LevelManager::nextLevel()
 	case 28: level28(); break;
 	case 29: level29(); break;
 	case 30: level30(); break;
+	case 31: level31(); break;
+	case 32: level32(); break;
+	case 33: level33(); break;
+	case 34: level34(); break;
+	case 35: level35(); break;
+	case 36: level36(); break;
+	case 37: level37(); break;
+	case 38: level38(); break;
+	case 39: level39(); break;
+	case 40: level40(); break;
+	case 41: level41(); break;
+	case 42: level42(); break;
+	case 43: level43(); break;
+	case 44: level44(); break;
+	case 45: level45(); break;
+	case 46: level46(); break;
+	case 47: level47(); break;
+	case 48: level48(); break;
+	case 49: level49(); break;
+	case 50: level50(); break;
 	}
 }
 
@@ -437,5 +457,85 @@ void LevelManager::level29()
 }
 
 void LevelManager::level30()
+{
+}
+
+void LevelManager::level31()
+{
+}
+
+void LevelManager::level32()
+{
+}
+
+void LevelManager::level33()
+{
+}
+
+void LevelManager::level34()
+{
+}
+
+void LevelManager::level35()
+{
+}
+
+void LevelManager::level36()
+{
+}
+
+void LevelManager::level37()
+{
+}
+
+void LevelManager::level38()
+{
+}
+
+void LevelManager::level39()
+{
+}
+
+void LevelManager::level40()
+{
+}
+
+void LevelManager::level41()
+{
+}
+
+void LevelManager::level42()
+{
+}
+
+void LevelManager::level43()
+{
+}
+
+void LevelManager::level44()
+{
+}
+
+void LevelManager::level45()
+{
+}
+
+void LevelManager::level46()
+{
+}
+
+void LevelManager::level47()
+{
+}
+
+void LevelManager::level48()
+{
+}
+
+void LevelManager::level49()
+{
+}
+
+void LevelManager::level50()
 {
 }
