@@ -1,6 +1,6 @@
 #include "LevelManager.h"
 
-int LevelManager::actualLevel = 20;
+int LevelManager::actualLevel = 0;
 bool LevelManager::animation = false;
 sf::Text LevelManager::text;
 sf::Font LevelManager::font;
@@ -198,7 +198,7 @@ void LevelManager::level9()
 
 void LevelManager::level10()
 {
-	BossBrown::create(800, -200);
+	BossBrown::create(800, -200, 1, 1);
 }
 
 void LevelManager::level11()
@@ -392,6 +392,17 @@ void LevelManager::level24()
 
 void LevelManager::level25()
 {
+	BossBrown::create(800, -200, 2, 0);
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyMedium::create(-i * 250 - 200, 450, 3, 1);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyMedium::create(i * 250 + 1800, 450, 3, 2);
+	}
 }
 
 void LevelManager::level26()

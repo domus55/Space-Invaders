@@ -10,12 +10,18 @@ class BossBrown : public BasicBoss
 	sf::RectangleShape hitbox4;
 	sf::RectangleShape hitbox5;
 
+	int lvl;
+	int shootWing;
+	int shootCenter;
+	int shootWingDeltaTime;
+	int shootCenterDeltaTime;
+
 	bool haveRightWing;
 	bool haveLeftWing;
 
 public:
-	BossBrown(float posX, float posY, int id);
-	static void create(float posX, float posY, int id = -1);
+	BossBrown(float posX, float posY, int lvl, int id);
+	static void create(float posX, float posY, int lvl, int id = -1);
 	void render();
 	void checkCollision(int enemyNumber);
 	void shoot();

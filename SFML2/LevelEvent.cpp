@@ -594,6 +594,30 @@ void LevelEvent::level24()
 
 void LevelEvent::level25()
 {
+	static bool down = true;
+	static bool army1Right = true;
+	static bool army2Left = true;
+
+	static clock_t prevTime = clock();
+	if (clock() - prevTime > 1000)
+	{
+		down = true;
+		army1Right = false;
+		army2Left = false;
+	}
+	prevTime = clock();
+
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (BasicEnemy::enemy[i]->id == 0 && down) BasicEnemy::enemy[i]->moveDown();
+
+		if (BasicEnemy::enemy[i]->id == 1 && army1Right) BasicEnemy::enemy[i]->moveRight();
+		if (BasicEnemy::enemy[i]->id == 2 && army2Left) BasicEnemy::enemy[i]->moveLeft();
+	}
+
+	if (BasicEnemy::mostToTheBottom(0) > 200) down = false;
+	if (BasicEnemy::mostToTheRight(1) > 600) army1Right = false;
+	if (BasicEnemy::mostToTheLeft(2) < 1000) army2Left = false;
 }
 
 void LevelEvent::level26()

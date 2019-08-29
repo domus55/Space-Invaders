@@ -1,6 +1,6 @@
 #include "BossBrown.h"
 
-BossBrown::BossBrown(float posX, float posY, int id)
+BossBrown::BossBrown(float posX, float posY, int lvl, int id)
 	:BasicBoss(id)
 {
 	speed = 0.07;
@@ -35,8 +35,8 @@ BossBrown::BossBrown(float posX, float posY, int id)
 	hitbox5pos.x = 120;
 	hitbox5pos.y = 0;
 
-	hp = 100;
-	maxHp = hp;
+	
+	
 
 	deathDeltaTime = 500;
 	shootDelay = 3000;
@@ -52,7 +52,31 @@ BossBrown::BossBrown(float posX, float posY, int id)
 	hitbox4.setOutlineColor(sf::Color::Green);
 	hitbox5.setOutlineColor(sf::Color::Green);
 
-	texture.loadFromFile("Images/Enemies/Boss/1/normal.png");
+	this->lvl = lvl;
+
+	if (lvl == 1)
+	{
+		texture.loadFromFile("Images/Enemies/Boss/1/normal.png");
+		hp = 100;
+		shootWing = 1000;
+		shootWingDeltaTime = 3000;
+		shootCenterDeltaTime = 6000;
+		particleName = "BossBrown1";
+	}
+	if (lvl == 2)
+	{
+		texture.loadFromFile("Images/Enemies/Boss/3/normal.png");
+		hp = 200;
+		shootWing = 500;
+		shootWingDeltaTime = 2000;
+		shootCenterDeltaTime = 4000;
+		particleName = "BossBrown2";
+	}
+
+	particleAmmount = 5;
+
+	maxHp = hp;
+	
 	sprite.setTexture(texture);		
 
 	sf::Vector2u size = texture.getSize();
@@ -64,11 +88,14 @@ BossBrown::BossBrown(float posX, float posY, int id)
 
 	haveRightWing = true;
 	haveLeftWing = true;
+
+	
+	shootCenter = 0;
 }
 
-void BossBrown::create(float posX, float posY, int id)
+void BossBrown::create(float posX, float posY, int lvl, int id)
 {
-	BasicEnemy::enemy.push_back(std::make_shared <BossBrown>(posX, posY, id));
+	BasicEnemy::enemy.push_back(std::make_shared <BossBrown>(posX, posY, lvl, id));
 }
 
 void BossBrown::render()
@@ -157,14 +184,14 @@ void BossBrown::checkCollision(int enemyNumber)
 
 void BossBrown::shoot()
 {
-	static int shootWing = 1000;
 	shootWing += GameInfo::getDeltaTime();
 
-	if (shootWing > 3000)
+	if (shootWing > shootWingDeltaTime)
 	{
 		for (int i = 0; i < 9; i++)
 		{
 			int angle = i * 10;
+			if (lvl == 2 && angle == 0) angle = 1;
 			double angleInRadian = angle * 3.141592653589793238463 / 180;
 
 			sf::Vector2f speed;
@@ -188,11 +215,10 @@ void BossBrown::shoot()
 		shootWing = 0;
 	}
 
-	static int shootCenter = 0;
 	shootCenter += GameInfo::getDeltaTime();
 
 
-	if (shootCenter > 6000)
+	if (shootCenter > shootCenterDeltaTime)
 	{
 		sf::Vector2f speed;
 		speed.x = 0;
@@ -208,7 +234,6 @@ void BossBrown::shoot()
 
 void BossBrown::destroy()
 {
-	
 	int los = rand() % 5;
 	if (los == 0) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootSpeed");
 	if (los == 1) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootDelay");
@@ -238,24 +263,33 @@ void BossBrown::destroy()
 	Explosion::create(sprite.getPosition().x - 30, sprite.getPosition().y + 140, 1.5, 2);
 
 
-	Particle::addParticle(sprite.getPosition().x, sprite.getPosition().y, "BasicEnemy", 600, 2);
-	Particle::addParticle(sprite.getPosition().x + 100, sprite.getPosition().y - 50, "BasicEnemy", 20, 1);
-	Particle::addParticle(sprite.getPosition().x - 120, sprite.getPosition().y + 30, "BasicEnemy", 20, 1);
-	Particle::addParticle(sprite.getPosition().x - 60, sprite.getPosition().y - 100, "BasicEnemy", 20, 1);
-	Particle::addParticle(sprite.getPosition().x + 40, sprite.getPosition().y - 120, "BasicEnemy", 20, 1);
-	Particle::addParticle(sprite.getPosition().x + 50, sprite.getPosition().y + 120, "BasicEnemy", 20, 1);
-	Particle::addParticle(sprite.getPosition().x - 30, sprite.getPosition().y + 140, "BasicEnemy", 20, 1);
+	Particle::addParticle(sprite.getPosition().x, sprite.getPosition().y, particleName, 600, 2);
+	Particle::addParticle(sprite.getPosition().x + 100, sprite.getPosition().y - 50, particleName, 20, 1);
+	Particle::addParticle(sprite.getPosition().x - 120, sprite.getPosition().y + 30, particleName, 20, 1);
+	Particle::addParticle(sprite.getPosition().x - 60, sprite.getPosition().y - 100, particleName, 20, 1);
+	Particle::addParticle(sprite.getPosition().x + 40, sprite.getPosition().y - 120, particleName, 20, 1);
+	Particle::addParticle(sprite.getPosition().x + 50, sprite.getPosition().y + 120, particleName, 20, 1);
+	Particle::addParticle(sprite.getPosition().x - 30, sprite.getPosition().y + 140, particleName, 20, 1);
 }
 
 void BossBrown::createLeftWingParticle()
 {
 	static int timesHited = 0;
 	timesHited++;
-	if (timesHited == 30)
+	if (timesHited == (int)maxHp/3)
 	{
 		haveLeftWing = false;
-		if(haveRightWing) texture.loadFromFile("Images/Enemies/Boss/1/leftWing.png");
-		else texture.loadFromFile("Images/Enemies/Boss/1/bothWings.png");
+		if (lvl == 1)
+		{
+			if (haveRightWing) texture.loadFromFile("Images/Enemies/Boss/1/leftWing.png");
+			else texture.loadFromFile("Images/Enemies/Boss/1/bothWings.png");
+		}
+		else
+		{
+			if (haveRightWing) texture.loadFromFile("Images/Enemies/Boss/3/leftWing.png");
+			else texture.loadFromFile("Images/Enemies/Boss/3/bothWings.png");
+		}
+		
 		
 		Explosion::create(sprite.getPosition().x + hitbox4pos.x, sprite.getPosition().y + hitbox4pos.y);
 		hitbox4.setScale(0, 0);
@@ -263,23 +297,31 @@ void BossBrown::createLeftWingParticle()
 		hitbox4pos.y = 0;
 	}
 
-	Particle::addParticle(sprite.getPosition().x + hitbox4pos.x, sprite.getPosition().y + hitbox4pos.y, "BasicEnemy", 15, 0.5);
+	Particle::addParticle(sprite.getPosition().x + hitbox4pos.x, sprite.getPosition().y + hitbox4pos.y, particleName, particleAmmount, 0.5);
 }
 
 void BossBrown::createRightWingParticle()
 {
 	static int timesHited = 0;
 	timesHited++;
-	if (timesHited == 30)
+	if (timesHited == (int)maxHp / 3)
 	{
 		haveRightWing = false;
-		if(haveLeftWing) texture.loadFromFile("Images/Enemies/Boss/1/rightWing.png");
-		else texture.loadFromFile("Images/Enemies/Boss/1/bothWings.png");
+		if (lvl == 1)
+		{
+			if (haveLeftWing) texture.loadFromFile("Images/Enemies/Boss/1/rightWing.png");
+			else texture.loadFromFile("Images/Enemies/Boss/1/bothWings.png");
+		}
+		else
+		{
+			if (haveLeftWing) texture.loadFromFile("Images/Enemies/Boss/3/rightWing.png");
+			else texture.loadFromFile("Images/Enemies/Boss/3/bothWings.png");
+		}
 		Explosion::create(sprite.getPosition().x + hitbox5pos.x, sprite.getPosition().y + hitbox5pos.y);
 		hitbox5.setScale(0, 0);
 		hitbox5pos.x = 0;
 		hitbox5pos.y = 0;
 	}
 
-	Particle::addParticle(sprite.getPosition().x + hitbox5pos.x, sprite.getPosition().y + hitbox5pos.y, "BasicEnemy", 15, 0.5);
+	Particle::addParticle(sprite.getPosition().x + hitbox5pos.x, sprite.getPosition().y + hitbox5pos.y, particleName, particleAmmount, 0.5);
 }

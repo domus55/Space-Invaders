@@ -67,7 +67,7 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 	}
 
 	hp = 1;
-	shootDelay = 300;
+	shootDelay = 3000;
 	shootType = 2;
 	shootScale = 1;
 							
