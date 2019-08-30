@@ -19,6 +19,7 @@
 #include "EnemyEasy.h"
 #include "GameVersion.h"
 #include "Music.h"
+#include "GameHud.h"
 
 class Game
 {
