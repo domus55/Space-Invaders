@@ -557,12 +557,7 @@ void LevelManager::level38()
 
 void LevelManager::level39()
 {
-	EnemyTrackingShots::create(-300, 150, 2, 1);
-	EnemyTrackingShots::create(2100, 150, 2, 2);
-
-
-	EnemyTank::create(-200, 350, 3, 3);
-	EnemyTank::create(2000, 350, 3, 4);
+	
 }
 
 void LevelManager::level40()
@@ -575,6 +570,12 @@ void LevelManager::level41()
 
 void LevelManager::level42()
 {
+	EnemyTrackingShots::create(-300, 150, 2, 1);
+	EnemyTrackingShots::create(2100, 150, 2, 2);
+
+
+	EnemyTank::create(-200, 350, 3, 3);
+	EnemyTank::create(2000, 350, 3, 4);
 }
 
 void LevelManager::level43()

@@ -892,6 +892,19 @@ void LevelEvent::level38()
 
 void LevelEvent::level39()
 {
+	
+}
+
+void LevelEvent::level40()
+{
+}
+
+void LevelEvent::level41()
+{
+}
+
+void LevelEvent::level42()
+{
 	static bool army1Right = true;
 	static bool army2Left = true;
 
@@ -922,18 +935,6 @@ void LevelEvent::level39()
 
 	if (BasicEnemy::mostToTheRight(3) > 300) army3Right = false;
 	if (BasicEnemy::mostToTheLeft(4) < 1300) army4Left = false;
-}
-
-void LevelEvent::level40()
-{
-}
-
-void LevelEvent::level41()
-{
-}
-
-void LevelEvent::level42()
-{
 }
 
 void LevelEvent::level43()

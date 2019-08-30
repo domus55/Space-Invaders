@@ -253,7 +253,10 @@ void BasicEnemy::checkCollision(int enemyNumber)
 void BasicEnemy::destroy()
 {
 	Explosion::create(sprite.getPosition());
-	int los = rand() % 100;
+	int los;
+	if(LevelManager::actualLevel < 10) los = rand() % 25;
+	else los = rand() % 50;
+	
 	if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
 	if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
 	if (los == 2) PowerUp::create(sprite.getPosition(), "hp");

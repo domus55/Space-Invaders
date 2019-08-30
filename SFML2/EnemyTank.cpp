@@ -111,7 +111,7 @@ void EnemyTank::destroy()
 
 	Particle::addParticle(sprite.getPosition().x, sprite.getPosition().y, "EnemyTank", 30, 1);
 
-	int los = rand() % 100;
+	int los = rand() % 50;
 	if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
 	if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
 	if (los == 2) PowerUp::create(sprite.getPosition(), "hp");
