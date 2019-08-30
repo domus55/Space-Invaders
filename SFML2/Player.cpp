@@ -79,7 +79,7 @@ void Player::resetStats()
 	shootDuration = 1500;
 	speed = 0.5;
 	hp = 6;
-	shootAmmount = 1;
+	shootAmmount = 7;
 	hitbox2PosY = 35;
 	drawPlayerModel.setScale(0.2, 0.2);
 	hitbox1.setScale(0.45, 0.9);
@@ -175,7 +175,7 @@ void Player::playerShoot()
 			Shoot::create(pos.x - 40, pos.y - 10, -shootSpeed / 4, -shootSpeed * 1.1, true, 1, 0.6);
 			Shoot::create(pos.x - 30, pos.y - 20, -shootSpeed / 6, -shootSpeed * 1.2, true, 1, 0.6);
 			Shoot::create(pos.x - 20, pos.y - 30, -shootSpeed / 10, -shootSpeed * 1.3, true, 1, 0.6);
-			Shoot::create(pos.x, pos.y - 50, 0, -shootSpeed / 1.1, true, 1, 1);
+			Shoot::create(pos.x, pos.y - 50, 0, -shootSpeed * 1.35, true, 1, 0.6);
 			Shoot::create(pos.x + 20, pos.y - 30, shootSpeed / 10, -shootSpeed * 1.3, true, 1, 0.6);
 			Shoot::create(pos.x + 30, pos.y - 20, shootSpeed / 6, -shootSpeed * 1.2, true, 1, 0.6);
 			Shoot::create(pos.x + 40, pos.y - 10, shootSpeed / 4, -shootSpeed * 1.1, true, 1, 0.6);
@@ -366,6 +366,8 @@ void Player::addShootDelay()
 		firstTime = false;
 	}
 	shootDuration *= 0.9;
+
+	GameHud::shootDelayLevel();
 }
 
 void Player::addShootSpeed()
@@ -377,11 +379,15 @@ void Player::addShootSpeed()
 		firstTime = false;
 	}
 	shootSpeed *= 1.1;
+
+	GameHud::shootSpeedLevel();
 }
 
 void Player::addShootAmmount()
 {
 	shootAmmount++;
+
+	GameHud::shootAmmountLevel();
 }
 
 void Player::sizeDown()
@@ -400,6 +406,8 @@ void Player::sizeDown()
 	hitbox1.setScale(hitbox1.getScale().x * 0.95, hitbox1.getScale().y * 0.95);
 	hitbox2.setScale(hitbox2.getScale().x * 0.95, hitbox2.getScale().y * 0.95);
 	hitbox2PosY *= 0.95;
+
+	GameHud::sizeDownLevel();
 }
 
 void Player::deathFx()

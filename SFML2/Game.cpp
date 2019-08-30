@@ -19,6 +19,7 @@ Game::Game()
 	PowerUp::loadSound();
 	GameVersion::create();
 	Music::playMusic();
+	GameHud::create();
 }
 
 void Game::exit()
@@ -58,6 +59,7 @@ void Game::output()
 	Explosion::renderAll();
 	LevelManager::render();
 	GameVersion::render();
+	GameHud::render();
 	Window::window.display();
 }
 
