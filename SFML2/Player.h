@@ -12,7 +12,7 @@
 #include "LevelManager.h"
 #include "Particle.h"
 #include "Explosion.h"
-
+#include "GameHud.h"
 
 class Player
 {
