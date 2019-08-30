@@ -11,7 +11,7 @@ EnemyFast::EnemyFast(float x, float y, int level, int id)
 	case 3: shootDelay = 1000; break;
 	}
 
-	speed = 0.2;
+	speed = 0.3;
 	shootSpeed = 2.5;
 	randShootDelay = 300;
 

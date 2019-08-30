@@ -349,7 +349,7 @@ void LevelManager::level19()
 
 	for (int i = 0; i < 2; i++)
 	{
-		EnemyTank::create(-i * 400 - 200, 500, 3, 2);
+		EnemyTank::create(-i * 400 - 200, 500, 2, 2);
 	}
 
 	for (int i = 0; i < 3; i++)
@@ -359,7 +359,7 @@ void LevelManager::level19()
 
 	for (int i = 0; i < 2; i++)
 	{
-		EnemyTank::create(i * 400 + 1800, 500, 3, 4);
+		EnemyTank::create(i * 400 + 1800, 500, 2, 4);
 	}
 }
 
@@ -391,6 +391,10 @@ void LevelManager::level22()
 
 void LevelManager::level23()
 {
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyInvisible::create(i * 250 + 175, 200, 1);
+	}
 }
 
 void LevelManager::level24()
@@ -428,6 +432,15 @@ void LevelManager::level25()
 
 void LevelManager::level26()
 {
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyInvisible::create(i * 250 + 175, -200, 1, 0);
+	}
+
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyInvisible::create(i * 250 + 175, -400, 2, 1);
+	}
 }
 
 void LevelManager::level27()
@@ -450,10 +463,31 @@ void LevelManager::level27()
 
 void LevelManager::level28()
 {
+	EnemyRocketMan::create(800, -350, 1, 0);
+	EnemyTank::create(800, -100, 3, 0);
 }
 
 void LevelManager::level29()
 {
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyInvisible::create(i * 250 + 175, -200, 2, 0);
+	}
+
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyInvisible::create(i * 250 + 175, -400, 3, 1);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyMedium::create(-i * 250 - 200, 450, 3, 3);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyMedium::create(i * 250 + 1800, 450, 3, 2);
+	}
 }
 
 void LevelManager::level30()
@@ -462,6 +496,8 @@ void LevelManager::level30()
 
 void LevelManager::level31()
 {
+	EnemyTrackingShots::create(800, -350, 1, 0);
+	EnemyTank::create(800, -100, 3, 0);
 }
 
 void LevelManager::level32()
@@ -482,6 +518,11 @@ void LevelManager::level35()
 
 void LevelManager::level36()
 {
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyRocketMan::create(i * 500 + 300, -300, 2, 0);
+		EnemyTank::create(i * 500 + 300, -100, 1, 0);
+	}
 }
 
 void LevelManager::level37()
@@ -490,10 +531,38 @@ void LevelManager::level37()
 
 void LevelManager::level38()
 {
+	EnemyTrackingShots::create(-200, 100, 1, 1);
+	EnemyTrackingShots::create(2000, 100, 1, 2);
+
+	for (int i = 0; i < 2; i++)
+	{
+		EnemyTank::create(-i * 400 - 200, 600, 2, 3);
+	}
+
+	for (int i = 0; i < 2; i++)
+	{
+		EnemyTank::create(-i * 400 - 200, 300, 2, 3);
+	}
+
+	for (int i = 0; i < 2; i++)
+	{
+		EnemyTank::create(i * 400 + 1800, 600, 2, 4);
+	}
+
+	for (int i = 0; i < 2; i++)
+	{
+		EnemyTank::create(i * 400 + 1800, 300, 2, 4);
+	}
 }
 
 void LevelManager::level39()
 {
+	EnemyTrackingShots::create(-300, 150, 2, 1);
+	EnemyTrackingShots::create(2100, 150, 2, 2);
+
+
+	EnemyTank::create(-200, 350, 3, 3);
+	EnemyTank::create(2000, 350, 3, 4);
 }
 
 void LevelManager::level40()
@@ -510,10 +579,16 @@ void LevelManager::level42()
 
 void LevelManager::level43()
 {
+
 }
 
 void LevelManager::level44()
 {
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyRocketMan::create(i * 400 + 200, -300, 3, 0);
+		EnemyTank::create(i * 400 + 200, -100, 2, 0);
+	}
 }
 
 void LevelManager::level45()
@@ -522,18 +597,79 @@ void LevelManager::level45()
 
 void LevelManager::level46()
 {
+	EnemyTrackingShots::create(800, -300, 3, 0);
+	EnemyTank::create(800, -100, 3, 0);
+
+	EnemyTrackingShots::create(-300, 150, 2, 1);
+	EnemyTrackingShots::create(2100, 150, 2, 2);
+
+
+	EnemyTank::create(-200, 350, 3, 3);
+	EnemyTank::create(2000, 350, 3, 4);
+
 }
 
 void LevelManager::level47()
 {
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyFast::create(-i * 150 - 1600, 50, 3, 0);
+	}
+
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyFast::create(i * 150 + 3200, 125, 3, 1);
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyTank::create(-i * 225 - 200, 300, 3, 2);
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyTank::create(i * 225 + 1800, 500, 3, 3);
+	}
 }
 
 void LevelManager::level48()
 {
+	EnemyFidgetSpinner::create(300, -400, 2, 0);
+	EnemyFidgetSpinner::create(800, -400, 2, 0);
+	EnemyFidgetSpinner::create(1300, -400, 2, 0);
+
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyTank::create(i * 300 + 50, -100, 3, 0);
+	}
 }
 
 void LevelManager::level49()
 {
+	EnemyFidgetSpinner::create(800, -800, 2, 0);
+
+	EnemyTrackingShots::create(-200, 150, 1, 1);
+	EnemyTrackingShots::create(2000, 150, 1, 2);
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyTank::create(-i * 300 - 200, 600, 3, 3);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyTank::create(-i * 300 - 200, 400, 3, 3);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyTank::create(i * 300 + 1800, 600, 3, 4);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyTank::create(i * 300 + 1800, 400, 3, 4);
+	}
 }
 
 void LevelManager::level50()
