@@ -36,8 +36,11 @@ BossBlack::BossBlack(float posX, float posY, int lvl, int id)
 	hitbox3pos.x = 120;
 	hitbox3pos.y = 0;
 
+	this->lvl = lvl;
+
 	if (lvl == 1)
 	{
+		texture.loadFromFile("Images/Enemies/Boss/2/normal.png");
 		hp = 200;
 		centerShootTime = 6000;
 		wingShootTime = 3000;
@@ -45,11 +48,14 @@ BossBlack::BossBlack(float posX, float posY, int lvl, int id)
 	}
 	if (lvl == 2)
 	{
+		texture.loadFromFile("Images/Enemies/Boss/4/normal.png");
 		hp = 400;
 		centerShootTime = 4000;
 		wingShootTime = 2000;
 		particleName = "BossBlack1";
 	}
+
+	sprite.setTexture(texture);
 	
 	maxHp = hp;
 
@@ -67,8 +73,7 @@ BossBlack::BossBlack(float posX, float posY, int lvl, int id)
 	hitbox4.setOutlineColor(sf::Color::Green);
 	hitbox5.setOutlineColor(sf::Color::Green);
 
-	texture.loadFromFile("Images/Enemies/Boss/2/normal.png");
-	sprite.setTexture(texture);
+	
 
 	sf::Vector2u size = texture.getSize();
 
@@ -81,6 +86,9 @@ BossBlack::BossBlack(float posX, float posY, int lvl, int id)
 	haveLeftWing = true;
 	timesHitedLeft = 0;
 	timesHitedRight = 0;
+
+	shootWing = 1000;
+	shootCenter = 0;
 }
 
 void BossBlack::create(float posX, float posY, int lvl, int id)
@@ -174,7 +182,6 @@ void BossBlack::checkCollision(int enemyNumber)
 
 void BossBlack::shoot()
 {
-	static int shootWing = 1000;
 	shootWing += GameInfo::getDeltaTime();
 
 	if (shootWing > wingShootTime)
@@ -251,11 +258,8 @@ void BossBlack::shoot()
 			}
 		}
 
-
 		shootWing = 0;
 	}
-
-	static int shootCenter = 0;
 	shootCenter += GameInfo::getDeltaTime();
 
 	if (shootCenter > centerShootTime)
@@ -312,11 +316,20 @@ void BossBlack::destroy()
 void BossBlack::createLeftWingParticle()
 {
 	timesHitedLeft++;
-	if (timesHitedLeft == (int)maxHp * 0.35)
+	if (timesHitedLeft == (int)maxHp * 0.2)
 	{
 		haveLeftWing = false;
-		if (haveRightWing) texture.loadFromFile("Images/Enemies/Boss/2/leftWing.png");
-		else texture.loadFromFile("Images/Enemies/Boss/2/bothWings.png");
+		if (lvl == 1)
+		{
+			if (haveRightWing) texture.loadFromFile("Images/Enemies/Boss/2/leftWing.png");
+			else texture.loadFromFile("Images/Enemies/Boss/2/bothWings.png");
+		}
+		else
+		{
+			if (haveRightWing) texture.loadFromFile("Images/Enemies/Boss/4/leftWing.png");
+			else texture.loadFromFile("Images/Enemies/Boss/4/bothWings.png");
+		}
+		
 
 		Explosion::create(sprite.getPosition().x + hitbox4pos.x, sprite.getPosition().y + hitbox4pos.y);
 		hitbox4pos.y -= 180;
@@ -329,11 +342,19 @@ void BossBlack::createLeftWingParticle()
 void BossBlack::createRightWingParticle()
 {
 	timesHitedRight++;
-	if (timesHitedRight == (int)maxHp * 0.35)
+	if (timesHitedRight == (int)maxHp * 0.2)
 	{
 		haveRightWing = false;
-		if (haveLeftWing) texture.loadFromFile("Images/Enemies/Boss/2/rightWing.png");
-		else texture.loadFromFile("Images/Enemies/Boss/2/bothWings.png");
+		if (lvl == 1)
+		{
+			if (haveLeftWing) texture.loadFromFile("Images/Enemies/Boss/2/rightWing.png");
+			else texture.loadFromFile("Images/Enemies/Boss/2/bothWings.png");
+		}
+		else
+		{
+			if (haveLeftWing) texture.loadFromFile("Images/Enemies/Boss/4/rightWing.png");
+			else texture.loadFromFile("Images/Enemies/Boss/4/bothWings.png");
+		}
 		Explosion::create(sprite.getPosition().x + hitbox5pos.x, sprite.getPosition().y + hitbox5pos.y);
 		hitbox5pos.y -= 180;
 		hitbox5.setScale(0.55, 0.8);

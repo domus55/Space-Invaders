@@ -254,9 +254,9 @@ void BasicEnemy::destroy()
 {
 	Explosion::create(sprite.getPosition());
 
-	int los = 2;
-	//if(LevelManager::actualLevel < 10) los = rand() % 25;
-	//else los = rand() % 50;
+	int los;
+	if(LevelManager::actualLevel < 10) los = rand() % 25;
+	else los = rand() % 50;
 
 	if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
 	if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");

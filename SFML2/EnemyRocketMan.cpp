@@ -23,18 +23,18 @@ EnemyRocketMan::EnemyRocketMan(float x, float y, int level, int id)
 
 	this->level = level;
 
-	sprite.setScale(0.4, 0.4);
+	sprite.setScale(0.45, 0.4);
 
-	hitbox1.setScale(0.35, 1);
-	hitbox1pos.x = -50;
+	hitbox1.setScale(0.45, 1);
+	hitbox1pos.x = -65;
 	hitbox1pos.y = 10;
 
 	hitbox2.setScale(0.5, 0.7);
 	hitbox2pos.x = 0;
 	hitbox2pos.y = 0;
 
-	hitbox3.setScale(0.35, 1);
-	hitbox3pos.x = 50;
+	hitbox3.setScale(0.45, 1);
+	hitbox3pos.x = 65;
 	hitbox3pos.y = 10;
 
 	hp = 5;

@@ -1,6 +1,6 @@
 #include "LevelManager.h"
 
-int LevelManager::actualLevel = 34;
+int LevelManager::actualLevel = 0;
 bool LevelManager::animation = false;
 sf::Text LevelManager::text;
 sf::Font LevelManager::font;
@@ -492,6 +492,7 @@ void LevelManager::level29()
 
 void LevelManager::level30()
 {
+	BossGold::create(800, -200, 1, 1);
 }
 
 void LevelManager::level31()
@@ -515,8 +516,8 @@ void LevelManager::level34()
 
 void LevelManager::level35()
 {
-	EnemyRocketMan::create(300, -200, 2, 1);
-	EnemyRocketMan::create(1300, -200, 2, 1);
+	EnemyRocketMan::create(300, -500, 2, 1);
+	EnemyRocketMan::create(1300, -500, 2, 1);
 	BossBlack::create(800, -200, 2, 1);
 }
 
@@ -624,7 +625,9 @@ void LevelManager::level44()
 
 void LevelManager::level45()
 {
-	//boss
+	EnemyRocketMan::create(300, -500, 3, 1);
+	EnemyRocketMan::create(1300, -500, 3, 1);
+	BossGold::create(800, -200, 2, 1);
 }
 
 void LevelManager::level46()

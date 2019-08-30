@@ -13,6 +13,7 @@
 #include "EnemyRocketMan.h"
 #include "EnemyTrackingShots.h"
 #include "BossBlack.h"
+#include "BossGold.h"
 
 class LevelManager {
 public:

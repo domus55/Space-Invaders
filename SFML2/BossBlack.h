@@ -14,6 +14,9 @@ class BossBlack : public BasicBoss
 	int timesHitedRight;
 	int timesHitedLeft;
 
+	int lvl;
+	int shootWing;
+	int shootCenter;
 	int centerShootTime;
 	int wingShootTime;
 
