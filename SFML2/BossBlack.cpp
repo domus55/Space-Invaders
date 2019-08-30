@@ -38,19 +38,18 @@ BossBlack::BossBlack(float posX, float posY, int lvl, int id)
 
 	if (lvl == 1)
 	{
-		hp = 100;
+		hp = 200;
 		centerShootTime = 6000;
 		wingShootTime = 3000;
 		particleName = "BossBlack1";
 	}
 	if (lvl == 2)
 	{
-		hp = 200;
+		hp = 400;
 		centerShootTime = 4000;
 		wingShootTime = 2000;
 		particleName = "BossBlack1";
 	}
-
 	
 	maxHp = hp;
 

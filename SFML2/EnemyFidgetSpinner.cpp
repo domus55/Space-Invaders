@@ -35,8 +35,8 @@ EnemyFidgetSpinner::EnemyFidgetSpinner(float x, float y, int level, int id)
 	hitbox2.setScale(0, 0);
 	hitbox3.setScale(0, 0);
 
-	hitbox4.setRadius(25);
-	hitbox4.setOrigin(25, 25);
+	hitbox4.setRadius(35);
+	hitbox4.setOrigin(35, 35);
 	hitbox4.setFillColor(sf::Color(0, 0, 0, 0));
 	hitbox4.setOutlineThickness(2);
 	hitbox4.setOutlineColor(sf::Color::Green);

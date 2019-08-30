@@ -1,6 +1,6 @@
 #include "LevelManager.h"
 
-int LevelManager::actualLevel = 0;
+int LevelManager::actualLevel = 34;
 bool LevelManager::animation = false;
 sf::Text LevelManager::text;
 sf::Font LevelManager::font;
@@ -500,6 +500,7 @@ void LevelManager::level31()
 	EnemyTank::create(800, -100, 3, 0);
 }
 
+//brak poziom
 void LevelManager::level32()
 {
 }
@@ -514,6 +515,9 @@ void LevelManager::level34()
 
 void LevelManager::level35()
 {
+	EnemyRocketMan::create(300, -200, 2, 1);
+	EnemyRocketMan::create(1300, -200, 2, 1);
+	BossBlack::create(800, -200, 2, 1);
 }
 
 void LevelManager::level36()
@@ -532,7 +536,7 @@ void LevelManager::level37()
 void LevelManager::level38()
 {
 	EnemyTrackingShots::create(-200, 100, 1, 1);
-	EnemyTrackingShots::create(2000, 100, 1, 2);
+	EnemyTrackingShots::create(1800, 100, 1, 2);
 
 	for (int i = 0; i < 2; i++)
 	{
@@ -566,21 +570,47 @@ void LevelManager::level40()
 
 void LevelManager::level41()
 {
+	EnemyFidgetSpinner::create(200, -400, 1, 4);
+	EnemyFidgetSpinner::create(1400, -400, 1, 4);
+
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyInvisible::create(i * 250 + 175, -200, 3, 0);
+	}
+
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyInvisible::create(i * 250 + 175, -400, 3, 1);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyTank::create(-i * 250 - 200, 450, 2, 3);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyTank::create(i * 250 + 1800, 450, 2, 2);
+	}
 }
 
 void LevelManager::level42()
 {
 	EnemyTrackingShots::create(-300, 150, 2, 1);
-	EnemyTrackingShots::create(2100, 150, 2, 2);
+	EnemyTrackingShots::create(1900, 150, 2, 2);
 
 
 	EnemyTank::create(-200, 350, 3, 3);
-	EnemyTank::create(2000, 350, 3, 4);
+	EnemyTank::create(1800, 350, 3, 4);
 }
 
 void LevelManager::level43()
 {
+	EnemyFidgetSpinner::create(300, -350, 3, 0);
+	EnemyTank::create(300, -100, 3, 0);
 
+	EnemyFidgetSpinner::create(1300, -350, 3, 0);
+	EnemyTank::create(1300, -100, 3, 0);
 }
 
 void LevelManager::level44()
@@ -594,6 +624,7 @@ void LevelManager::level44()
 
 void LevelManager::level45()
 {
+	//boss
 }
 
 void LevelManager::level46()

@@ -75,11 +75,11 @@ void Player::update()
 
 void Player::resetStats()
 {
-	shootSpeed = 3;
-	shootDuration = 1500;
+	shootSpeed = 5;				//3
+	shootDuration = 300;		//1500
 	speed = 0.5;
 	hp = 6;
-	shootAmmount = 7;
+	shootAmmount = 4;
 	hitbox2PosY = 35;
 	drawPlayerModel.setScale(0.2, 0.2);
 	hitbox1.setScale(0.45, 0.9);
@@ -349,10 +349,10 @@ void Player::addHp()
 	switch (hp)
 	{
 	case 6: drawHeartModel3.setTexture(heart); break;
-	case 5:	drawHeartModel3.setTexture(halfHeart); drawHeartModel2.setTexture(heart); break;
-	case 4:	drawHeartModel3.setTexture(emptyHeart); break;
-	case 3:	drawHeartModel2.setTexture(halfHeart); drawHeartModel1.setTexture(heart); break;
-	case 2:	drawHeartModel2.setTexture(emptyHeart); break;
+	case 5:	drawHeartModel2.setTexture(heart); drawHeartModel3.setTexture(halfHeart);  break;
+	case 4:	drawHeartModel2.setTexture(heart); drawHeartModel3.setTexture(emptyHeart); break;
+	case 3:	drawHeartModel1.setTexture(heart); drawHeartModel2.setTexture(halfHeart); break;
+	case 2:	drawHeartModel1.setTexture(heart); drawHeartModel2.setTexture(emptyHeart); break;
 	case 1:	drawHeartModel1.setTexture(halfHeart); break;
 	}
 }
