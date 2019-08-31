@@ -927,6 +927,21 @@ void LevelEvent::level39()
 
 void LevelEvent::level40()
 {
+	static bool down = true;
+
+	static clock_t prevTime = clock();
+	if (clock() - prevTime > 1000)
+	{
+		down = true;
+	}
+	prevTime = clock();
+
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (down) BasicEnemy::enemy[i]->moveDown();
+	}
+
+	if (BasicEnemy::mostToTheBottom() > 200) down = false;
 }
 
 void LevelEvent::level41()

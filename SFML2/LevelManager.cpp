@@ -567,6 +567,7 @@ void LevelManager::level39()
 
 void LevelManager::level40()
 {
+	BossBlue::create(800, -200, 1);
 }
 
 void LevelManager::level41()
@@ -635,12 +636,12 @@ void LevelManager::level46()
 	EnemyTrackingShots::create(800, -300, 3, 0);
 	EnemyTank::create(800, -100, 3, 0);
 
-	EnemyTrackingShots::create(-300, 150, 2, 1);
-	EnemyTrackingShots::create(2100, 150, 2, 2);
+	EnemyTrackingShots::create(-200, 150, 2, 1);
+	EnemyTrackingShots::create(1800, 150, 2, 2);
 
 
 	EnemyTank::create(-200, 350, 3, 3);
-	EnemyTank::create(2000, 350, 3, 4);
+	EnemyTank::create(1800, 350, 3, 4);
 
 }
 
@@ -683,7 +684,7 @@ void LevelManager::level49()
 {
 	EnemyFidgetSpinner::create(800, -800, 2, 0);
 
-	EnemyTrackingShots::create(-200, 150, 1, 1);
+	EnemyTrackingShots::create(-400, 150, 1, 1);
 	EnemyTrackingShots::create(2000, 150, 1, 2);
 
 	for (int i = 0; i < 3; i++)
