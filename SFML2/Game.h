@@ -20,6 +20,7 @@
 #include "GameVersion.h"
 #include "Music.h"
 #include "GameHud.h"
+#include "ClosingCredits.h"
 
 class Game
 {
