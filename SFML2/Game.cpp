@@ -61,7 +61,6 @@ void Game::output()
 	LevelManager::render();
 	GameVersion::render();
 	GameHud::render();
-	ClosingCredits::render();
 	Window::window.display();
 }
 
