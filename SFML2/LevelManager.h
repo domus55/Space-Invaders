@@ -5,15 +5,16 @@
 #include "BasicEnemy.h"
 #include "EnemyEasy.h"
 #include "EnemyMedium.h"
-#include "BossBrown.h"
 #include "EnemyTank.h"
 #include "EnemyFast.h"
 #include "EnemyFidgetSpinner.h"
 #include "EnemyInvisible.h"
 #include "EnemyRocketMan.h"
 #include "EnemyTrackingShots.h"
+#include "BossBrown.h"
 #include "BossBlack.h"
 #include "BossGold.h"
+#include "BossBlue.h"
 
 class LevelManager {
 public:
