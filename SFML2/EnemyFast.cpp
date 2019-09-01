@@ -49,6 +49,9 @@ EnemyFast::EnemyFast(float x, float y, int level, int id)
 	sprite.setPosition(x, y);
 	this->size.x = size.x * sprite.getScale().x;
 	this->size.y = size.y * sprite.getScale().y;
+
+	particleName = "EnemyFast";
+	particleAmmount = 12;
 }
 
 void EnemyFast::create(float posX, float posY, int level, int id)

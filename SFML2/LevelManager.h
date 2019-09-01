@@ -16,6 +16,7 @@
 #include "BossBlack.h"
 #include "BossGold.h"
 #include "BossBlue.h"
+#include "BossWhite.h"
 
 class LevelManager {
 public:

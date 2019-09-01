@@ -1,13 +1,14 @@
-#include "BossBrown.h"
+#include "BossWhite.h"
+#include "Player.h"
+#include "PowerUp.h"
 
-BossBrown::BossBrown(float posX, float posY, int lvl, int id)
+BossWhite::BossWhite(float posX, float posY, int id)
 	:BasicBoss(id)
 {
 	speed = 0.07;
-	shootSpeed = 1.5;
 	randShootDelay = 0;
 
-	sprite.setScale(0.8, 0.8);
+	sprite.setScale(0.6, 0.6);
 
 	hitbox4.setSize(sf::Vector2f(100, 100));
 	hitbox5.setSize(sf::Vector2f(100, 100));
@@ -15,26 +16,42 @@ BossBrown::BossBrown(float posX, float posY, int lvl, int id)
 	hitbox4.setOrigin(50, 50);
 	hitbox5.setOrigin(50, 50);
 
-	hitbox1.setScale(0.55, 0.8);
-	hitbox1pos.x = -50;
-	hitbox1pos.y = 180;
+	hitbox1.setScale(1, 1);
+	hitbox1pos.x = -100;
+	hitbox1pos.y = 150;
 
-	hitbox2.setScale(1, 3);
+	hitbox2.setScale(1, 1);
 	hitbox2pos.x = 0;
-	hitbox2pos.y = 0;
+	hitbox2pos.y = 160;
 
-	hitbox3.setScale(0.55, 0.8);
-	hitbox3pos.x = 50;
-	hitbox3pos.y = 180;
+	hitbox3.setScale(1, 1);
+	hitbox3pos.x = 100;
+	hitbox3pos.y = 150;
 
-	hitbox4.setScale(0.6, 1);
-	hitbox4pos.x = -120;
-	hitbox4pos.y = 0;
+	hitbox4.setScale(0.9, 1.2);
+	hitbox4pos.x = -190;
+	hitbox4pos.y = 160;
 
-	hitbox5.setScale(0.6, 1);
-	hitbox5pos.x = 120;
-	hitbox5pos.y = 0;
+	hitbox5.setScale(0.9, 1.2);
+	hitbox5pos.x = 190;
+	hitbox5pos.y = 160;
+
+
+	this->lvl = lvl;
+
 	
+	texture.loadFromFile("Images/Enemies/Boss/8/normal.png");
+	hp = 1000;
+	shootSpeed = 4;
+	centerShootTime = 3000;
+	wingShootTime = 1500;
+	particleName = "BossGold";
+	
+	particleAmmount = 3;
+	sprite.setTexture(texture);
+
+	maxHp = hp;
+
 	deathDeltaTime = 500;
 	shootDelay = 3000;
 	shootType = 2;
@@ -49,33 +66,6 @@ BossBrown::BossBrown(float posX, float posY, int lvl, int id)
 	hitbox4.setOutlineColor(sf::Color::Green);
 	hitbox5.setOutlineColor(sf::Color::Green);
 
-	this->lvl = lvl;
-
-	if (lvl == 1)
-	{
-		texture.loadFromFile("Images/Enemies/Boss/1/normal.png");
-		hp = 100;
-		shootWing = 1000;
-		shootWingDeltaTime = 3000;
-		shootCenterDeltaTime = 6000;
-		particleName = "BossBrown1";
-	}
-	if (lvl == 2)
-	{
-		texture.loadFromFile("Images/Enemies/Boss/3/normal.png");
-		hp = 200;
-		shootWing = 500;
-		shootWingDeltaTime = 2000;
-		shootCenterDeltaTime = 4000;
-		particleName = "BossBrown2";
-	}
-
-	particleAmmount = 5;
-
-	maxHp = hp;
-	
-	sprite.setTexture(texture);		
-
 	sf::Vector2u size = texture.getSize();
 
 	sprite.setOrigin(size.x / 2, size.y / 2);
@@ -85,18 +75,21 @@ BossBrown::BossBrown(float posX, float posY, int lvl, int id)
 
 	haveRightWing = true;
 	haveLeftWing = true;
-
-	shootCenter = 0;
 	timesHitedLeft = 0;
 	timesHitedRight = 0;
+
+	shootCenter = 0;
+	shootWing = 750;
+	centerShooted = 0;
+	wingShooted = 0;
 }
 
-void BossBrown::create(float posX, float posY, int lvl, int id)
+void BossWhite::create(float posX, float posY, int id)
 {
-	BasicEnemy::enemy.push_back(std::make_shared <BossBrown>(posX, posY, lvl, id));
+	BasicEnemy::enemy.push_back(std::make_shared <BossWhite>(posX, posY, id));
 }
 
-void BossBrown::render()
+void BossWhite::render()
 {
 	Window::window.draw(sprite);
 	renderHp();
@@ -111,7 +104,7 @@ void BossBrown::render()
 	}
 }
 
-void BossBrown::checkCollision(int enemyNumber)
+void BossWhite::checkCollision(int enemyNumber)
 {
 	sf::Vector2f pos = sprite.getPosition();
 	hitbox1.setPosition(pos + hitbox1pos);
@@ -180,78 +173,153 @@ void BossBrown::checkCollision(int enemyNumber)
 	}
 }
 
-void BossBrown::shoot()
+void BossWhite::shoot()
 {
 	shootWing += GameInfo::getDeltaTime();
 
-	if (shootWing > shootWingDeltaTime)
+	if (shootWing > wingShootTime)
 	{
-		for (int i = 0; i < 9; i++)
+		for (int i = 0; i < 2; i++)
 		{
-			int angle = i * 10;
-			if (lvl == 2 && angle == 0) angle = 1;
-			double angleInRadian = angle * 3.141592653589793238463 / 180;
-
 			sf::Vector2f speed;
+			sf::Vector2f hitboxPos;
+			if (i == 0) hitboxPos = hitbox4.getPosition();
+			else  hitboxPos = hitbox5.getPosition();
 
-			speed.x = 1;
-			speed.y = speed.x / tan(angleInRadian);
-
-			float c = sqrt(pow(speed.x, 2) + pow(speed.y, 2));
-			speed.x /= c;
-			speed.y /= c;
-
-			if(haveRightWing) Shoot::create(hitbox5.getPosition(), speed, false, 3);
-			if (haveLeftWing)
+			for (int j = -1; j < 2; j++)
 			{
-				speed.x = -speed.x;
-				Shoot::create(hitbox4.getPosition(), speed, false, 3);
+				sf::Vector2f playerPos = Player::player.drawPlayerModel.getPosition();
+				speed.x = playerPos.x - hitboxPos.x;
+				speed.y = playerPos.y - hitboxPos.y;
+
+				double angleInRadian = atan2((double)speed.x, (double)speed.y);
+				double angleInDegree = angleInRadian * 180 / 3.141592653589793238463;
+
+				angleInDegree += j * 20;
+
+				int angle = angleInDegree;
+				if (angle == 0) angle = 1;
+				double angleInRadian2 = angle * 3.141592653589793238463 / 180;
+
+				sf::Vector2f speed2;
+
+				speed2.x = 1;
+				speed2.y = speed2.x / tan(angleInRadian2);
+
+				float c = sqrt(pow(speed2.x, 2) + pow(speed2.y, 2));
+				speed2.x /= c;
+				speed2.y /= c;
+
+				speed2.x *= shootSpeed;
+				speed2.y *= shootSpeed;
+
+				if (-angle > 0 && -angle <= 180)
+				{
+					speed2.x *= -1;
+					speed2.y *= -1;
+				}
+				if(!(wingShooted % 2 == 0 && j == 0))
+				if ((i == 0 && haveLeftWing) || (i == 1 && haveRightWing)) Shoot::create(hitboxPos, speed2, false, 3);
 			}
 		}
 
-		
+		wingShooted++;
 		shootWing = 0;
 	}
 
 	shootCenter += GameInfo::getDeltaTime();
 
-
-	if (shootCenter > shootCenterDeltaTime)
+	if (shootCenter > centerShootTime)
 	{
-		sf::Vector2f speed;
-		speed.x = 0;
-		speed.y = 10;
-		Shoot::create(hitbox1.getPosition(), speed, false, 2, 3);
-		Shoot::create(hitbox1.getPosition(), speed, false, 2, 3);
+		if (centerShooted % 3 == 1)
+		{
+			for (int i = -4; i < 5; i++)
+			{
+				int angle = i*5 + 1;
+				angle %= 360;
+				if (angle == 0) angle = 1;
+				double angleInRadian = angle * 3.141592653589793238463 / 180;
 
-		Shoot::create(hitbox3.getPosition(), speed, false, 2, 3);
-		Shoot::create(hitbox3.getPosition(), speed, false, 2, 3);
+				sf::Vector2f speed;
+
+				speed.x = 1;
+				speed.y = speed.x / tan(angleInRadian);
+
+				float c1 = sqrt(pow(speed.x, 2) + pow(speed.y, 2));
+				speed.x /= c1;
+				speed.y /= c1;
+
+				speed.x *= shootSpeed;
+				speed.y *= shootSpeed;
+
+				if (-angle > 0 && -angle <= 180)
+				{
+					speed.x *= -1;
+					speed.y *= -1;
+				}
+
+				Shoot::create(sprite.getPosition(), speed, false, 3, shootScale);
+			}
+			
+		}
+
+		if (centerShooted % 3 == 0)
+		{
+			for (int i = 0; i < 18; i++)
+			{
+				int angle = -i * 20;
+				angle %= 360;
+				if (angle == 0) angle = 1;
+				double angleInRadian = angle * 3.141592653589793238463 / 180;
+
+				sf::Vector2f speed;
+
+				speed.x = 1;
+				speed.y = speed.x / tan(angleInRadian);
+
+				float c1 = sqrt(pow(speed.x, 2) + pow(speed.y, 2));
+				speed.x /= c1;
+				speed.y /= c1;
+
+				speed.x *= shootSpeed;
+				speed.y *= shootSpeed;
+
+				if (-angle > 0 && -angle <= 180)
+				{
+					speed.x *= -1;
+					speed.y *= -1;
+				}
+
+				Shoot::create(sprite.getPosition(), speed, false, 3, shootScale);
+			}
+		}
+
+		if (centerShooted % 3 == 2)
+		{
+			sf::Vector2f speed;
+			sf::Vector2f hitboxPos;
+			hitboxPos = hitbox2.getPosition();
+			sf::Vector2f playerPos = Player::player.drawPlayerModel.getPosition();
+			speed.x = playerPos.x - hitboxPos.x;
+			speed.y = playerPos.y - hitboxPos.y;
+
+			float c1 = sqrt(pow(speed.x, 2) + pow(speed.y, 2));
+			speed.x /= c1;
+			speed.y /= c1;
+
+			speed.x *= shootSpeed;
+			speed.y *= shootSpeed;
+
+			Rocket::create(hitboxPos, speed, 3);
+		}
+		
+		centerShooted++;
 		shootCenter = 0;
 	}
 }
 
-void BossBrown::destroy()
+void BossWhite::destroy()
 {
-	int los = rand() % 5;
-	if (los == 0) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootSpeed");
-	if (los == 1) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootDelay");
-	if (los == 2) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "hp");
-	if (los == 3) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootAmmount");
-	if (los == 4) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "sizeDown");
-
-	los = rand() % 5;
-	if (los == 0) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootSpeed");
-	if (los == 1) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootDelay");
-	if (los == 2) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "hp");
-	if (los == 3) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootAmmount");
-	if (los == 4) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "sizeDown");
-
-	los = rand() % 4;
-	if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
-	if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
-	if (los == 2) PowerUp::create(sprite.getPosition(), "hp");
-	if (los == 3) PowerUp::create(sprite.getPosition(), "sizeDown");
-
 	Explosion::create(sprite.getPosition(), 2, 2.5);
 	Explosion::create(sprite.getPosition().x + 100, sprite.getPosition().y - 50, 1, 2);
 	Explosion::create(sprite.getPosition().x - 120, sprite.getPosition().y + 30, 1, 1.8);
@@ -270,53 +338,37 @@ void BossBrown::destroy()
 	Particle::addParticle(sprite.getPosition().x - 30, sprite.getPosition().y + 140, particleName, 20, 1);
 }
 
-void BossBrown::createLeftWingParticle()
+void BossWhite::createLeftWingParticle()
 {
 	timesHitedLeft++;
-	if (timesHitedLeft == (int)maxHp/3)
+	if (timesHitedLeft == (int)maxHp * 0.2)
 	{
 		haveLeftWing = false;
-		if (lvl == 1)
-		{
-			if (haveRightWing) texture.loadFromFile("Images/Enemies/Boss/1/leftWing.png");
-			else texture.loadFromFile("Images/Enemies/Boss/1/bothWings.png");
-		}
-		else
-		{
-			if (haveRightWing) texture.loadFromFile("Images/Enemies/Boss/3/leftWing.png");
-			else texture.loadFromFile("Images/Enemies/Boss/3/bothWings.png");
-		}
 		
-		
+		if (haveRightWing) texture.loadFromFile("Images/Enemies/Boss/8/leftWing.png");
+		else texture.loadFromFile("Images/Enemies/Boss/8/bothWings.png");
+
 		Explosion::create(sprite.getPosition().x + hitbox4pos.x, sprite.getPosition().y + hitbox4pos.y);
-		hitbox4.setScale(0, 0);
-		hitbox4pos.x = 0;
-		hitbox4pos.y = 0;
+		hitbox4pos.x += 180;
+		hitbox4.setScale(0.55, 0.8);
 	}
 
 	Particle::addParticle(sprite.getPosition().x + hitbox4pos.x, sprite.getPosition().y + hitbox4pos.y, particleName, particleAmmount, 0.5);
 }
 
-void BossBrown::createRightWingParticle()
+void BossWhite::createRightWingParticle()
 {
 	timesHitedRight++;
-	if (timesHitedRight == (int)maxHp / 3)
+	if (timesHitedRight == (int)maxHp * 0.2)
 	{
 		haveRightWing = false;
-		if (lvl == 1)
-		{
-			if (haveLeftWing) texture.loadFromFile("Images/Enemies/Boss/1/rightWing.png");
-			else texture.loadFromFile("Images/Enemies/Boss/1/bothWings.png");
-		}
-		else
-		{
-			if (haveLeftWing) texture.loadFromFile("Images/Enemies/Boss/3/rightWing.png");
-			else texture.loadFromFile("Images/Enemies/Boss/3/bothWings.png");
-		}
+
+		if (haveLeftWing) texture.loadFromFile("Images/Enemies/Boss/8/rightWing.png");
+		else texture.loadFromFile("Images/Enemies/Boss/8/bothWings.png");
+
 		Explosion::create(sprite.getPosition().x + hitbox5pos.x, sprite.getPosition().y + hitbox5pos.y);
-		hitbox5.setScale(0, 0);
-		hitbox5pos.x = 0;
-		hitbox5pos.y = 0;
+		hitbox5pos.x -= 180;
+		hitbox5.setScale(0.55, 0.8);
 	}
 
 	Particle::addParticle(sprite.getPosition().x + hitbox5pos.x, sprite.getPosition().y + hitbox5pos.y, particleName, particleAmmount, 0.5);

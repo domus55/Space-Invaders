@@ -7,6 +7,7 @@ Particle::Particle(float a, float h, std::string name, float speed)
 {
 	if (name == "BasicEnemy") teksture.loadFromFile("Images/Particles/BasicEnemy.png");
 	if (name == "EnemyTank") teksture.loadFromFile("Images/Particles/EnemyTank.png");
+	if (name == "EnemyFast") teksture.loadFromFile("Images/Particles/EnemyFast.png");
 	if (name == "BossBrown1") teksture.loadFromFile("Images/Particles/BossBrown1.png");
 	if (name == "BossBrown2") teksture.loadFromFile("Images/Particles/BossBrown2.png");
 	if (name == "BossBlack1") teksture.loadFromFile("Images/Particles/BossBlack1.png");

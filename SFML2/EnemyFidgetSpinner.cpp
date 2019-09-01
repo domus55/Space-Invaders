@@ -1,8 +1,16 @@
 #include "EnemyFidgetSpinner.h"
+#include "PowerUp.h"
 
 EnemyFidgetSpinner::EnemyFidgetSpinner(float x, float y, int level, int id)
 	: BasicEnemy(id)
 {
+	if (level == 99)
+	{
+		level = 1;
+		dropHp = true;
+	}
+	else dropHp = false;
+
 	if (level == 1)
 	{
 		shootDelay = 800;
@@ -193,5 +201,28 @@ void EnemyFidgetSpinner::render()
 	if (renderHitbox)
 	{
 		Window::window.draw(hitbox4);
+	}
+}
+
+void EnemyFidgetSpinner::destroy()
+{
+	Explosion::create(sprite.getPosition());
+
+	if (dropHp)
+	{
+		PowerUp::create(sprite.getPosition(), "hp");
+		PowerUp::create(sprite.getPosition(), "hp");
+		PowerUp::create(sprite.getPosition(), "hp");
+	}
+	else
+	{
+		int los;
+		los = rand() % 50;
+
+		if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
+		if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
+		if (los == 2) PowerUp::create(sprite.getPosition(), "hp");
+		if (los == 3) PowerUp::create(sprite.getPosition(), "shootAmmount");
+		if (los == 4) PowerUp::create(sprite.getPosition(), "sizeDown");
 	}
 }

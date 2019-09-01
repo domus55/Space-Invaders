@@ -1,4 +1,5 @@
 #include "LevelManager.h"
+#include "PowerUp.h"
 
 int LevelManager::actualLevel = 0;
 bool LevelManager::animation = false;
@@ -768,5 +769,7 @@ void LevelManager::level49()
 
 void LevelManager::level50()
 {
-	EnemyEasy::create(800, 300, 1);
+	BossWhite::create(800, -300, 1);
+	EnemyFidgetSpinner::create(300, -600, 99, 1);
+	EnemyFidgetSpinner::create(1300, -600, 99, 1);
 }
