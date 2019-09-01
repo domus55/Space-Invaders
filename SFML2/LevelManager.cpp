@@ -219,7 +219,7 @@ void LevelManager::level9()
 
 void LevelManager::level10()
 {
-	BossBrown::create(800, -200, 1, 1);
+	BossBrown::create(800, -250, 1, 1);
 }
 
 void LevelManager::level11()
@@ -366,7 +366,7 @@ void LevelManager::level19()
 
 void LevelManager::level20()
 {
-	BossBlack::create(800, -200, 1, 1);
+	BossBlack::create(800, -250, 1, 1);
 }
 
 void LevelManager::level21()
@@ -418,7 +418,7 @@ void LevelManager::level24()
 
 void LevelManager::level25()
 {
-	BossBrown::create(800, -200, 2, 0);
+	BossBrown::create(800, -250, 2, 0);
 
 	for (int i = 0; i < 3; i++)
 	{
@@ -493,7 +493,7 @@ void LevelManager::level29()
 
 void LevelManager::level30()
 {
-	BossGold::create(800, -200, 1, 1);
+	BossGold::create(800, -250, 1, 1);
 }
 
 void LevelManager::level31()
@@ -565,9 +565,9 @@ void LevelManager::level34()
 
 void LevelManager::level35()
 {
-	EnemyRocketMan::create(300, -500, 2, 1);
-	EnemyRocketMan::create(1300, -500, 2, 1);
-	BossBlack::create(800, -200, 2, 1);
+	EnemyRocketMan::create(300, -550, 2, 1);
+	EnemyRocketMan::create(1300, -550, 2, 1);
+	BossBlack::create(800, -250, 2, 1);
 }
 
 void LevelManager::level36()
@@ -625,7 +625,7 @@ void LevelManager::level39()
 
 void LevelManager::level40()
 {
-	BossBlue::create(800, -200, 1);
+	BossBlue::create(800, -250, 1);
 }
 
 void LevelManager::level41()
@@ -684,9 +684,9 @@ void LevelManager::level44()
 
 void LevelManager::level45()
 {
-	EnemyRocketMan::create(300, -500, 3, 1);
-	EnemyRocketMan::create(1300, -500, 3, 1);
-	BossGold::create(800, -200, 2, 1);
+	EnemyRocketMan::create(300, -550, 3, 1);
+	EnemyRocketMan::create(1300, -550, 3, 1);
+	BossGold::create(800, -250, 2, 1);
 }
 
 void LevelManager::level46()
