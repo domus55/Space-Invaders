@@ -73,3 +73,16 @@ void GameHud::sizeDownLevel()
 	sizeDownString = std::to_string(sizeDown);
 	hud();
 }
+
+void GameHud::resetHud()
+{
+	shootDelay = 0;
+	shootSpeed = 0;
+	shootAmmount = 0;
+	sizeDown = 0;
+	shootDelayString = std::to_string(shootDelay);
+	shootSpeedString = std::to_string(shootSpeed);
+	shootAmmountString = std::to_string(shootAmmount);
+	sizeDownString = std::to_string(sizeDown);
+	hud();
+}

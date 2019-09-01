@@ -309,6 +309,8 @@ void Player::playerDeath()
 	playerDeathSound.stop();
 	playerDeathSound.play();
 	
+	GameHud::resetHud();
+
 	renderDeath = true;
 	deathDelay = true;
 	checkDeathFx = true;
