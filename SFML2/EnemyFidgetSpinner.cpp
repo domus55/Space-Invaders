@@ -53,6 +53,7 @@ EnemyFidgetSpinner::EnemyFidgetSpinner(float x, float y, int level, int id)
 	hp = 3;
 	shootType = 2;
 	shootScale = 1;
+	particleName = "EnemyFast";
 
 	texture.loadFromFile("Images/Enemies/FidgetSpinner/normal.png");
 	sprite.setTexture(texture);

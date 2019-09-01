@@ -391,24 +391,20 @@ void Player::addHp()
 
 void Player::addShootDelay()
 {
-	static bool firstTime = true;
-	if (firstTime)
+	if (shootDuration == 1500)
 	{
 		shootDuration *= 0.7;
-		firstTime = false;
 	}
-	shootDuration *= 0.9;
+	shootDuration *= 0.85;
 
 	GameHud::shootDelayLevel();
 }
 
 void Player::addShootSpeed()
 {
-	static bool firstTime = true;
-	if (firstTime)
+	if (shootSpeed == 3)
 	{
 		shootSpeed *= 1.5;
-		firstTime = false;
 	}
 	shootSpeed *= 1.1;
 
