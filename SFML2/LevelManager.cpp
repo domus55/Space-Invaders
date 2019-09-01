@@ -1,6 +1,6 @@
 #include "LevelManager.h"
 
-int LevelManager::actualLevel = 33;
+int LevelManager::actualLevel = 0;
 bool LevelManager::animation = false;
 sf::Text LevelManager::text;
 sf::Font LevelManager::font;
@@ -17,7 +17,8 @@ void LevelManager::create()
 
 void LevelManager::update()
 {
-	if (BasicEnemy::enemy.size() == 0) animation = true;
+	if (actualLevel > 51) actualLevel = 51;
+	if (BasicEnemy::enemy.size() == 0 && actualLevel != 51) animation = true;
 	else animation = false;
 }
 
@@ -538,10 +539,28 @@ void LevelManager::level33()
 	EnemyFidgetSpinner::create(300, -300, 3, 1);
 	EnemyFidgetSpinner::create(1300, -300, 3, 1);
 }
-//brak poziomu
+
 void LevelManager::level34()
 {
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyTank::create(i * 250 + 175, -150, 2, 2);
+	}
 
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyFast::create(-i * 150 - 1600, 50, 3, 0);
+	}
+
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyFast::create(i * 150 + 3200, 125, 3, 1);
+	}
+
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyFast::create(-i * 150 - 1600, 200, 3, 3);
+	}
 }
 
 void LevelManager::level35()
@@ -749,4 +768,5 @@ void LevelManager::level49()
 
 void LevelManager::level50()
 {
+	EnemyEasy::create(800, 300, 1);
 }

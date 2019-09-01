@@ -16,6 +16,8 @@ class BossBrown : public BasicBoss
 	int shootWingDeltaTime;
 	int shootCenterDeltaTime;
 
+	int timesHitedLeft;
+	int timesHitedRight;
 	bool haveRightWing;
 	bool haveLeftWing;
 

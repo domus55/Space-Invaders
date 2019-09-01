@@ -20,6 +20,7 @@ Game::Game()
 	GameVersion::create();
 	Music::playMusic();
 	GameHud::create();
+	ClosingCredits::create();
 }
 
 void Game::exit()
@@ -60,6 +61,7 @@ void Game::output()
 	LevelManager::render();
 	GameVersion::render();
 	GameHud::render();
+	if (ClosingCredits::render()) isRunning = false;
 	Window::window.display();
 }
 

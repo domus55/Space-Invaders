@@ -4,7 +4,7 @@ int GameInfo::deltaTime = 0;
 
 void GameInfo::setDeltaTime(int DeltaTime)
 {
-	if (DeltaTime >= 0)
+	if (DeltaTime >= 0 && DeltaTime <= 2000)
 		GameInfo::deltaTime = DeltaTime;
 }
 

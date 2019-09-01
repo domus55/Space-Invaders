@@ -89,8 +89,9 @@ BossBrown::BossBrown(float posX, float posY, int lvl, int id)
 	haveRightWing = true;
 	haveLeftWing = true;
 
-	
 	shootCenter = 0;
+	timesHitedLeft = 0;
+	timesHitedRight = 0;
 }
 
 void BossBrown::create(float posX, float posY, int lvl, int id)
@@ -274,9 +275,8 @@ void BossBrown::destroy()
 
 void BossBrown::createLeftWingParticle()
 {
-	static int timesHited = 0;
-	timesHited++;
-	if (timesHited == (int)maxHp/3)
+	timesHitedLeft++;
+	if (timesHitedLeft == (int)maxHp/3)
 	{
 		haveLeftWing = false;
 		if (lvl == 1)
@@ -302,9 +302,8 @@ void BossBrown::createLeftWingParticle()
 
 void BossBrown::createRightWingParticle()
 {
-	static int timesHited = 0;
-	timesHited++;
-	if (timesHited == (int)maxHp / 3)
+	timesHitedRight++;
+	if (timesHitedRight == (int)maxHp / 3)
 	{
 		haveRightWing = false;
 		if (lvl == 1)

@@ -2,6 +2,7 @@
 
 #include <string>
 #include "Animation.h"
+#include "ClosingCredits.h"
 #include "BasicEnemy.h"
 #include "EnemyEasy.h"
 #include "EnemyMedium.h"

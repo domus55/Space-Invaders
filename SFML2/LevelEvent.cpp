@@ -62,7 +62,7 @@ void LevelEvent::level2()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 2000)
 	{
 		left = true;
 		down = true;
@@ -86,7 +86,7 @@ void LevelEvent::level3()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -106,7 +106,7 @@ void LevelEvent::level4()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		left = true;
 		down = true;
@@ -127,7 +127,7 @@ void LevelEvent::level5()
 	static bool army2Left = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		army1Right = true;
 		army2Left = true;
@@ -155,7 +155,7 @@ void LevelEvent::level6()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -175,7 +175,7 @@ void LevelEvent::level7()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		left = true;
 		down = true;
@@ -199,7 +199,7 @@ void LevelEvent::level8()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -218,7 +218,7 @@ void LevelEvent::level9()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -237,7 +237,7 @@ void LevelEvent::level10()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -257,7 +257,7 @@ void LevelEvent::level11()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		left = true;
 		down = true;
@@ -279,7 +279,7 @@ void LevelEvent::level12()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		tank1Right = true;
 		tank2Left = true;
@@ -305,7 +305,7 @@ void LevelEvent::level13()
 	static bool army2Left = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		army1Right = true;
 		army2Left = true;
@@ -336,7 +336,7 @@ void LevelEvent::level14()
 	static bool left = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		tank1Right = true;
 		tank2Left = true;
@@ -370,7 +370,7 @@ void LevelEvent::level15()
 	static bool army2Left = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		left = true;
 		down = true;
@@ -402,7 +402,7 @@ void LevelEvent::level16()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -424,7 +424,7 @@ void LevelEvent::level17()
 	static bool left = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		tank1Right = true;
 		tank2Left = true;
@@ -457,7 +457,7 @@ void LevelEvent::level18()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		tank1Right = true;
 		tank2Left = true;
@@ -487,7 +487,7 @@ void LevelEvent::level19()
 	static bool army4Left = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		left = true;
 		down = true;
@@ -527,7 +527,7 @@ void LevelEvent::level20()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -546,7 +546,7 @@ void LevelEvent::level21()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -568,7 +568,7 @@ void LevelEvent::level22()
 	static bool left = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		tank1Right = true;
 		tank2Left = true;
@@ -604,7 +604,7 @@ void LevelEvent::level24()
 	static bool army2Left = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		army1Right = true;
 		army2Left = true;
@@ -634,7 +634,7 @@ void LevelEvent::level25()
 	static bool army2Left = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 		army1Right = false;
@@ -662,7 +662,7 @@ void LevelEvent::level26()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		army1Left = true;
 		army2Right = true;
@@ -698,7 +698,7 @@ void LevelEvent::level27()
 	static bool army2Left = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		left = true;
 		down = true;
@@ -728,7 +728,7 @@ void LevelEvent::level28()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -751,7 +751,7 @@ void LevelEvent::level29()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		army1Left = true;
 		army2Right = true;
@@ -793,7 +793,7 @@ void LevelEvent::level30()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -812,7 +812,7 @@ void LevelEvent::level31()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -835,7 +835,7 @@ void LevelEvent::level32()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		army1Left = true;
 		army2Right = true;
@@ -878,7 +878,7 @@ void LevelEvent::level33()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -894,6 +894,45 @@ void LevelEvent::level33()
 
 void LevelEvent::level34()
 {
+	static bool down = true;
+	static bool army1Right = true;
+	static bool army2Left = true;
+	static bool army4Left = true;
+
+	static clock_t prevTime = clock();
+	if (clock() - prevTime > 5000)
+	{
+		down = true;
+		army1Right = true;
+		army2Left = true;
+		army4Left = true;
+	}
+	prevTime = clock();
+
+	for (int i = BasicEnemy::enemy.size() - 1; i >= 0; i--)
+	{
+		if (BasicEnemy::enemy[i]->id == 0 && army1Right) BasicEnemy::enemy[i]->moveRight();
+		if (BasicEnemy::enemy[i]->id == 0 && !army1Right) BasicEnemy::enemy[i]->moveLeft();
+
+		if (BasicEnemy::enemy[i]->id == 1 && army2Left) BasicEnemy::enemy[i]->moveLeft();
+		if (BasicEnemy::enemy[i]->id == 1 && !army2Left) BasicEnemy::enemy[i]->moveRight();
+
+		if (BasicEnemy::enemy[i]->id == 2 && down) BasicEnemy::enemy[i]->moveDown();
+
+		if (BasicEnemy::enemy[i]->id == 3 && army4Left) BasicEnemy::enemy[i]->moveLeft();
+		if (BasicEnemy::enemy[i]->id == 3 && !army4Left) BasicEnemy::enemy[i]->moveRight();
+	}
+
+	if (BasicEnemy::mostToTheBottom(2) > 450) down = false;
+
+	if (BasicEnemy::mostToTheRight(0) > 1550) army1Right = false;
+	if (BasicEnemy::mostToTheLeft(0) < 50) army1Right = true;
+
+	if (BasicEnemy::mostToTheRight(1) > 1550) army2Left = true;
+	if (BasicEnemy::mostToTheLeft(1) < 50) army2Left = false;
+
+	if (BasicEnemy::mostToTheRight(3) > 1550) army4Left = true;
+	if (BasicEnemy::mostToTheLeft(3) < 50) army4Left = false;
 }
 
 void LevelEvent::level35()
@@ -901,7 +940,7 @@ void LevelEvent::level35()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -920,7 +959,7 @@ void LevelEvent::level36()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -939,7 +978,7 @@ void LevelEvent::level37()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -963,7 +1002,7 @@ void LevelEvent::level38()
 	static bool army4Left = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 		army1Right = true;
@@ -998,7 +1037,7 @@ void LevelEvent::level39()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -1017,7 +1056,7 @@ void LevelEvent::level40()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -1040,7 +1079,7 @@ void LevelEvent::level41()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		army1Left = true;
 		army2Right = true;
@@ -1087,7 +1126,7 @@ void LevelEvent::level42()
 	static bool army4Left = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		army1Right = true;
 		army2Left = true;
@@ -1117,7 +1156,7 @@ void LevelEvent::level43()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -1136,7 +1175,7 @@ void LevelEvent::level44()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -1155,7 +1194,7 @@ void LevelEvent::level45()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -1179,7 +1218,7 @@ void LevelEvent::level46()
 	static bool army4Left = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 		army1Right = true;
@@ -1217,7 +1256,7 @@ void LevelEvent::level47()
 	static bool army4Left = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		army1Right = true;
 		army2Left = true;
@@ -1237,8 +1276,7 @@ void LevelEvent::level47()
 		if (BasicEnemy::enemy[i]->id == 2 && army3Right) BasicEnemy::enemy[i]->moveRight();
 		if (BasicEnemy::enemy[i]->id == 2 && !army3Right) BasicEnemy::enemy[i]->moveLeft();
 
-		if (BasicEnemy::enemy[i]->id == 3 && army4Left) BasicEnemy::enemy[i]->moveLeft();
-		if (BasicEnemy::enemy[i]->id == 3 && !army4Left) BasicEnemy::enemy[i]->moveRight();
+		
 	}
 
 	if (BasicEnemy::mostToTheRight(0) > 1550) army1Right = false;
@@ -1259,7 +1297,7 @@ void LevelEvent::level48()
 	static bool down = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 	}
@@ -1283,7 +1321,7 @@ void LevelEvent::level49()
 	static bool army4Left = true;
 
 	static clock_t prevTime = clock();
-	if (clock() - prevTime > 1000)
+	if (clock() - prevTime > 5000)
 	{
 		down = true;
 		army1Right = true;
@@ -1316,3 +1354,4 @@ void LevelEvent::level49()
 void LevelEvent::level50()
 {
 }
+
