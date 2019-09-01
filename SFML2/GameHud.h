@@ -17,12 +17,13 @@ public:
 	static void shootSpeedLevel();		// Zwiêkszanie poziomu shootSpeed
 	static void shootAmmountLevel();	// Zwiêkszanie poziomu shootAmmount
 	static void sizeDownLevel();		// Zwiêkszanie poziomu sizeDown
+	static void resetHud();				// Reset do wartoœci pocz¹tkowych (œmieræ)
 
-private:
 	static int shootDelay;
 	static int shootSpeed;	
 	static int shootAmmount;
 	static int sizeDown;
 
+private:
 	static void hud();
 };

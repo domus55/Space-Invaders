@@ -1,5 +1,4 @@
 #include "LevelManager.h"
-#include "PowerUp.h"
 
 int LevelManager::actualLevel = 0;
 bool LevelManager::animation = false;
