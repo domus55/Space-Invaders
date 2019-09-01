@@ -1,5 +1,7 @@
 #include "EnemyFast.h"
 
+sf::Texture EnemyFast::texture;
+
 EnemyFast::EnemyFast(float x, float y, int level, int id)
 	: BasicEnemy(id)
 {
@@ -33,8 +35,13 @@ EnemyFast::EnemyFast(float x, float y, int level, int id)
 	shootType = 2;
 	shootScale = 0.75;
 
-	texture.loadFromFile("Images/Enemies/EnemyFast/normal.png");
-	sprite.setTexture(texture);	
+	static bool firstTime = true;
+	if (firstTime)
+	{
+		texture.loadFromFile("Images/Enemies/EnemyFast/normal.png");
+		firstTime = false;
+	}
+	sprite.setTexture(texture);
 
 	sf::Vector2u size = texture.getSize();
 

@@ -1,5 +1,7 @@
 #include "EnemyEasy.h"
 
+sf::Texture EnemyEasy::texture;
+
 EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 	: BasicEnemy(id)
 {
@@ -70,9 +72,14 @@ EnemyEasy::EnemyEasy(float x, float y, int level, int id)
 	shootDelay = 3000;
 	shootType = 2;
 	shootScale = 1;
-							
-	texture.loadFromFile("Images/Enemies/EnemyEasy/normal.png");
-	sprite.setTexture(texture);					
+		
+	static bool firstTime = true;
+	if (firstTime)
+	{
+		EnemyEasy::texture.loadFromFile("Images/Enemies/EnemyEasy/normal.png");
+		firstTime = false;
+	}
+	sprite.setTexture(EnemyEasy::texture);
 	
 	sf::Vector2u size = texture.getSize();
 

@@ -1,5 +1,7 @@
 #include "EnemyInvisible.h"
 
+sf::Texture EnemyInvisible::texture;
+
 EnemyInvisible::EnemyInvisible(float x, float y, int level, int id)
 	: BasicEnemy(id)
 {
@@ -45,7 +47,12 @@ EnemyInvisible::EnemyInvisible(float x, float y, int level, int id)
 	shootScale = 1;
 	invisibleDeltaTime = 0;
 
-	texture.loadFromFile("Images/Enemies/EnemyInvisible/normal.png");
+	static bool firstTime = true;
+	if (firstTime)
+	{
+		texture.loadFromFile("Images/Enemies/EnemyInvisible/normal.png");
+		firstTime = false;
+	}
 	sprite.setTexture(texture);
 	sprite.setColor(sf::Color(255, 255, 255, 30));
 

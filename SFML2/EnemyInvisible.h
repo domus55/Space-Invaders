@@ -9,6 +9,8 @@ public:
 	void update(int enemyNumber);
 	static void create(float posX, float posY, int level, int id = -1);
 protected:
+	static sf::Texture texture;
+
 	float invisibleScale;
 	int invisibleDeltaTime;
 };
