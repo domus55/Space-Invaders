@@ -43,7 +43,7 @@ void Animation::render(sf::Sprite *sprite)
 
 	if (licznik2 == textures[animationNumber].size()) licznik2 = 0;
 	sprite->setTexture(textures[animationNumber][licznik2]);
-	Window::window.draw(*sprite);
+	Window::window.draw(*sprite);//
 }
 
 void Animation::restart()

@@ -14,12 +14,12 @@ class Explosion
 	sf::Sprite sprite;
 	static sf::SoundBuffer soundBuffer;
 	sf::Sound sound;
-	bool destroyed;
 	int deltaTime;
 	int timeDelay;	//odstêp po jakim eksplozja sie zacznie
 	
 public:
 	static std::vector < std::shared_ptr <Explosion> > explosion;
+	bool destroyed;
 
 	Explosion(float x, float y, float scale = 1, float timeScale = 1, int timeDelay = 0);
 	static void loadAnimation();

@@ -1,6 +1,6 @@
 #include "LevelManager.h"
 
-int LevelManager::actualLevel = 20;
+int LevelManager::actualLevel = 0;
 bool LevelManager::animation = false;
 sf::Text LevelManager::text;
 sf::Font LevelManager::font;
@@ -52,6 +52,12 @@ void LevelManager::render()
 		if (deltaTime > 1500)
 		{
 			Animation::restart();
+
+			for (int i = Explosion::explosion.size() - 1; i >= 0; i--)
+			{
+				Explosion::explosion[i]->destroyed = true;
+			}
+			
 			deltaTime = 0;
 			nextLevel();
 		}
@@ -372,7 +378,7 @@ void LevelManager::level20()
 void LevelManager::level21()
 {
 	EnemyFidgetSpinner::create(800, -300, 2, 0);
-	//EnemyTank::create(800, -100, 2, 0);
+	EnemyTank::create(800, -100, 2, 0);
 }
 
 void LevelManager::level22()
