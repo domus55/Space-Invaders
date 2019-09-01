@@ -52,7 +52,8 @@ BossBlack::BossBlack(float posX, float posY, int lvl, int id)
 		hp = 400;
 		centerShootTime = 4000;
 		wingShootTime = 2000;
-		particleName = "BossBlack1";
+		particleName = "BossBlack2";
+		particleAmmount = 5;
 	}
 
 	sprite.setTexture(texture);

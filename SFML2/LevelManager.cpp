@@ -1,6 +1,6 @@
 #include "LevelManager.h"
 
-int LevelManager::actualLevel = 29;
+int LevelManager::actualLevel = 33;
 bool LevelManager::animation = false;
 sf::Text LevelManager::text;
 sf::Font LevelManager::font;
@@ -501,17 +501,47 @@ void LevelManager::level31()
 	EnemyTank::create(800, -100, 3, 0);
 }
 
-//brak poziom
 void LevelManager::level32()
 {
+	EnemyFidgetSpinner::create(200, -400, 1, 4);
+	EnemyFidgetSpinner::create(1400, -400, 1, 4);
+
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyInvisible::create(i * 250 + 175, -200, 2, 0);
+	}
+
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyInvisible::create(i * 250 + 175, -400, 2, 1);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyTank::create(-i * 250 - 200, 450, 1, 3);
+	}
+
+	for (int i = 0; i < 3; i++)
+	{
+		EnemyTank::create(i * 250 + 1800, 450, 1, 2);
+	}
 }
 
 void LevelManager::level33()
 {
-}
+	EnemyRocketMan::create(700, -500, 3, 1);
+	EnemyRocketMan::create(900, -500, 3, 1);
 
+	EnemyTank::create(700, -200, 3, 1);
+	EnemyTank::create(900, -200, 3, 1);
+
+	EnemyFidgetSpinner::create(300, -300, 3, 1);
+	EnemyFidgetSpinner::create(1300, -300, 3, 1);
+}
+//brak poziomu
 void LevelManager::level34()
 {
+
 }
 
 void LevelManager::level35()
@@ -532,6 +562,11 @@ void LevelManager::level36()
 
 void LevelManager::level37()
 {
+	for (int i = 0; i < 6; i++)
+	{
+		EnemyTrackingShots::create(i * 250 + 175, -300, 1, 1);
+		EnemyMedium::create(i * 250 + 175, -100, 3, 1);
+	}
 }
 
 void LevelManager::level38()
@@ -562,7 +597,11 @@ void LevelManager::level38()
 
 void LevelManager::level39()
 {
-	
+	for (int i = 0; i < 4; i++)
+	{
+		EnemyFidgetSpinner::create(i * 300 + 325, -300, 2, 1);
+		EnemyTank::create(i * 300 + 325, -100, 2, 1);
+	}
 }
 
 void LevelManager::level40()
@@ -572,8 +611,8 @@ void LevelManager::level40()
 
 void LevelManager::level41()
 {
-	EnemyFidgetSpinner::create(200, -400, 1, 4);
-	EnemyFidgetSpinner::create(1400, -400, 1, 4);
+	EnemyTrackingShots::create(200, -400, 1, 4);
+	EnemyTrackingShots::create(1400, -400, 1, 4);
 
 	for (int i = 0; i < 6; i++)
 	{

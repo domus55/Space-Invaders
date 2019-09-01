@@ -41,7 +41,8 @@ BossBlue::BossBlue(float posX, float posY, int id)
 	centerShootTime = 3000;
 	wingShootTime = 1500;
 	shootSpeed = 2;
-	particleName = "BossBlack1";
+	particleName = "BossBlue";
+	particleAmmount = 2;
 	
 	sprite.setTexture(texture);
 
@@ -290,7 +291,7 @@ void BossBlue::destroy()
 	Explosion::create(sprite.getPosition().x - 30, sprite.getPosition().y + 140, 1.5, 2);
 
 
-	Particle::addParticle(sprite.getPosition().x, sprite.getPosition().y, particleName, 600, 2);
+	Particle::addParticle(sprite.getPosition().x, sprite.getPosition().y, particleName, 50, 2);
 	Particle::addParticle(sprite.getPosition().x + 100, sprite.getPosition().y - 50, particleName, 20, 1);
 	Particle::addParticle(sprite.getPosition().x - 120, sprite.getPosition().y + 30, particleName, 20, 1);
 	Particle::addParticle(sprite.getPosition().x - 60, sprite.getPosition().y - 100, particleName, 20, 1);

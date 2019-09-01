@@ -46,7 +46,7 @@ BossGold::BossGold(float posX, float posY, int lvl, int id)
 		shootSpeed = 4;
 		centerShootTime = 3000;
 		wingShootTime = 1000;
-		particleName = "EnemyTank";
+		particleName = "BossGold";
 	}
 	if (lvl == 2)
 	{
@@ -55,7 +55,7 @@ BossGold::BossGold(float posX, float posY, int lvl, int id)
 		shootSpeed = 4;
 		centerShootTime = 2400;
 		wingShootTime = 800;
-		particleName = "BossBlack1";
+		particleName = "BossGold";
 	}
 
 	particleAmmount = 3;

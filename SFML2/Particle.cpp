@@ -10,6 +10,9 @@ Particle::Particle(float a, float h, std::string name, float speed)
 	if (name == "BossBrown1") teksture.loadFromFile("Images/Particles/BossBrown1.png");
 	if (name == "BossBrown2") teksture.loadFromFile("Images/Particles/BossBrown2.png");
 	if (name == "BossBlack1") teksture.loadFromFile("Images/Particles/BossBlack1.png");
+	if (name == "BossBlack2") teksture.loadFromFile("Images/Particles/BossBlack2.png");
+	if (name == "BossGold") teksture.loadFromFile("Images/Particles/BossGold.png");
+	if (name == "BossBlue") teksture.loadFromFile("Images/Particles/BossBlue.png");
 
 	static bool firstTime = true;
 	if (firstTime)
