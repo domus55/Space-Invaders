@@ -1277,6 +1277,8 @@ void LevelEvent::level47()
 		if (BasicEnemy::enemy[i]->id == 2 && !army3Right) BasicEnemy::enemy[i]->moveLeft();
 
 		
+		if (BasicEnemy::enemy[i]->id == 3 && army4Left) BasicEnemy::enemy[i]->moveLeft();
+		if (BasicEnemy::enemy[i]->id == 3 && !army4Left) BasicEnemy::enemy[i]->moveRight();
 	}
 
 	if (BasicEnemy::mostToTheRight(0) > 1550) army1Right = false;

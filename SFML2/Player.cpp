@@ -395,7 +395,7 @@ void Player::addShootDelay()
 	{
 		shootDuration *= 0.7;
 	}
-	shootDuration *= 0.85;
+	shootDuration *= 0.88;
 
 	GameHud::shootDelayLevel();
 }
@@ -406,7 +406,7 @@ void Player::addShootSpeed()
 	{
 		shootSpeed *= 1.5;
 	}
-	shootSpeed *= 1.1;
+	shootSpeed *= 1.12;
 
 	GameHud::shootSpeedLevel();
 }
@@ -430,10 +430,10 @@ void Player::sizeDown()
 		firstTime = false;
 	}
 
-	drawPlayerModel.setScale(drawPlayerModel.getScale().x * 0.95, drawPlayerModel.getScale().y * 0.95);
-	hitbox1.setScale(hitbox1.getScale().x * 0.95, hitbox1.getScale().y * 0.95);
-	hitbox2.setScale(hitbox2.getScale().x * 0.95, hitbox2.getScale().y * 0.95);
-	hitbox2PosY *= 0.95;
+	drawPlayerModel.setScale(drawPlayerModel.getScale().x * 0.97, drawPlayerModel.getScale().y * 0.97);
+	hitbox1.setScale(hitbox1.getScale().x * 0.97, hitbox1.getScale().y * 0.97);
+	hitbox2.setScale(hitbox2.getScale().x * 0.97, hitbox2.getScale().y * 0.97);
+	hitbox2PosY *= 0.97;
 
 	GameHud::sizeDownLevel();
 }

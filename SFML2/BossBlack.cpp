@@ -41,7 +41,7 @@ BossBlack::BossBlack(float posX, float posY, int lvl, int id)
 	if (lvl == 1)
 	{
 		texture.loadFromFile("Images/Enemies/Boss/2/normal.png");
-		hp = 200;
+		hp = 250;
 		centerShootTime = 6000;
 		wingShootTime = 3000;
 		particleName = "BossBlack1";
@@ -49,7 +49,7 @@ BossBlack::BossBlack(float posX, float posY, int lvl, int id)
 	if (lvl == 2)
 	{
 		texture.loadFromFile("Images/Enemies/Boss/4/normal.png");
-		hp = 400;
+		hp = 500;
 		centerShootTime = 4000;
 		wingShootTime = 2000;
 		particleName = "BossBlack2";

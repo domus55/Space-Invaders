@@ -18,7 +18,8 @@ desktop.ini
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
-[Rr]elease/
+#[Rr]elease/
+SFML2/Release/
 [Rr]eleases/
 x64/
 x86/

@@ -1,5 +1,6 @@
 #include "BasicEnemy.h"
 #include "PowerUp.h"
+#include "Player.h"
 
 std::vector < std::shared_ptr <BasicEnemy> > BasicEnemy::enemy;
 bool BasicEnemy::renderHitbox = false;
@@ -256,13 +257,40 @@ void BasicEnemy::destroy()
 
 	int los;
 	if(LevelManager::actualLevel < 10) los = rand() % 25;
-	else los = rand() % 50;
+	else los = rand() % 80;
 
-	if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
-	if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
-	if (los == 2) PowerUp::create(sprite.getPosition(), "hp");
-	if (los == 3) PowerUp::create(sprite.getPosition(), "shootAmmount");
-	if (los == 4) PowerUp::create(sprite.getPosition(), "sizeDown");
+	if (Player::player.hp > 5 && los == 2)
+	{
+		los = rand() % 4;
+
+		if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
+		if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
+		if (los == 2) PowerUp::create(sprite.getPosition(), "shootAmmount");
+		if (los == 3) PowerUp::create(sprite.getPosition(), "sizeDown");
+	}
+	else
+	{
+		if (los == 3 && Player::player.shootAmmount == 12)
+		{
+			los = rand() % 4;
+
+			if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
+			if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
+			if (los == 2) PowerUp::create(sprite.getPosition(), "hp");
+			if (los == 3) PowerUp::create(sprite.getPosition(), "sizeDown");
+		}
+		else
+		{
+			if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
+			if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
+			if (los == 2) PowerUp::create(sprite.getPosition(), "hp");
+			if (los == 3) PowerUp::create(sprite.getPosition(), "shootAmmount");
+			if (los == 4) PowerUp::create(sprite.getPosition(), "sizeDown");
+		}
+	}
+	
+
+	
 }
 
 void BasicEnemy::createLeftParticle()

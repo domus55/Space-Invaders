@@ -79,6 +79,7 @@ bool ClosingCredits::render()
 		Window::window.draw(authors);
 		Window::window.draw(authorsNames);
 		textTransition();
+		Music::backgroundMusic.setVolume((-time+22000) / 220);
 		if (time > 22000) return true;
 	}
 	return false;

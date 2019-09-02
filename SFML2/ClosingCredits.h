@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Window.h"
 #include "LevelManager.h"
+#include "Music.h"
 
 class ClosingCredits
 {

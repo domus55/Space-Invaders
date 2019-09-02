@@ -51,10 +51,10 @@ BossGold::BossGold(float posX, float posY, int lvl, int id)
 	if (lvl == 2)
 	{
 		texture.loadFromFile("Images/Enemies/Boss/7/normal.png");
-		hp = 500;
+		hp = 600;
 		shootSpeed = 4;
-		centerShootTime = 2400;
-		wingShootTime = 800;
+		centerShootTime = 2100;
+		wingShootTime = 700;
 		particleName = "BossGold";
 	}
 

@@ -32,6 +32,8 @@ EnemyTrackingShots::EnemyTrackingShots(float x, float y, int level, int id)
 	hp = 3;
 	shootType = 2;
 	shootScale = 1;
+	particleName = "EnemyTank";
+	particleAmmount = 5;
 
 	texture.loadFromFile("Images/Enemies/trackingshots/EnemyTrackingShots.png");
 	sprite.setTexture(texture);
