@@ -1,5 +1,6 @@
 # Space-Invaders
 Space Invaders game in c++ using SFML library
+
 Screens from the game:
 ![alt text](https://github.com/domus55/Space-Invaders/blob/master/SFML2/Images/Screenshots/Image1.jpg)
 ![alt text](https://github.com/domus55/Space-Invaders/blob/master/SFML2/Images/Screenshots/Image2.jpg)
