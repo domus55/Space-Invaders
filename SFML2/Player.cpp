@@ -340,6 +340,8 @@ void Player::playerDeath()
 	playerDeathSound.play();
 	
 	GameHud::resetHud();
+	BasicEnemy::enemy.clear();
+	Shoot::shoot.clear();
 
 	renderDeath = true;
 	deathDelay = true;
@@ -364,8 +366,6 @@ void Player::playerDeathTime()
 	{
 		renderDeath = false;
 		LevelManager::actualLevel = 0;
-		BasicEnemy::enemy.clear();
-		Shoot::shoot.clear();
 		deathDelay = false;
 		canMove = true;
 		canShoot = true;
