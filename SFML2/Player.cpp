@@ -76,11 +76,11 @@ void Player::update()
 
 void Player::resetStats()
 {
-	shootSpeed = 6;				//3
-	shootDuration = 150;		//1500
+	shootSpeed = 3;				//3
+	shootDuration = 1500;		//1500
 	speed = 0.5;
 	hp = 6;
-	shootAmmount = 10;
+	shootAmmount = 1;
 
 	hitbox2PosY = 35;
 	drawPlayerModel.setScale(0.2, 0.2);
