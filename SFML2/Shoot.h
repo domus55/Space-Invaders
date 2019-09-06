@@ -8,7 +8,6 @@
 #include "GameInfo.h"
 #include "Collider.h"
 
-
 class Shoot
 {
 public:

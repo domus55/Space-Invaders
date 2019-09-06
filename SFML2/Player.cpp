@@ -1,9 +1,10 @@
 #include "Player.h"
 
 Player Player::player;
-bool Player::renderHitbox = false;
 sf::Text Player::text;
 sf::Font Player::font;
+bool Player::renderHitbox = false;
+bool Player::blockShoots = false;
 
 Player::Player()
 {
@@ -75,11 +76,11 @@ void Player::update()
 
 void Player::resetStats()
 {
-	shootSpeed = 3;				//3
-	shootDuration = 1500;		//1500
+	shootSpeed = 6;				//3
+	shootDuration = 150;		//1500
 	speed = 0.5;
 	hp = 6;
-	shootAmmount = 1;
+	shootAmmount = 10;
 
 	hitbox2PosY = 35;
 	drawPlayerModel.setScale(0.2, 0.2);
@@ -340,7 +341,6 @@ void Player::playerDeath()
 	playerDeathSound.play();
 	
 	GameHud::resetHud();
-	BasicEnemy::enemy.clear();
 	Shoot::shoot.clear();
 
 	renderDeath = true;
@@ -348,6 +348,7 @@ void Player::playerDeath()
 	checkDeathFx = true;
 	canMove = false;
 	canShoot = false;
+	blockShoots = true;
 }
 
 void Player::playerDeathTime()
@@ -366,9 +367,11 @@ void Player::playerDeathTime()
 	{
 		renderDeath = false;
 		LevelManager::actualLevel = 0;
+		BasicEnemy::enemy.clear();
 		deathDelay = false;
 		canMove = true;
 		canShoot = true;
+		blockShoots = false;
 		time = 0;
 	}
 }

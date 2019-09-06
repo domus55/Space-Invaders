@@ -44,15 +44,17 @@ class Player
 	bool light;
 
 public:
-	int shootAmmount; // iloscStrzalow
-	int hp; // zycie gracza
+	Player();
+
+	int shootAmmount;			// iloœæ strza³ów
+	int hp;						// ¿ycie gracza
+	static bool blockShoots;	// blokowanie strza³ów wszystkich obiektów
 	sf::Sprite drawPlayerModel;
 	sf::Sprite drawHeartModel1;
 	sf::Sprite drawHeartModel2;
 	sf::Sprite drawHeartModel3;
 
-	static Player player; // obiekt player
-	Player();
+	static Player player;		// obiekt player
 	static void render();		// render player'a
 	static void update();		// zmiana pozycji, sprawdzenie czy strzela
 	void playerMove();			// ruch gracza

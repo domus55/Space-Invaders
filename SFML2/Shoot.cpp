@@ -1,4 +1,5 @@
 #include "Shoot.h"
+#include "Player.h"
 
 std::vector < std::shared_ptr <Shoot> > Shoot::shoot;
 bool Shoot::showHitbox = false;
@@ -73,12 +74,18 @@ Shoot::Shoot()
 
 void Shoot::create(sf::Vector2f position, sf::Vector2f speed, bool player, int type, float shootScale)
 {
-	Shoot::shoot.push_back(std::make_shared <Shoot>(position.x, position.y, speed.x, speed.y, player, type, shootScale));
+	if (Player::blockShoots == false)
+	{
+		Shoot::shoot.push_back(std::make_shared <Shoot>(position.x, position.y, speed.x, speed.y, player, type, shootScale));
+	}
 }
 
 void Shoot::create(float positionX, float positionY, float speedX, float speedY, bool player, int type, float shootScale)
 {
-	Shoot::shoot.push_back(std::make_shared <Shoot>(positionX, positionY, speedX, speedY, player, type, shootScale));
+	if (Player::blockShoots == false)
+	{
+		Shoot::shoot.push_back(std::make_shared <Shoot>(positionX, positionY, speedX, speedY, player, type, shootScale));
+	}
 }
 
 void Shoot::updateAll()
