@@ -238,25 +238,47 @@ void BossGold::shoot()
 void BossGold::destroy()
 {
 
-	int los = rand() % 5;
-	if (los == 0) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootSpeed");
-	if (los == 1) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootDelay");
-	if (los == 2) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "hp");
-	if (los == 3) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootAmmount");
-	if (los == 4) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "sizeDown");
+	if (Player::player.hp == 6)
+	{
+		int los = rand() % 4;
+		if (los == 0) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootSpeed");
+		if (los == 1) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootDelay");
+		if (los == 2) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootAmmount");
+		if (los == 3) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "sizeDown");
 
-	los = rand() % 5;
-	if (los == 0) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootSpeed");
-	if (los == 1) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootDelay");
-	if (los == 2) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "hp");
-	if (los == 3) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootAmmount");
-	if (los == 4) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "sizeDown");
+		los = rand() % 4;
+		if (los == 0) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootSpeed");
+		if (los == 1) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootDelay");
+		if (los == 2) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootAmmount");
+		if (los == 3) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "sizeDown");
 
-	los = rand() % 4;
-	if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
-	if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
-	if (los == 2) PowerUp::create(sprite.getPosition(), "hp");
-	if (los == 3) PowerUp::create(sprite.getPosition(), "sizeDown");
+		los = rand() % 3;
+		if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
+		if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
+		if (los == 2) PowerUp::create(sprite.getPosition(), "sizeDown");
+	}
+	else
+	{
+		int los = rand() % 5;
+		if (los == 0) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootSpeed");
+		if (los == 1) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootDelay");
+		if (los == 2) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "hp");
+		if (los == 3) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootAmmount");
+		if (los == 4) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "sizeDown");
+
+		los = rand() % 5;
+		if (los == 0) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootSpeed");
+		if (los == 1) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootDelay");
+		if (los == 2) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "hp");
+		if (los == 3) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootAmmount");
+		if (los == 4) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "sizeDown");
+
+		los = rand() % 4;
+		if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
+		if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
+		if (los == 2) PowerUp::create(sprite.getPosition(), "hp");
+		if (los == 3) PowerUp::create(sprite.getPosition(), "sizeDown");
+	}
 
 	Explosion::create(sprite.getPosition(), 2, 2.5);
 	Explosion::create(sprite.getPosition().x + 100, sprite.getPosition().y - 50, 1, 2);

@@ -55,6 +55,7 @@ BossBrown::BossBrown(float posX, float posY, int lvl, int id)
 	{
 		texture.loadFromFile("Images/Enemies/Boss/1/normal.png");
 		hp = 100;
+		shootCenter = 0;
 		shootWing = 1000;
 		shootWingDeltaTime = 3000;
 		shootCenterDeltaTime = 6000;
@@ -64,6 +65,7 @@ BossBrown::BossBrown(float posX, float posY, int lvl, int id)
 	{
 		texture.loadFromFile("Images/Enemies/Boss/3/normal.png");
 		hp = 200;
+		shootCenter = -12000;
 		shootWing = 500;
 		shootWingDeltaTime = 2000;
 		shootCenterDeltaTime = 4000;
@@ -86,7 +88,6 @@ BossBrown::BossBrown(float posX, float posY, int lvl, int id)
 	haveRightWing = true;
 	haveLeftWing = true;
 
-	shootCenter = 0;
 	timesHitedLeft = 0;
 	timesHitedRight = 0;
 }
@@ -232,25 +233,48 @@ void BossBrown::shoot()
 
 void BossBrown::destroy()
 {
-	int los = rand() % 5;
-	if (los == 0) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootSpeed");
-	if (los == 1) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootDelay");
-	if (los == 2) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "hp");
-	if (los == 3) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootAmmount");
-	if (los == 4) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "sizeDown");
+	if (Player::player.hp == 6)
+	{
+		int los = rand() % 4;
+		if (los == 0) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootSpeed");
+		if (los == 1) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootDelay");
+		if (los == 2) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootAmmount");
+		if (los == 3) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "sizeDown");
 
-	los = rand() % 5;
-	if (los == 0) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootSpeed");
-	if (los == 1) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootDelay");
-	if (los == 2) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "hp");
-	if (los == 3) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootAmmount");
-	if (los == 4) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "sizeDown");
+		los = rand() % 4;
+		if (los == 0) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootSpeed");
+		if (los == 1) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootDelay");
+		if (los == 2) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootAmmount");
+		if (los == 3) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "sizeDown");
 
-	los = rand() % 4;
-	if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
-	if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
-	if (los == 2) PowerUp::create(sprite.getPosition(), "hp");
-	if (los == 3) PowerUp::create(sprite.getPosition(), "sizeDown");
+		los = rand() % 3;
+		if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
+		if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
+		if (los == 2) PowerUp::create(sprite.getPosition(), "sizeDown");
+	}
+	else
+	{
+		int los = rand() % 5;
+		if (los == 0) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootSpeed");
+		if (los == 1) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootDelay");
+		if (los == 2) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "hp");
+		if (los == 3) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "shootAmmount");
+		if (los == 4) PowerUp::create(sprite.getPosition().x - 70, sprite.getPosition().y + 50, "sizeDown");
+
+		los = rand() % 5;
+		if (los == 0) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootSpeed");
+		if (los == 1) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootDelay");
+		if (los == 2) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "hp");
+		if (los == 3) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "shootAmmount");
+		if (los == 4) PowerUp::create(sprite.getPosition().x + 70, sprite.getPosition().y + 50, "sizeDown");
+
+		los = rand() % 4;
+		if (los == 0) PowerUp::create(sprite.getPosition(), "shootSpeed");
+		if (los == 1) PowerUp::create(sprite.getPosition(), "shootDelay");
+		if (los == 2) PowerUp::create(sprite.getPosition(), "hp");
+		if (los == 3) PowerUp::create(sprite.getPosition(), "sizeDown");
+	}
+	
 
 	Explosion::create(sprite.getPosition(), 2, 2.5);
 	Explosion::create(sprite.getPosition().x + 100, sprite.getPosition().y - 50, 1, 2);
