@@ -734,9 +734,9 @@ void LevelManager::level47()
 
 void LevelManager::level48()
 {
-	EnemyFidgetSpinner::create(300, -400, 2, 0);
+	EnemyFidgetSpinner::create(300, -400, 100, 0);
 	EnemyFidgetSpinner::create(800, -400, 2, 0);
-	EnemyFidgetSpinner::create(1300, -400, 2, 0);
+	EnemyFidgetSpinner::create(1300, -400, 100, 0);
 
 	for (int i = 0; i < 6; i++)
 	{
@@ -746,7 +746,7 @@ void LevelManager::level48()
 
 void LevelManager::level49()
 {
-	EnemyFidgetSpinner::create(800, -800, 2, 0);
+	EnemyFidgetSpinner::create(800, -800, 100, 0);
 
 	EnemyTrackingShots::create(-400, 150, 1, 1);
 	EnemyTrackingShots::create(2000, 150, 1, 2);

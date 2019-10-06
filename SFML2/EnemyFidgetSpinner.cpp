@@ -4,12 +4,18 @@
 EnemyFidgetSpinner::EnemyFidgetSpinner(float x, float y, int level, int id)
 	: BasicEnemy(id)
 {
+	dropHp = false;
+
 	if (level == 99)
 	{
 		level = 1;
 		dropHp = true;
 	}
-	else dropHp = false;
+	if (level == 100)
+	{
+		level = 2;
+		dropHp = true;
+	}
 
 	if (level == 1)
 	{

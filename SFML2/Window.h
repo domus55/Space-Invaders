@@ -4,5 +4,6 @@
 
 class Window{
 public:
+	static sf::Image image;
 	static sf::RenderWindow window;
 };

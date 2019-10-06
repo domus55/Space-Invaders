@@ -20,7 +20,7 @@ void GameVersion::create()
 
 	text2.setCharacterSize(10);
 	text2.setPosition(10, 870);
-	text2.setString("version 1.0.1");
+	text2.setString("version 1.0.2");
 }
 
 void GameVersion::render()

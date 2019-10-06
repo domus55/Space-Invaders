@@ -3,9 +3,11 @@
 Game::Game()
 {
 	isRunning = true;
-	Window::window.create(sf::VideoMode(1600, 900, 32), "Space Invaders");
+	Window::window.create(sf::VideoMode(1600, 900, 32), "Space Invaders", sf::Style::Titlebar | sf::Style::Close);
 	Window::window.clear(sf::Color(0, 0, 0));
 	Window::window.display();
+	Window::image.loadFromFile("Images/spaceship.png");
+	Window::window.setIcon(Window::image.getSize().x, Window::image.getSize().y, Window::image.getPixelsPtr());
 
 	std::thread t1(Background::create);
 	std::thread t2(LevelManager::create);

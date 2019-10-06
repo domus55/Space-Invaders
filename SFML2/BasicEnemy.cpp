@@ -256,8 +256,8 @@ void BasicEnemy::destroy()
 	Explosion::create(sprite.getPosition());
 
 	int los;
-	if(LevelManager::actualLevel < 10) los = rand() % 25;
-	else los = rand() % 80;
+	if(LevelManager::actualLevel < 10) los = rand() % 33;
+	else los = rand() % 100;
 
 	if (Player::player.hp > 5 && los == 2)
 	{
