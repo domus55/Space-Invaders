@@ -1,5 +1,4 @@
 # Space-Invaders
-[![Coverage Status](https://coveralls.io/repos/github/domus55/Space-Invaders/badge.svg?branch=master)](https://coveralls.io/github/domus55/Space-Invaders?branch=master)
 Space Invaders game in c++ using SFML library
 
 [![Watch the video](https://github.com/domus55/Space-Invaders/blob/master/SFML2/Images/Screenshots/video.jpg)](https://www.youtube.com/watch?v=4pMNve64HwY)
